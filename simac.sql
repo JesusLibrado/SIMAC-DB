@@ -7,7 +7,7 @@ create database if not exists simac;
 			'Fabricacion',
 			'Limpieza',
 			'Mantenimiento',
-			'Maquinado'
+			'Maquinado',
 			'Suministro',
 			'Cambios',
 			'Instalacion',
