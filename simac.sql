@@ -47,3 +47,11 @@ create database if not exists simac;
 		rfc_solicitante varchar(13)
 			references simac.empresa(rfc_empresa)
 	);
+	
+	/*empleadp*/
+	
+	
+	/*realiza*/
+	
+	
+	/*gastos*/
