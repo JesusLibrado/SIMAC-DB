@@ -1,3 +1,0 @@
-/*SQL*/
-
-create database if not exist simac;

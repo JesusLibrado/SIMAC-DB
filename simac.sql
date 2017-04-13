@@ -5,7 +5,10 @@ create database if not exists simac;
 		servicio enum(
 			'Reparacion',
 			'Fabricacion',
-			'Suministros',
+			'Limpieza',
+			'Mantenimiento',
+			'Maquinado'
+			'Suministro',
 			'Cambios',
 			'Instalacion',
 			'Otros') not null,
