@@ -30,3 +30,17 @@ create database if not exists simac;
 		folio_trabajo int references simac.trabajo(folio),
 		fecha_entrega_deseada date
 	);
+
+	create table if not exists simac.factura(
+		folio int primary key,
+		monto float,
+		fecha date,
+		forma_pago enum(
+			'Deposito',
+			'Efectivo',
+			'Transferencia') not null,
+		folio_trabajo int 
+			references simac.trabajo(folio),
+		rfc_solicitante varchar(13)
+			references simac.empresa(rfc_empresa)
+	);
