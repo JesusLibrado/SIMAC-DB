@@ -1,0 +1,16 @@
+1. folio y servicio de trabajos de tipo x realizados entre d1 y d2
+	Donde x es una cadena de enum en la tabla trabajo, representando el tipo de servicio otorgado e.g. reparacion, fabricacion, etc
+	d1 y d2 son variables date para delimitar el periodo de busqueda
+
+2. cantidad de tuplas retornadas por la query anterior
+
+3. folio, monto y fecha de facturas generadas entre d1 y d2 con monto menor o igual a f2 y mayor o igual a f1
+	Donde d1 y d2 son variables date que delimitan el periodo de busqueda
+	f1 y f2 es el rango inclusivo del monto de las facturas
+
+4. cantidad de tuplas retornadas por la query anterior
+
+5. Monto total del gasto acumulado entre d1 y d2
+	donde d1 y d2 son variabels date que delimitan el periodo de busqueda
+	la cantidad deseada es la suma de los montos totales de todos los gastos ubicados en el periodo
+
