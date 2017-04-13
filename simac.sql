@@ -7,7 +7,7 @@ create database if not exists simac;
 			'Fabricacion',
 			'Limpieza',
 			'Mantenimiento',
-			'Maquinado'
+			'Maquinado',
 			'Suministro',
 			'Cambios',
 			'Instalacion',
@@ -55,6 +55,7 @@ create database if not exists simac;
 		nss varchar(11),
 		activo boolean,
 		salario float,
+		fecha_contratacion date,
 		jefe varchar(13) 
 			references simac.empleado(rfc),
 		nombre varchar(50),
