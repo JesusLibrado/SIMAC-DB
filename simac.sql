@@ -1,19 +1,19 @@
 create database if not exists simac;
 
 	create table if not exists simac.trabajo(
-		folio int primary key clustered,
+		folio int primary key,
 		servicio enum(
-			'Reparación',
-			'Fabricación',
+			'Reparacion',
+			'Fabricacion',
 			'Suministros',
 			'Cambios',
-			'Instalación',
+			'Instalacion',
 			'Otros') not null,
 		descripcion varchar(500)
 	);
 
 	create table if not exists simac.empresa(
-		rfc_empresa varchar(13) primary key clustered,
+		rfc_empresa varchar(13) primary key,
 		nombre varchar(50),
 		banco varchar(30),
 		numero_cuenta bigint not null,
@@ -21,7 +21,7 @@ create database if not exists simac;
 	);
 
 	create table if not exists simac.cotizacion(
-		folio int primary key clustered,
+		folio int primary key,
 		fecha date not null,
 		condiciones_pago varchar(75),
 		monto float,
