@@ -79,15 +79,16 @@ create database if not exists simac;
 	);
 	
 	create table if not exists simac.realiza(
-		folio_trabajo int primary key
+		folio_trabajo int
 			references simac.trabajo(folio),
-		rfc_empleado varchar(13) primary key
-			references simac.empleado(rfc)
+		rfc_empleado varchar(13)
+			references simac.empleado(rfc),
+		primary key (folio_trabajo, rfc_empleado)
 	);
 	
 	create table if not exists simac.gasto(
 		fecha date primary key,
-		total float,
+		total float not null,
 		material float,
 		mano_obra float,
 		luz float,
