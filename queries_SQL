@@ -1,0 +1,9 @@
+1.  select t.folio
+    from trabajo t 
+    where t.servicio = 'x' and t.fecha between 'd1' and 'd2';
+    
+2.  select f.folio, f.monto, f.fecha 
+    from factura f
+    where f.monto <= f2 and f.monto >= f1 and f.fecha between 'd1' and 'd2';
+
+3.  select 
