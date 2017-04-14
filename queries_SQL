@@ -6,4 +6,17 @@
     from factura f
     where f.monto <= f2 and f.monto >= f1 and f.fecha between 'd1' and 'd2';
 
-3.  select 
+3.  select sum(g.total) as Gasto acumulado
+    from gasto g
+    where g.fecha between 'd1' and 'd2';
+    
+4. 	select datediff(day, e.fecha_contratacion, getdate()) as Antiguedad
+	from empleado e
+	where e.nombre = 'tnombre' and e.apellido = 'tapellido';
+	
+5.	select e.nombre, e.apellido
+	from empleado e 
+	 INNER JOIN (realiza r INNER JOIN (trabajo t INNER JOIN (empresa em INNER JOIN cotizacion c ON em.rfc = c.rfc_solicitante) 
+		ON t.folio = c.folio_trabajo) ON r.folio_trabajo = t.folio) ON e.rfc = r.rfc_empleado;
+		
+6.
