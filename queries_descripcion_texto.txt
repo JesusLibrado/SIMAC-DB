@@ -1,4 +1,4 @@
-1. folio y servicio de trabajos de tipo x realizados entre d1 y d2
+1. folio de trabajos de tipo x realizados entre d1 y d2
 	Donde x es una cadena de enum en la tabla trabajo, representando el tipo de servicio otorgado e.g. reparacion, fabricacion, etc
 	d1 y d2 son variables date para delimitar el periodo de busqueda
 
