@@ -49,7 +49,7 @@
 16. el folio, monto y fecha de todas las facturas correspondientes a un trabajo x
 	donde x es el folio del trabajo
 	
-17. todas las facturas sobre un pago hecho para un trabajo con folio x
+17. todas las facturas con fecha x
 
 18. la cotizacion con un folio x
 
