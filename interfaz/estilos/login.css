@@ -45,3 +45,8 @@
 	-moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.75);
 	box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.75);
 }
+
+.mensaje{
+    margin: 10px auto;
+    color: #1c1c1c;
+}
