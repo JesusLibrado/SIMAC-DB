@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+	/*Log in*/
+
 	$('#loginUsuario').val('admin');
 
 	var btnLogin = $('#btnLogin');
@@ -30,5 +32,21 @@ $(document).ready(function(){
 	function mensajeLogin(mensaje){
 		$('.mensaje').html(mensaje);
 		$('.mensaje').css('color', '#1c1c1c');
-	}	
+	}
+
+
+	/*Modal*/
+
+	$('#empleados').hide();
+	$('#empresas').hide();
+	var link;
+
+	$('.navbar-menu a').click(function(event){
+		link = $(this).attr('href');
+		$(link).fadeIn(400);
+	});
+
+	$(".close").click(function(event){
+        $(link).fadeOut(400);
+    });
 })

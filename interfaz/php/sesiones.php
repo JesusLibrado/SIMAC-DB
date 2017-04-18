@@ -4,7 +4,7 @@
 $hora = $_SERVER["REQUEST_TIME"];
 
 //Duración de la sesión en segundos
-$duracion = 60;
+$duracion = 180;
 
 //Si el tiempo de la petición* es mayor al tiempo permitido de la duración, 
 //destruye la sesión y crea una nueva
