@@ -34,11 +34,9 @@ $(document).ready(function(){
 		$('.mensaje').css('color', '#1c1c1c');
 	}
 
-
 	/*Modal*/
 
-	$('#empleados').hide();
-	$('#empresas').hide();
+	$('.modal').hide();
 	var link;
 
 	$('.navbar-menu a').click(function(event){
@@ -49,4 +47,26 @@ $(document).ready(function(){
 	$(".close").click(function(event){
         $(link).fadeOut(400);
     });
+
+	/*Borrar Elemento*/
+
+	$('.btnBorrarElemento').click(function(){
+		$.ajax({
+			url: 'php/eliminar.php',
+			type: 'POST',
+			data: {
+					metodo: 'eliminarEmpresa',
+					id: $(this).attr('id')
+				}
+		}).done(function(res){
+			alert(res);
+			/*if(res != ''){
+				alert('No fue posible eliminar este elemento');
+			}else{
+				$(link).fadeOut(400);	
+			}*/
+		});
+	});
+
+
 })

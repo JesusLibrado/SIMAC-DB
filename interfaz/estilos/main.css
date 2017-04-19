@@ -37,7 +37,7 @@ a:visited{
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s;
-    max-width: 60%;
+    max-width: 70%;
 }
 
 @-webkit-keyframes animatetop {
@@ -63,23 +63,18 @@ a:visited{
 }
 
 .modal-body input{
-	width: 70%;
-	height: 30px;
-	margin-bottom: 20px;
-	padding: 15px;
-	font-size: 20px;
-	font-family: 'Text Me One', sans-serif;
-	border:0;
+	height: 10px;
+	padding: 5px;
 	border-color: transparent;
-	border-left: 5px solid #FF5C5C;
+	border: 1px solid #BDBDBD;
+	border-radius:20px;
 	transition: ease 0.1s;
-	background: none;
 	outline: none;
 }
 
 .modal-body input:active,
 .modal-body input:focus{
-	border-bottom: 1px solid #FF5C5C;
+	border: 1px solid #0091EA;
 	border-left: 0px;
 }
 
@@ -125,6 +120,77 @@ a:visited{
 
 .elemento{
 	padding: 8px;
+}
+
+.table{
+	display: table;
+	width: 100%;
+}
+
+.table-row{
+	display: table-row;
+}
+
+.table-head{
+	display: table-header-group;
+	font-weight: bold;
+}
+
+.table-body{
+	display: table-row-group;
+}
+
+.table-footer{
+	display: table-footer-group;
+}
+
+.table-cell, 
+.table-head{
+	display: table-cell;
+	padding: 8px;
+	max-width: 200px;
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+	overflow: hidden;
+}
+
+.table-cell button{
+	padding: 8px;
+}
+
+.extra-buttons a{
+	float: right;
+	color: #3F51B5;
+	padding-right:15px;
+}
+
+.extra-buttons input{
+	height: 10px;
+	padding: 7px;
+	border-color: transparent;
+	border: 1px solid #BDBDBD;
+	border-radius:20px;
+	transition: ease 0.1s;
+	outline: none;
+}
+
+.more-info{
+	color: #0091EA;
+	border: 0;
+	background: transparent;
+}
+
+.delete-button{
+	color: #D50000;
+	border: 0;
+	background: transparent;
+}
+
+.more-info:hover,
+.delete-button:hover,
+.extra-buttons a:hover{
+	cursor: pointer;
+	color: #1c1c1c;
 }
 
 .not-found{

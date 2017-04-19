@@ -9,33 +9,6 @@
 		require('php/sesiones.php');
 	}
 
-	/*
-	function mostrarEmpleados(){
-		$sql = "select rfc, nombre, apellido, activo from empleado";
-		$resultado = mysqli_query($con, $sql);
-		if(mysqli_num_rows($resultado)>0){
-			while($fila=mysqli_fetch_assoc($resultado)){
-				echo '<a id="'.$fila['rfc_empresa'].'" class="more-info"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>'
-					.$fila['nombre'].' '.$fila['apellido'];
-			}
-		}else
-			echo '<p class="not-found">Tabla vacía</p>';
-	}
-	*/
-
-	/*
-	function mostrarEmpresas(){
-		$sql = "select rfc_empresa, nombre, numero_cuenta from empresa";
-			$resultado = mysqli_query($con, $sql);
-			if(mysqli_num_rows($resultado)>0){
-				while($fila=mysqli_fetch_assoc($resultado)){
-					echo '<a id="'.$fila['rfc_empresa'].'" class="more-info"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a> '.$fila['nombre'].' '.$fila['numero_cuenta'];
-				}
-			}else
-				echo '<p class="not-found">Tabla vacía</p>';
-	}
-	*/
-
 ?>
 
 <!DOCTYPE html>
@@ -57,13 +30,13 @@
 		<img src="logo/logo-min.jpeg">
 		<h3 class="font-b">Bienvenido, <?php echo $usuario?>!</h3>
 		<div class="navbar-menu font-b topBotomBordersOut">
-			<a href="#empleados">Empleados</a>
-			<a href="#empresas" target="_self">Empresas</a>
+			<a href="#empleado">Empleados</a>
+			<a href="#empresa" target="_self">Empresas</a>
 			<a href="php/cerrar-sesion.php"><i class="fa fa-user-times" aria-hidden="true"></i></a>
 		</div>
 	</div>
 
-	<div class="modal" id="empleados">
+	<div class="modal" id="empleado">
 		<div class="modal-content">
 			<div class="modal-header">
 				<span class="close">&times</span>
@@ -86,21 +59,53 @@
 		</div>
 	</div>
 
-	<div class="modal" id="empresas">
+	<div class="modal" id="empresa" name="rfc_empresa">
 		<div class="modal-content">
 			<div class="modal-header">
 				<span class="close">&times</span>
 				<p class="font-a">Empresas</p>
 			</div>
 			<div class="modal-body font-b">
-				<div class="tabla">
+				<div class="tables">
+					<div class="extra-buttons">
+						<a href="#">
+							<i class="fa fa-user-plus fa-lg" aria-hidden="true"></i>
+						</a>
+						<a href="#">
+							<input type="text" id="inputSearch" class="font-b" placeholder="buscar">
+							<i class="fa fa-search-plus fa-lg" aria-hidden="true"></i>
+						</a>
+					</div>
 					<?php
-						$sql = "select rfc_empresa, nombre, numero_cuenta from empresa";
+						$tabla = "empresa";
+						$sql = "select rfc_empresa, nombre, numero_cuenta from $tabla";
 						$resultado = mysqli_query($con, $sql);
 						if(mysqli_num_rows($resultado)>0){
+							echo '<div class="table">
+									<div class="table-row">
+										<div class="table-head">Nombre </div>
+										<div class="table-head">No. de cuenta</div>
+										<div class="table-head"></div>
+									</div>';
 							while($fila=mysqli_fetch_assoc($resultado)){
-								echo '<div class="elemento"><a href="#" id="'.$fila['rfc_empresa'].'" class="more-info"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>  '.$fila['nombre'].' '.$fila['numero_cuenta'].'</div>';
+								echo '<div class="table-row">
+										<div class="table-cell">
+											'.$fila['nombre'].'
+										</div>
+										<div class="table-cell">
+											'.$fila['numero_cuenta'].'
+										</div>
+										<div class="table-cell">
+											<button id="'.$fila['rfc_empresa'].'" class="more-info btnMasInfo">
+												<i class="fa fa-info-circle fa-2x fa-lg" aria-hidden="true"></i>
+											</button>
+											<button id="'.$fila['rfc_empresa'].'" class="delete-button btnBorrarElemento">
+												<i class="fa fa-times-circle fa-2x fa-lg" aria-hidden="true"></i>
+											</button>
+										</div>
+									</div>';
 							}
+							echo '</div>';
 						}else
 							echo '<p class="not-found">Tabla vacía</p>';
 					?>
