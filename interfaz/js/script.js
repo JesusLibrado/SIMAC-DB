@@ -76,4 +76,30 @@ $(document).ready(function(){
 		$('.tabla').toggle();
 		$(this).children().toggle();
 	});
+
+	$('#btnNuevaEmpresa').click(function(event){
+		event.preventDefault();
+		$.ajax({
+			url: 'php/consultas.php',
+			type: 'GET',
+			data:{
+					id: $('#nuevaEmpresaRFC').val(),
+					nombre: $('#nuevaEmpresaNombre').val(),
+					banco: $('#nuevaEmpresaBanco').val(),
+					num_cuenta: $('#nuevaEmpresaNumeroCuenta').val(),
+					num_proveedor: $('#nuevaEmpresaNumeroProveedor').val(),
+					metodo: 'insertarEmpresa'
+			}
+		}).done(function(res){
+			if(res != ''){
+				alert("Error: "+res);
+			}else{
+				location.reload();
+			}
+		});
+	});
+
+	/*Info Empresa*/
+
+
 })

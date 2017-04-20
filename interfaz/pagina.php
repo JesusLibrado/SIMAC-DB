@@ -89,7 +89,86 @@
 					?>
 				</div>
 				<div class="nuevo-elemento" id="nuevaEmpresa" style="display: none">
-					<p>Hola</p>
+					<p>Agregar Nuevo</p>
+					<input type="text" id="nuevaEmpresaRFC" placeholder="RFC">
+					<input type="text" id="nuevaEmpresaNombre" placeholder="Nombre">
+					<input type="text" id="nuevaEmpresaBanco" placeholder="Banco">
+					<input type="number" id="nuevaEmpresaNumeroCuenta" placeholder="Numero de cuenta">
+					<input type="number" id="nuevaEmpresaNumeroProveedor" placeholder="Numero de proveedor">
+					<button id="btnNuevaEmpresa">Aceptar</button>
+				</div>
+				<div class="info-elemento" id="empresaInfo" style="display: none">
+					<h3 class="infoEmpresaRFC">Holi crayoli</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal" id="empleado">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close">&times</span>
+				<p class="font-a">Empleados</p>
+			</div>
+			<div class="modal-body font-b">
+					<div class="extra-buttons">
+						<a href="#">
+							<i class="fa fa-user-plus fa-lg" aria-hidden="true"></i>
+							<i class="fa fa-times fa-lg" aria-hidden="true" style="display: none; color: #D50000"></i>
+						</a>
+						<button>
+							<input type="text" id="inputSearch" class="font-b" placeholder="buscar">
+							<i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
+						</button>
+					</div>
+				<div class="tabla" style="display: block">
+					<?php
+						$tabla = "empleado";
+						$sql = "select rfc, nombre, apellido from $tabla";
+						$resultado = mysqli_query($con, $sql);
+						if(mysqli_num_rows($resultado)>0){
+							echo '<div class="table">
+									<div class="table-row">
+										<div class="table-head">Nombre </div>
+										<div class="table-head">Apellido</div>
+										<div class="table-head"></div>
+									</div>';
+							while($fila=mysqli_fetch_assoc($resultado)){
+								echo '<div class="table-row">
+										<div class="table-cell">
+											'.$fila['nombre'].'
+										</div>
+										<div class="table-cell">
+											'.$fila['apellido'].'
+										</div>
+										<div class="table-cell">
+											<button class="more-info btnMasInfo">
+												<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
+											</button>
+											<button class="delete-button delete-empresa" id="'.urlencode($fila['rfc']).'">
+												<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
+											</button>
+										</div>
+									</div>';
+							}
+							echo '</div>';
+						}else
+							echo '<p class="not-found">Tabla vacía</p>';
+					?>
+				</div>
+				<div class="nuevo-elemento" id="nuevoEmpleado" style="display: none">
+					<p>Agregar Nuevo</p>
+					<input type="text" id="nuevoEmpleadoRFC" placeholder="RFC">
+					<input type="text" id="nuevoEmpleadoCurp" placeholder="Curp">
+					<input type="text" id="nuevoEmpleadoNss" placeholder="Numero de S.S">
+					<input type="text" id="nuevoEmpleadoNombre" placeholder="Nombre">
+					<input type="text" id="nuevoEmpleadoApellido" placeholder="Apellido">
+					<input type="number" id="nuevoEmpleadoSalario" placeholder="Salario">
+					<input type="date" id="nuevoEmpleadoFechaContratacion" placeholder="Fecha de contratacion">
+					<button id="btnNuevoEmpleado">Aceptar</button>
+				</div>
+				<div class="info-elemento" id="empresaInfo" style="display: none">
+					<h3 class="infoEmpresaRFC">Holi crayoli</h3>
 				</div>
 			</div>
 		</div>
