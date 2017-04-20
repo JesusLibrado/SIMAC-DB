@@ -50,23 +50,30 @@ $(document).ready(function(){
 
 	/*Borrar Elemento*/
 
-	$('.btnBorrarElemento').click(function(){
+	$('.delete-empresa').click(function(event){
+		event.preventDefault();
 		$.ajax({
-			url: 'php/eliminar.php',
-			type: 'POST',
+			url: 'php/consultas.php',
+			type: 'GET',
 			data: {
-					metodo: 'eliminarEmpresa',
-					id: $(this).attr('id')
+					id: $(this).attr('id'),
+					metodo: 'eliminarEmpresa'
 				}
 		}).done(function(res){
-			alert(res);
-			/*if(res != ''){
-				alert('No fue posible eliminar este elemento');
+			if(res != ''){
+				alert("Error: "+res);
 			}else{
-				$(link).fadeOut(400);	
-			}*/
+				location.reload();
+			}
 		});
 	});
 
+	/*Insertar Empresa*/
 
+	$('.extra-buttons a').click(function(event){
+		event.preventDefault();
+		$('.nuevo-elemento').toggle();
+		$('.tabla').toggle();
+		$(this).children().toggle();
+	});
 })

@@ -36,46 +36,24 @@
 		</div>
 	</div>
 
-	<div class="modal" id="empleado">
-		<div class="modal-content">
-			<div class="modal-header">
-				<span class="close">&times</span>
-				<p class="font-a">Empleados</p>
-			</div>
-			<div class="modal-body font-b">
-				<div class="tabla">
-					<?php
-						$sql = "select rfc, nombre, apellido, activo from empleado";
-						$resultado = mysqli_query($con, $sql);
-						if(mysqli_num_rows($resultado)>0){
-							while($fila=mysqli_fetch_assoc($resultado)){
-								echo '<a href="#" id="'.$fila['rfc_empresa'].'" class="more-info"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a> '.$fila['nombre'].' '.$fila['apellido'];
-							}
-						}else
-							echo '<p class="not-found">Tabla vacía</p>';
-					?>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal" id="empresa" name="rfc_empresa">
+	<div class="modal" id="empresa">
 		<div class="modal-content">
 			<div class="modal-header">
 				<span class="close">&times</span>
 				<p class="font-a">Empresas</p>
 			</div>
 			<div class="modal-body font-b">
-				<div class="tables">
 					<div class="extra-buttons">
 						<a href="#">
 							<i class="fa fa-user-plus fa-lg" aria-hidden="true"></i>
+							<i class="fa fa-times fa-lg" aria-hidden="true" style="display: none; color: #D50000"></i>
 						</a>
-						<a href="#">
+						<button>
 							<input type="text" id="inputSearch" class="font-b" placeholder="buscar">
-							<i class="fa fa-search-plus fa-lg" aria-hidden="true"></i>
-						</a>
+							<i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
+						</button>
 					</div>
+				<div class="tabla" style="display: block">
 					<?php
 						$tabla = "empresa";
 						$sql = "select rfc_empresa, nombre, numero_cuenta from $tabla";
@@ -96,11 +74,11 @@
 											'.$fila['numero_cuenta'].'
 										</div>
 										<div class="table-cell">
-											<button id="'.$fila['rfc_empresa'].'" class="more-info btnMasInfo">
-												<i class="fa fa-info-circle fa-2x fa-lg" aria-hidden="true"></i>
+											<button class="more-info btnMasInfo">
+												<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
 											</button>
-											<button id="'.$fila['rfc_empresa'].'" class="delete-button btnBorrarElemento">
-												<i class="fa fa-times-circle fa-2x fa-lg" aria-hidden="true"></i>
+											<button class="delete-button delete-empresa" id="'.urlencode($fila['rfc_empresa']).'">
+												<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
 											</button>
 										</div>
 									</div>';
@@ -109,6 +87,9 @@
 						}else
 							echo '<p class="not-found">Tabla vacía</p>';
 					?>
+				</div>
+				<div class="nuevo-elemento" id="nuevaEmpresa" style="display: none">
+					<p>Hola</p>
 				</div>
 			</div>
 		</div>

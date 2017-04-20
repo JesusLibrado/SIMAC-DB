@@ -158,15 +158,18 @@ a:visited{
 	padding: 8px;
 }
 
-.extra-buttons a{
+.extra-buttons a, 
+.extra-buttons button{
 	float: right;
 	color: #3F51B5;
 	padding-right:15px;
+	border: 0;
+	background: #fff;
 }
 
 .extra-buttons input{
 	height: 10px;
-	padding: 7px;
+	padding: 8px;
 	border-color: transparent;
 	border: 1px solid #BDBDBD;
 	border-radius:20px;
@@ -188,7 +191,8 @@ a:visited{
 
 .more-info:hover,
 .delete-button:hover,
-.extra-buttons a:hover{
+.extra-buttons a:hover,
+.extra-buttons button:hover{
 	cursor: pointer;
 	color: #1c1c1c;
 }
