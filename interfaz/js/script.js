@@ -101,5 +101,16 @@ $(document).ready(function(){
 
 	/*Info Empresa*/
 
+	var display;
+
+	$('.btnMasInfoEmpresa').click(function(event){
+		event.preventDefault();
+		display = '#infoEmpresa';
+		var id = $(this).attr('id');
+
+		$(display+' .modal-header p').html(id);
+
+		$(display).fadeIn(400);
+	});
 
 })

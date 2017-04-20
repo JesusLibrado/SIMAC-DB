@@ -74,7 +74,7 @@
 											'.$fila['numero_cuenta'].'
 										</div>
 										<div class="table-cell">
-											<button class="more-info btnMasInfo">
+											<button class="more-info btnMasInfoEmpresa" id="'.$fila['rfc_empresa'].'">
 												<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
 											</button>
 											<button class="delete-button delete-empresa" id="'.urlencode($fila['rfc_empresa']).'">
@@ -97,8 +97,13 @@
 					<input type="number" id="nuevaEmpresaNumeroProveedor" placeholder="Numero de proveedor">
 					<button id="btnNuevaEmpresa">Aceptar</button>
 				</div>
-				<div class="info-elemento" id="empresaInfo" style="display: none">
-					<h3 class="infoEmpresaRFC">Holi crayoli</h3>
+				<div class="modal" id="infoEmpresa">
+					<div class="info-elemento" id="empresaInfo">
+						<div class="modal-header">
+							<span class="close">&times</span>
+							<p class="font-a"></p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -166,9 +171,6 @@
 					<input type="number" id="nuevoEmpleadoSalario" placeholder="Salario">
 					<input type="date" id="nuevoEmpleadoFechaContratacion" placeholder="Fecha de contratacion">
 					<button id="btnNuevoEmpleado">Aceptar</button>
-				</div>
-				<div class="info-elemento" id="empresaInfo" style="display: none">
-					<h3 class="infoEmpresaRFC">Holi crayoli</h3>
 				</div>
 			</div>
 		</div>
