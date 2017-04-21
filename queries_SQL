@@ -1,6 +1,7 @@
 1.  	select t.folio
-    	from trabajo t 
-    	where t.servicio = 'x' and t.fecha between 'd1' and 'd2';
+    	from trabajo t INNER JOIN cotizacion c 
+	ON c.folio_trabajo = t.folio
+    	where t.servicio = 'x' and c.fecha between 'd1' and 'd2';
     
 2.  	select f.folio, f.monto, f.fecha 
     	from factura f
