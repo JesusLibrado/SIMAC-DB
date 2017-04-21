@@ -94,5 +94,6 @@ create database if not exists simac;
 		mano_obra float,
 		luz float,
 		gasolina float,
-		registrado_por varchar(13)
+		registrado_por varchar(13) 
+			references simac.empleado (rfc)
 	);
