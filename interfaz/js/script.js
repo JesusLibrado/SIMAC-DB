@@ -60,7 +60,7 @@ $(document).ready(function(){
 		$('#confirmarEliminarEmpresa .modal-header h6').html('¿Eliminar '+id+'?');
 		$('#confirmarEliminarEmpresa').toggle();
 		$('.confirmar-continuar').click(function(){
-			continueDeleting(id);
+			continueDeleting(id, 'eliminarEmpresa');
 		});
 	});
 
@@ -68,13 +68,13 @@ $(document).ready(function(){
 		$('#confirmarEliminarEmpresa').toggle();
 	});
 
-	function continueDeleting(id){
+	function continueDeleting(id, metodo){
 		$.ajax({
 			url: 'php/ediciones.php',
 			type: 'GET',
 			data: {
 					id: id,
-					metodo: 'eliminarEmpresa'
+					metodo: metodo
 				}
 		}).done(function(res){
 			if(res != ''){
@@ -85,7 +85,7 @@ $(document).ready(function(){
 		});
 	}
 
-	/*Insertar Empresa*/
+	//GENERAL
 
 	$('.extra-buttons a').click(function(event){
 		event.preventDefault();
@@ -93,6 +93,8 @@ $(document).ready(function(){
 		$('.tabla').toggle();
 		$(this).children().toggle();
 	});
+
+	/*Insertar Empresa*/
 
 	$('.btnNuevaEmpresa').click(function(event){
 		event.preventDefault();
@@ -162,5 +164,23 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+
+	/*Borrar Empleado*/
+
+	$('.delete-empleado').click(function(event){
+		event.preventDefault();
+		var id = $(this).attr('id');
+		$('#confirmarEliminarEmpleado .modal-header h6').html('¿Eliminar '+id+'?');
+		$('#confirmarEliminarEmpleado').toggle();
+		$('.confirmar-continuar').click(function(){
+			$('#confirmarEliminarEmpleado').toggle();
+		});
+	});
+
+	$('.confirmar-cancelar').click(function(){
+		$('#confirmarEliminarEmpleado').toggle();
+	});
+
 
 })

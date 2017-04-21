@@ -124,6 +124,12 @@
 	</div>
 
 
+
+
+
+
+
+
 	<div class="modal" id="empleado">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -162,10 +168,10 @@
 											'.$fila['apellido'].'
 										</div>
 										<div class="table-cell">
-											<button class="more-info btnMasInfoEmpresa" id="'.urlencode($fila['rfc_empresa']).'">
+											<button class="more-info btnMasInfoEmpleado" id="'.urlencode($fila['rfc_empresa']).'">
 												<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
 											</button>
-											<button class="delete-button delete-empresa" id="'.urlencode($fila['rfc_empresa']).'">
+											<button class="delete-button delete-empleado" id="'.urlencode($fila['rfc_empresa']).'">
 												<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
 											</button>
 										</div>
