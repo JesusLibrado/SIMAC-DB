@@ -74,7 +74,7 @@
 											'.$fila['numero_cuenta'].'
 										</div>
 										<div class="table-cell">
-											<button class="more-info btnMasInfoEmpresa" id="'.$fila['rfc_empresa'].'">
+											<button class="more-info btnMasInfoEmpresa" id="'.urlencode($fila['rfc_empresa']).'">
 												<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
 											</button>
 											<button class="delete-button delete-empresa" id="'.urlencode($fila['rfc_empresa']).'">
@@ -88,7 +88,7 @@
 							echo '<p class="not-found">Tabla vacía</p>';
 					?>
 				</div>
-				<div class="nuevo-elemento" id="nuevaEmpresa" style="display: none">
+				<div class="nuevo-elemento nuevaEmpresa" style="display: none">
 					<p>Agregar Nuevo</p>
 					<input type="text" id="nuevaEmpresaRFC" placeholder="RFC">
 					<input type="text" id="nuevaEmpresaNombre" placeholder="Nombre">
@@ -100,8 +100,22 @@
 				<div class="modal" id="infoEmpresa">
 					<div class="info-elemento" id="empresaInfo">
 						<div class="modal-header">
-							<span class="close">&times</span>
+							<span class="close-popup">&times</span>
 							<p class="font-a"></p>
+						</div>
+						<div class="info">
+
+						</div>
+					</div>
+				</div>
+				<div class="modal" id="confirmarEliminarEmpresa">
+					<div class="confirmar-elemento">
+						<div class="modal-header">
+							<h6 class="font-b"></h6>
+						</div>
+						<div class="confirmar-buttons">
+							<button class="confirmar-continuar">OK</button>
+							<button class="confirmar-cancelar">Cancelar</button>
 						</div>
 					</div>
 				</div>
@@ -109,11 +123,12 @@
 		</div>
 	</div>
 
+
 	<div class="modal" id="empleado">
 		<div class="modal-content">
 			<div class="modal-header">
 				<span class="close">&times</span>
-				<p class="font-a">Empleados</p>
+				<p class="font-a">Empleado</p>
 			</div>
 			<div class="modal-body font-b">
 					<div class="extra-buttons">
@@ -147,10 +162,10 @@
 											'.$fila['apellido'].'
 										</div>
 										<div class="table-cell">
-											<button class="more-info btnMasInfo">
+											<button class="more-info btnMasInfoEmpresa" id="'.urlencode($fila['rfc_empresa']).'">
 												<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
 											</button>
-											<button class="delete-button delete-empresa" id="'.urlencode($fila['rfc']).'">
+											<button class="delete-button delete-empresa" id="'.urlencode($fila['rfc_empresa']).'">
 												<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
 											</button>
 										</div>
@@ -171,6 +186,28 @@
 					<input type="number" id="nuevoEmpleadoSalario" placeholder="Salario">
 					<input type="date" id="nuevoEmpleadoFechaContratacion" placeholder="Fecha de contratacion">
 					<button id="btnNuevoEmpleado">Aceptar</button>
+				</div>
+				<div class="modal" id="infoEmpleado">
+					<div class="info-elemento" id="empleadoInfo">
+						<div class="modal-header">
+							<span class="close-popup">&times</span>
+							<p class="font-a"></p>
+						</div>
+						<div class="info">
+
+						</div>
+					</div>
+				</div>
+				<div class="modal" id="confirmarEliminarEmpleado">
+					<div class="confirmar-elemento">
+						<div class="modal-header">
+							<h6 class="font-b"></h6>
+						</div>
+						<div class="confirmar-buttons">
+							<button class="confirmar-continuar">OK</button>
+							<button class="confirmar-cancelar">Cancelar</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

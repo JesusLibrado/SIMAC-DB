@@ -48,15 +48,32 @@ $(document).ready(function(){
         $(link).fadeOut(400);
     });
 
-	/*Borrar Elemento*/
+    $('.close-popup').click(function(){
+    	$(display).toggle(400);
+    });
+
+	/*Borrar Empresa*/
 
 	$('.delete-empresa').click(function(event){
 		event.preventDefault();
+		var id = $(this).attr('id');
+		$('#confirmarEliminarEmpresa .modal-header h6').html('¿Eliminar '+id+'?');
+		$('#confirmarEliminarEmpresa').toggle();
+		$('.confirmar-continuar').click(function(){
+			continueDeleting(id);
+		});
+	});
+
+	$('.confirmar-cancelar').click(function(){
+		$('#confirmarEliminarEmpresa').toggle();
+	});
+
+	function continueDeleting(id){
 		$.ajax({
-			url: 'php/consultas.php',
+			url: 'php/ediciones.php',
 			type: 'GET',
 			data: {
-					id: $(this).attr('id'),
+					id: id,
 					metodo: 'eliminarEmpresa'
 				}
 		}).done(function(res){
@@ -66,7 +83,7 @@ $(document).ready(function(){
 				location.reload();
 			}
 		});
-	});
+	}
 
 	/*Insertar Empresa*/
 
@@ -77,10 +94,10 @@ $(document).ready(function(){
 		$(this).children().toggle();
 	});
 
-	$('#btnNuevaEmpresa').click(function(event){
+	$('.btnNuevaEmpresa').click(function(event){
 		event.preventDefault();
 		$.ajax({
-			url: 'php/consultas.php',
+			url: 'php/ediciones.php',
 			type: 'GET',
 			data:{
 					id: $('#nuevaEmpresaRFC').val(),
@@ -108,9 +125,42 @@ $(document).ready(function(){
 		display = '#infoEmpresa';
 		var id = $(this).attr('id');
 
-		$(display+' .modal-header p').html(id);
-
-		$(display).fadeIn(400);
+		$.ajax({
+			url: 'php/consultas.php',
+			type: 'GET',
+			data: {
+					id: id,
+					metodo: 'selectEmpresa'
+			}
+		}).done(function(res){
+			if(res==' '){
+				alert("Error: "+res);
+			}else{
+				var data = jQuery.parseJSON(res);
+				$(display+' .modal-header p').html(data.nombre);
+				$(display+' .info').html(
+					'<div class="table">'+
+						'<div class="table-row">'+
+							'<div class="table-head">RFC</div>'+
+							'<div class="table-cell">'+data.rfc_empresa+'</div>'+
+						'</div>'+
+						'<div class="table-row">'+
+							'<div class="table-head">Banco</div>'+
+							'<div class="table-cell">'+data.banco+'</div>'+
+						'</div>'+
+						'<div class="table-row">'+
+							'<div class="table-head">No. de cuenta</div>'+
+							'<div class="table-cell">'+data.numero_cuenta+'</div>'+
+						'</div>'+
+						'<div class="table-row">'+
+							'<div class="table-head">No. de proveedor</div>'+
+							'<div class="table-cell">'+data.numero_proveedor+'</div>'+
+						'</div>'+
+					'</div>'
+				);
+				$(display).toggle(400);
+			}
+		});
 	});
 
 })

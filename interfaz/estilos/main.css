@@ -96,13 +96,16 @@ a:visited{
     color: #fff;
 }	
 
-.close{
+.close,
+.close-popup{
 	color: rgba(28,28,28,0.4);
 	float: right;
 }
 
 .close:hover,
-.close:focus {
+.close:focus,
+.close-popup:hover,
+.close-popup:focus {
     color: rgba(0,0,0,0.8);
     text-decoration: none;
     cursor: pointer;
@@ -223,10 +226,9 @@ a:visited{
 	cursor: pointer;
 }
 
-.info-elemento{
-	width: 60%;
+.info-elemento,
+.confirmar-elemento{
 	margin: 20% auto;
-	padding: 30px;
 	border-radius: 4px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
@@ -234,4 +236,47 @@ a:visited{
     animation-name: animatetop;
     animation-duration: 0.4s;
     background: #Fff;
+}
+
+.info-elemento{
+	width: 60%;
+	padding: 30px;
+}
+
+.confirmar-elemento{
+	width: 32%;
+	padding: 15px;
+}
+
+.confirmar-continuar,
+.confirmar-cancelar{
+	padding: 6px 10px;
+	margin: 10px 4px;
+	border: 0;
+	border-radius: 4px;
+	color: #fff;
+}
+
+.confirmar-continuar{
+	background: #D50000;
+}
+
+.confirmar-cancelar{
+	background: #0091EA;
+}
+
+.confirmar-continuar:hover,
+.confirmar-cancelar:hover{
+	cursor: pointer;
+	-webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.75);
+	box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.75);
+}
+
+.info-elemento .info{
+	padding: 30px;
+}
+
+.info-elemento p{
+	padding: 8px;
 }
