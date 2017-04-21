@@ -1,4 +1,4 @@
-1.  	select t.folio
+1.  	select t.descripcion, t.folio, c.fecha
     	from trabajo t INNER JOIN cotizacion c 
 	ON c.folio_trabajo = t.folio
     	where t.servicio = 'x' and c.fecha between 'd1' and 'd2';
