@@ -68,3 +68,10 @@
 25. lista todas las empresas
 
 26. lista todos los gastos
+
+27. el mínimo gasto en el periodo [d1,d2]
+	donde d1 y d2 son variables date que delimitan el periodo de busqueda
+
+28. el maximo gasto en el periodo [d1,d2]
+	donde d1 y d2 son variables date que delimitan el periodo de busqueda
+
