@@ -15,11 +15,12 @@
 	from empleado e 
 	where e.nombre = 'tnombre' and e.apellido = 'tapellido';
 	
-5.	select e.nombre, e.apellido
+5.	select distinct e.nombre, e.apellido 
 	from empleado e 
-	INNER JOIN (realiza r INNER JOIN (trabajo t INNER JOIN (empresa em INNER JOIN cotizacion c ON em.rfc = c.rfc_solicitante) 
-		ON t.folio = c.folio_trabajo) ON r.folio_trabajo = t.folio) ON e.rfc = r.rfc_empleado;
-		
+	INNER JOIN (realiza r INNER JOIN (empresa em INNER JOIN cotizacion c ON em.rfc_empresa = c.rfc_solicitante) 
+		ON r.folio_trabajo = c.folio_trabajo) ON e.rfc = r.rfc_empleado 
+	where em.nombre = 'x';	
+	
 6.	select e.nombre, e.apellido
 	from empleado e INNER JOIN empleado e1 ON e.jefe = e1.rfc
 	where e1.nombre = 'xnombre' and e1.apellido = 'xapellido';
