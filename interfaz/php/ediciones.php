@@ -8,12 +8,12 @@
 
 	function eliminarEmpresa(){
 		$id = $_GET['id'];
-		return "delete from empresa where rfc_empresa = '".urldecode($id)."'";
+		return "delete from empresa where rfc_empresa = '".$id."'";
 	}
 
 	function eliminarEmpleado(){
 		$id = $_GET['id'];
-		return "delete from empleado where rfc = '".urldecode($rfc)."'"	;
+		return "delete from empleado where rfc = '".$rfc."'";
 	}
 
 	
@@ -26,7 +26,7 @@
 
 		return "insert into empresa values(
 					'".$rfc."',
-					'".$nombre."', 
+					'".$nombre."',
 					'".$banco."',
 					".$numero_cuenta.",
 					".$numero_proveedor."

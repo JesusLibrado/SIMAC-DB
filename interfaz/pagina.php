@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	include_once('php/config.php');
 
 	if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 		header('Location: index.php');
@@ -53,40 +52,8 @@
 							<i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
 						</button>
 					</div>
-				<div class="tabla" style="display: block">
-					<?php
-						$tabla = "empresa";
-						$sql = "select rfc_empresa, nombre, numero_cuenta from $tabla";
-						$resultado = mysqli_query($con, $sql);
-						if(mysqli_num_rows($resultado)>0){
-							echo '<div class="table">
-									<div class="table-row">
-										<div class="table-head">Nombre </div>
-										<div class="table-head">No. de cuenta</div>
-										<div class="table-head"></div>
-									</div>';
-							while($fila=mysqli_fetch_assoc($resultado)){
-								echo '<div class="table-row">
-										<div class="table-cell">
-											'.$fila['nombre'].'
-										</div>
-										<div class="table-cell">
-											'.$fila['numero_cuenta'].'
-										</div>
-										<div class="table-cell">
-											<button class="more-info btnMasInfoEmpresa" id="'.urlencode($fila['rfc_empresa']).'">
-												<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
-											</button>
-											<button class="delete-button delete-empresa" id="'.urlencode($fila['rfc_empresa']).'">
-												<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
-											</button>
-										</div>
-									</div>';
-							}
-							echo '</div>';
-						}else
-							echo '<p class="not-found">Tabla vacía</p>';
-					?>
+				<div class="informacion" style="display: block">
+					
 				</div>
 				<div class="nuevo-elemento nuevaEmpresa" style="display: none">
 					<p>Agregar Nuevo</p>
@@ -114,7 +81,7 @@
 							<h6 class="font-b"></h6>
 						</div>
 						<div class="confirmar-buttons">
-							<button class="confirmar-continuar">OK</button>
+							<button class="confirmar-continuar">Borrar</button>
 							<button class="confirmar-cancelar">Cancelar</button>
 						</div>
 					</div>
@@ -122,10 +89,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
 
 
 
@@ -147,40 +110,8 @@
 							<i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
 						</button>
 					</div>
-				<div class="tabla" style="display: block">
-					<?php
-						$tabla = "empleado";
-						$sql = "select rfc, nombre, apellido from $tabla";
-						$resultado = mysqli_query($con, $sql);
-						if(mysqli_num_rows($resultado)>0){
-							echo '<div class="table">
-									<div class="table-row">
-										<div class="table-head">Nombre </div>
-										<div class="table-head">Apellido</div>
-										<div class="table-head"></div>
-									</div>';
-							while($fila=mysqli_fetch_assoc($resultado)){
-								echo '<div class="table-row">
-										<div class="table-cell">
-											'.$fila['nombre'].'
-										</div>
-										<div class="table-cell">
-											'.$fila['apellido'].'
-										</div>
-										<div class="table-cell">
-											<button class="more-info btnMasInfoEmpleado" id="'.urlencode($fila['rfc_empresa']).'">
-												<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
-											</button>
-											<button class="delete-button delete-empleado" id="'.urlencode($fila['rfc_empresa']).'">
-												<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
-											</button>
-										</div>
-									</div>';
-							}
-							echo '</div>';
-						}else
-							echo '<p class="not-found">Tabla vacía</p>';
-					?>
+				<div class="informacion" style="display: block">
+					
 				</div>
 				<div class="nuevo-elemento" id="nuevoEmpleado" style="display: none">
 					<p>Agregar Nuevo</p>
@@ -210,7 +141,7 @@
 							<h6 class="font-b"></h6>
 						</div>
 						<div class="confirmar-buttons">
-							<button class="confirmar-continuar">OK</button>
+							<button class="confirmar-continuar">Borrar</button>
 							<button class="confirmar-cancelar">Cancelar</button>
 						</div>
 					</div>

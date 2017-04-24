@@ -1,18 +1,38 @@
 <?php
 	include_once('config.php');
 
-	$sql = $_GET['metodo']();
+	$sql = $_POST['metodo']();
 
 	$resultado=mysqli_query($con,$sql);
 
+	if(!$resultado)
+		die("");
+
+	$array = array(mysqli_num_rows($resultado));
+
+	$i = 0;
+
 	if(mysqli_num_rows($resultado)>0){
-		echo json_encode(mysqli_fetch_array($resultado, MYSQLI_BOTH));
+
+		while($fila = mysqli_fetch_array($resultado, MYSQLI_NUM)){
+			$array[$i] = $fila;
+			$i++;
+		}
+		echo json_encode($array);
 		mysqli_free_result($resultado);
 	}else
-		die("No hay resultados para esta consulta ".mysqli_error($con));
+		die("");
 
-	function selectEmpresa(){
-		$id = $_GET['id'];
-		return "select * from empresa where rfc_empresa = '".urldecode($id)."'";
-	}		
+	function selectEmpresaId(){
+		$id = $_POST['id'];
+		return "select * from empresa where rfc_empresa = '".$id."'";
+	}
+
+	function empresa(){
+		return "select rfc_empresa, nombre, numero_proveedor from empresa";
+	}
+
+	function empleado(){
+		return "select rfc, nombre, apellido from empleado";
+	}
 ?>
