@@ -7,7 +7,7 @@ create database if not exists simac;
 		activo boolean,
 		salario float,
 		fecha_contratacion date not null,
-		jefe varchar(13),
+		jefe varchar(13) DEFAULT 'CAEF6805309K4',
 		nombre varchar(50),
 		apellido varchar(50),
 
