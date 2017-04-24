@@ -164,38 +164,8 @@
 		select * 
 		from factura f 
 		where f.folio = xfolio;
-	
+
 /*	21.-
-	lista todas las facturas
-*/
-		select * from factura;
-
-/*	22.-
-	lista todos los empleados
-*/
-		select * from empleado;
-
-/*	23.-
-	lista todos los trabajos
-*/
-		select * from trabajo;
-
-/*	24.-
-	lista todas las cotizaciones
-*/
-		select * from cotizacion;
-
-/*	25.-
-	lista todas las empresas
-*/
-		select * from empresas;
-
-/*	26.-
-	lista todos los gastos
-*/
-		select * from gastos;
-
-/*	27.-
 	el maximo gasto en el periodo [d1,d2]
 		donde d1 y d2 son variables date que delimitan el periodo de busqueda
 */
@@ -203,14 +173,14 @@
 		from gasto g 
 		where g.fecha between 'd1' and 'd2';
 
-/*	28.-
+/*	22.-
 	El acumulado del monto de todas las facturas de un trabajo con folio x, así como el monto de la cotizacion de dicho trabajo 
 */
 	select sum(f.monto) as 'cantidad facturada', c.monto as 'costo del trabajo'
 	from cotizacion c INNER JOIN factura f ON f.folio_trabajo = c.folio_trabajo 
 	where c.folio_trabajo = x;
 
-/*	29.-
+/*	23.-
 	Desglose del gasto de cierto dia x
 */
 	select g.material, g.mano_obra, g.luz, g.gasolina, g.total 
