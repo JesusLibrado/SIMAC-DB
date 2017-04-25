@@ -35,125 +35,23 @@ $(document).ready(function(){
 	}
 
 
-	/*EMPRESA*/
-
-
-	/*Borrar Empresa*/
-
-	$(document).on('click', '.delete-empresa',function(){
-		var id = $(this).attr('id');
-		$('#confirmarEliminarEmpresa .modal-header h6').html('¿Eliminar?');
-		$('#confirmarEliminarEmpresa').toggle();
-		$('.confirmar-continuar').click(function(){
-			continueDeleting(id, 'eliminarEmpresa', 'empresa');
-		});
-	});
-
-	$('.confirmar-cancelar').click(function(){
-		$('#confirmarEliminarEmpresa').toggle();
-	});
-
-	/*Insertar Empresa*/
-
-	$('#btnNuevaEmpresa').click(function(event){
-		event.preventDefault();
-		$.ajax({
-			url: 'php/ediciones.php',
-			type: 'GET',
-			data:{
-					id: $('#nuevaEmpresaRFC').val(),
-					nombre: $('#nuevaEmpresaNombre').val(),
-					banco: $('#nuevaEmpresaBanco').val(),
-					num_cuenta: $('#nuevaEmpresaNumeroCuenta').val(),
-					num_proveedor: $('#nuevaEmpresaNumeroProveedor').val(),
-					metodo: 'insertarEmpresa'
-			}
-		}).done(function(res){
-			if(res != ''){
-				alert("Error: "+res);
-			}else{
-				display("empresa");
-				$('.nuevo-elemento').toggle();
-				$('.informacion').toggle();
-				$('.extra-buttons a').children().toggle();
-			}
-		});
-	});
-
-	/*Info Empresa*/
-
-	var display;
-
-	$(document).on('click', '.info-empresa',function(event){
-		event.preventDefault();
-		display = '#infoEmpresa';
-		var id = $(this).attr('id');
-
-		$.ajax({
-			url: 'php/consultas.php',
-			type: 'POST',
-			data: {
-					id: id,
-					metodo: 'selectEmpresaId'
-			}
-		}).done(function(res){
-			if(res==' '){
-				alert("Error: "+res);
-			}else{
-				var data = $.parseJSON(res);
-				$(display+' .modal-header p').html(data[0][1]);
-				$(display+' .info').html(
-					'<div class="table">'+
-						'<div class="table-row">'+
-							'<div class="table-head">RFC</div>'+
-							'<div class="table-cell">'+data[0][0]+'</div>'+
-						'</div>'+
-						'<div class="table-row">'+
-							'<div class="table-head">Banco</div>'+
-							'<div class="table-cell">'+data[0][2]+'</div>'+
-						'</div>'+
-						'<div class="table-row">'+
-							'<div class="table-head">No. de cuenta</div>'+
-							'<div class="table-cell">'+data[0][3]+'</div>'+
-						'</div>'+
-						'<div class="table-row">'+
-							'<div class="table-head">No. de proveedor</div>'+
-							'<div class="table-cell">'+data[0][4]+'</div>'+
-						'</div>'+
-					'</div>'
-				);
-				$(display).toggle(400);
-			}
-		});
-	});
-
-
-	/*Borrar Empleado*/
-
-	$(document).on('click', '.delete-empleado',function(){
-		var id = $(this).attr('id');
-		$('#confirmarEliminarEmpleado .modal-header h6').html('¿Eliminar?');
-		$('#confirmarEliminarEmpleado').toggle();
-		$('.confirmar-continuar').click(function(){
-			$('#confirmarEliminarEmpleado').toggle();
-		});
-	});
-
-	$('.confirmar-cancelar').click(function(){
-		$('#confirmarEliminarEmpleado').toggle();
-	});
-
-
-	/*Modal*/
+	/*****Modal*****/
 
 	
 	$('.modal').hide();
+	$('info-empresa').hide();
+	$('info-empleado').hide();
 	var link;
+	var infoPopup;
+	var elemento;
+	var id;
+	var confirmarPopup;
 
 	$('.navbar-menu a').click(function(event){
 		link = $(this).attr('href');
-		var elemento = link.substring(1, link.length);
-		display(elemento, link);
+		elemento = link.substring(1, link.length);
+		displayIn(elemento);	
+		confirmarPopup = $(link+'ConfirmarEliminar');
 		$(link).fadeIn(400);
 	});
 
@@ -162,11 +60,8 @@ $(document).ready(function(){
     });
 
     $('.close-popup').click(function(){
-    	$(display).toggle(400);
+    	$(infoPopup).toggle(400);
     });
-
-
-	//GENERAL
 
 	$('.extra-buttons a').click(function(event){
 		event.preventDefault();
@@ -175,22 +70,9 @@ $(document).ready(function(){
 		$(this).children().toggle();
 	});
 
-	function continueDeleting(id, metodo, elemento){
-		$.ajax({
-			url: 'php/ediciones.php',
-			type: 'GET',
-			data: { id, metodo }
-		}).done(function(res){
-			if(res != ''){
-				alert("Error: "+res);
-			}else{
-				display(elemento);
-				$('.confirmar-elemento').hide();
-			}
-		});
-	}
+	/*****Display*****/
 	
-	function display(elemento){
+	function displayIn(elemento){
 		$.ajax({
 			url: 'php/consultas.php',
 			type: 'POST',
@@ -200,19 +82,22 @@ $(document).ready(function(){
 				$('.informacion').html('<p class="not-found">Tabla vacía</p>');
 			}else{
 				var data = $.parseJSON(array);
+				var titulos;
 				switch(elemento){
 					case "empresa":
-							var titulos = ['Nombre', 'No. de proveedor'];
+							titulos = ['Nombre', 'No. de proveedor'];
 							renderWithExtraButtons(data, elemento, $('#'+elemento+' .informacion'), titulos);
 						break;
 					case "empleado":
-							var titulos = ['Nombre', 'Apellido'];
+							titulos = ['Nombre', 'Apellido'];
 							renderWithExtraButtons(data, elemento, $('#'+elemento+' .informacion'), titulos);
 						break;
 				}
 			}
 		});
 	}
+
+	/*****Render*****/
 
 	function renderWithExtraButtons(array, elemento, ubicacion, titulos){
 		var render = '<div class="table">'+
@@ -243,7 +128,7 @@ $(document).ready(function(){
 							'<button class="more-info info-'+elemento+'" id="'+id+'">'+
 								'<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>'+
 							'</button>'+
-							'<button class="delete-button delete-'+elemento+'" id="'+id+'">'+
+							'<button class="delete-button borrar-'+elemento+'" id="'+id+'">'+
 								'<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>'+
 							'</button>'+
 						closeDiv+
@@ -286,11 +171,144 @@ $(document).ready(function(){
 		ubicacion.html(render);
 	}
 
+
+	/*****Borrar POPup*****/
+
+	function continueDeleting(id, metodo, elemento){
+		$.ajax({
+			url: 'php/ediciones.php',
+			type: 'GET',
+			data: { id, metodo }
+		}).done(function(res){
+			if(res != ''){
+				alert("Error: "+res);
+			}else{
+				displayIn(elemento);
+			}
+		});
+	}
+
+	$(document).on('click', '.borrar-empresa', function(event){
+		event.preventDefault();
+		id = $(this).attr('id');
+		confirmarPopup.toggle(); 
+	});
+
+	$(document).on('click', '.borrar-empleado', function(event){
+		event.preventDefault();
+		id = $(this).attr('id');
+		confirmarPopup.toggle();
+	});
+
+	$('.confirmar-continuar').click( function(){
+		continueDeleting(id, elemento+'Eliminar', elemento);
+		confirmarPopup.toggle();
+	});
+
+	$('.confirmar-cancelar').click( function(){
+		confirmarPopup.toggle();
+	});
+
+
+	/******EMPRESA******/
+		
+
+	/*Insertar*/
+
+		$('#btnNuevaEmpresa').click(function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/ediciones.php',
+				type: 'GET',
+				data:{
+						id: $('#nuevaEmpresaRFC').val(),
+						nombre: $('#nuevaEmpresaNombre').val(),
+						banco: $('#nuevaEmpresaBanco').val(),
+						num_cuenta: $('#nuevaEmpresaNumeroCuenta').val(),
+						num_proveedor: $('#nuevaEmpresaNumeroProveedor').val(),
+						metodo: 'insertarEmpresa'
+				}
+			}).done(function(res){
+				if(res != ''){
+					alert("Error: "+res);
+				}else{
+					displayIn("empresa");
+					$('.nuevo-elemento').toggle();
+					$('.informacion').toggle();
+					$('.extra-buttons a').children().toggle();
+				}
+			});
+		});
+
+	/*Info*/
+
+		$(document).on('click', '.info-empresa', function(event){
+			event.preventDefault();
+			infoPopup = '#infoEmpresa';
+			id = $(this).attr('id');
+
+			$.ajax({
+				url: 'php/consultas.php',
+				type: 'POST',
+				data: {
+						id: id,
+						metodo: 'selectEmpresaId'
+				}
+			}).done(function(res){
+				if(res==' '){
+					alert("Error: "+res);
+				}else{
+					var data = $.parseJSON(res);
+					$(infoPopup+' .modal-header p').html(data[0][1]);
+					$(infoPopup+' .info').html(
+						'<div class="table">'+
+							'<div class="table-row">'+
+								'<div class="table-head">RFC</div>'+
+								'<div class="table-cell">'+data[0][0]+'</div>'+
+							'</div>'+
+							'<div class="table-row">'+
+								'<div class="table-head">Banco</div>'+
+								'<div class="table-cell">'+data[0][2]+'</div>'+
+								'<div class="table-cell">'+
+									'<button class="edit-button editar-'+elemento+'" id="'+data[0][0]+'">'+
+										'<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>'+
+									'</button>'+
+								'</div>'+
+							'</div>'+
+							'<div class="table-row">'+
+								'<div class="table-head">No. de cuenta</div>'+
+								'<div class="table-cell">'+data[0][3]+'</div>'+
+								'<div class="table-cell">'+
+									'<button class="edit-button editar-'+elemento+'" id="'+data[0][0]+'">'+
+										'<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>'+
+									'</button>'+
+								'</div>'+
+							'</div>'+
+							'<div class="table-row">'+
+								'<div class="table-head">No. de proveedor</div>'+
+								'<div class="table-cell">'+data[0][4]+'</div>'+
+								'<div class="table-cell">'+
+									'<button class="edit-button editar-'+elemento+'" id="'+data[0][0]+'">'+
+										'<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>'+
+									'</button>'+
+								'</div>'+
+							'</div>'+
+						'</div>'
+					);
+					$(infoPopup).toggle(400);
+				}
+			});
+		});
+
+
+	/*******Empleado*******/
+
+	
 	/*
 
-	function renderInfoWithEdit(data, elemento, ubicacion, titulos){
-
-	}
+	function renderWithEdit(data, elemento, ubicacion, titulos){
+		
+	}		
 
 	*/
 

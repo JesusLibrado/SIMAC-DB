@@ -192,7 +192,8 @@ a:visited{
 .more-info:hover,
 .delete-button:hover,
 .extra-buttons a:hover,
-.extra-buttons button:hover{
+.extra-buttons button:hover,
+.edit-button:hover{
 	cursor: pointer;
 	color: #1c1c1c;
 }

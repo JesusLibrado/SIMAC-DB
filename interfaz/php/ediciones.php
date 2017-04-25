@@ -6,12 +6,12 @@
 	if(!mysqli_query($con,$sql))
 		die("No fue posible realizar la accion: ".mysqli_error($con));
 
-	function eliminarEmpresa(){
+	function empresaEliminar(){
 		$id = $_GET['id'];
 		return "delete from empresa where rfc_empresa = '".$id."'";
 	}
 
-	function eliminarEmpleado(){
+	function empleadoEliminar(){
 		$id = $_GET['id'];
 		return "delete from empleado where rfc = '".$rfc."'";
 	}

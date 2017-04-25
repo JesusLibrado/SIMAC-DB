@@ -75,10 +75,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="modal" id="confirmarEliminarEmpresa">
+				<div id="empresaConfirmarEliminar" class="modal">
 					<div class="confirmar-elemento">
 						<div class="modal-header">
-							<h6 class="font-b"></h6>
+							<h6 class="font-b">¿Eliminar?</h6>
 						</div>
 						<div class="confirmar-buttons">
 							<button class="confirmar-continuar">Borrar</button>
@@ -135,10 +135,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="modal" id="confirmarEliminarEmpleado">
+				<div id="empleadoConfirmarEliminar" class="modal">
 					<div class="confirmar-elemento">
 						<div class="modal-header">
-							<h6 class="font-b"></h6>
+							<h6 class="font-b">¿Eliminar?</h6>
 						</div>
 						<div class="confirmar-buttons">
 							<button class="confirmar-continuar">Borrar</button>
