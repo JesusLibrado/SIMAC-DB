@@ -8,12 +8,12 @@
 
 	function empresaEliminar(){
 		$id = $_GET['id'];
-		return "delete from empresa where rfc_empresa = '".$id."'";
+		return "delete from empresa where rfc = '".$id."'";
 	}
 
 	function empleadoEliminar(){
 		$id = $_GET['id'];
-		return "delete from empleado where rfc = '".$rfc."'";
+		return "delete from empleado where rfc = '".$id."'";
 	}
 
 	

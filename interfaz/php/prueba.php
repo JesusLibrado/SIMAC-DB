@@ -77,3 +77,27 @@
 						}else
 							echo '<p class="not-found">Tabla vacía</p>';
 					?>
+
+
+					<div class="box" id="-folio-">
+				<div class="box-title">
+					<h4>214</h4>
+					<p>Empresa</p>
+				</div>
+				<div class="box-content">
+					<ul>
+						<li class="box-p"><i class="fa fa-usd" aria-hidden="true"></i>3,200</li>
+						<li class="box-p"><i class="fa fa-calendar" aria-hidden="true"></i> 03/05/2017</i></li>
+						<li>
+							<a href="#" class="info-element info-factura">
+								<i class="fa fa-info-circle" aria-hidden="true"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="delete-element delete-factura">
+								<i class="fa fa-times-circle" aria-hidden="true"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>

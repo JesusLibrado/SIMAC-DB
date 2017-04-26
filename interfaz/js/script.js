@@ -70,6 +70,17 @@ $(document).ready(function(){
 		$(this).children().toggle();
 	});
 
+
+	/******Tabs******/
+
+	$('.tab-link').click(function(event){
+		event.preventDefault();
+		link = $(this).attr('href');
+		elemento = link.substring(1, link.length);
+		displayIn(elemento);
+		confirmarPopup = $(link+'ConfirmarEliminar');
+	});
+
 	/*****Display*****/
 	
 	function displayIn(elemento){
@@ -86,11 +97,14 @@ $(document).ready(function(){
 				switch(elemento){
 					case "empresa":
 							titulos = ['Nombre', 'No. de proveedor'];
-							renderWithExtraButtons(data, elemento, $('#'+elemento+' .informacion'), titulos);
+							renderHorizontal(data, elemento, $(link+' .informacion'), titulos);
 						break;
 					case "empleado":
 							titulos = ['Nombre', 'Apellido'];
-							renderWithExtraButtons(data, elemento, $('#'+elemento+' .informacion'), titulos);
+							renderHorizontal(data, elemento, $(link+' .informacion'), titulos);
+						break;
+					case "factura":
+							renderBox(data, elemento, $(link));
 						break;
 				}
 			}
@@ -99,7 +113,7 @@ $(document).ready(function(){
 
 	/*****Render*****/
 
-	function renderWithExtraButtons(array, elemento, ubicacion, titulos){
+	function renderHorizontal(array, elemento, ubicacion, titulos){
 		var render = '<div class="table">'+
 						'<div class="table-row">';
 		var cellDiv = '<div class="table-cell">';
@@ -136,6 +150,43 @@ $(document).ready(function(){
 		});
 
 		render+=closeDiv;
+
+		ubicacion.html(render);
+	}
+
+	function renderBox(array, elemento, ubicacion){
+		var closeDiv = '</div>';
+		var render = '';
+
+		$.each(array, function(i, value){
+			var id = array[i][0];
+			render+= '<div class="box" id="'+id+'">'+
+						'<div class="box-title">'+
+							'<h1>'+id+'</h1><br>'+
+							'<p>'+array[i][1]+'</p>'+
+						closeDiv+
+						'<div class="box-content">'+
+							'<ul>'+
+								'<li class="box-p"><i class="fa fa-usd" aria-hidden="true"></i> '+
+									array[i][2]+
+								'</li>'+
+								'<li class="box-p"><i class="fa fa-calendar" aria-hidden="true"></i> '+
+									array[i][3]+
+								'</li>'+
+								'<li>'+
+									'<button class="info-element info-'+elemento+'" id="'+id+'">'+
+										'<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>'+
+									'</button>'+
+								'</li>'+
+								'<li>'+
+									'<button class="delete-element borrar-'+elemento+'" id="'+id+'">'+
+										'<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>'+
+									'</button>'+
+								'</li>'+
+							'</ul>'+
+						closeDiv+
+					closeDiv;
+		});
 
 		ubicacion.html(render);
 	}

@@ -25,14 +25,28 @@
 
 	function selectEmpresaId(){
 		$id = $_POST['id'];
-		return "select * from empresa where rfc_empresa = '".$id."'";
+		return "select * from empresa where rfc = '".$id."'";
 	}
 
 	function empresa(){
-		return "select rfc_empresa, nombre, numero_proveedor from empresa";
+		return "select rfc, nombre, numero_proveedor from empresa";
+	}
+
+	function selectEmpleadoId(){
+		$id = $_POST['id'];
+		return "select * from empleado where rfc = '".$id."'";
 	}
 
 	function empleado(){
 		return "select rfc, nombre, apellido from empleado";
+	} 
+
+	function selectFacturaId(){
+		$id = $_POST['id'];
+		return "select * from factura where folio = '".$id."'";
+	}
+
+	function factura(){
+		return "select f.folio, e.nombre, f.monto, f.fecha from factura f inner join empresa e on f.rfc_empresa = e.rfc";
 	}
 ?>

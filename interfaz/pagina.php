@@ -97,7 +97,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<span class="close">&times</span>
-				<p class="font-a">Empleado</p>
+				<p class="font-a">Empleados</p>
 			</div>
 			<div class="modal-body font-b">
 					<div class="extra-buttons">
@@ -149,6 +149,19 @@
 			</div>
 		</div>
 	</div>
+
+	<section class="container font-b">
+		<div class="tabs font-a">
+			<a class="tab-link" href="#factura">Facturas</a>
+			<a class="tab-link" href="#cotizacion">Cotizaciones</a>
+			<a class="tab-link" href="#trabajo">Trabajos</a>
+		</div>
+
+		<div id="factura" class="tab-content">
+			
+		</div>
+	</section>
+		
 
 	<script type="text/javascript" src="extras/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
