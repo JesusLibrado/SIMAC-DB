@@ -21,6 +21,11 @@
 		return "delete from factura where folio = ".$id;
 	}
 
+	function cotizacionEliminar(){
+		$id = $_GET['id'];
+		return "delete from cotizacion where folio = ".$id;
+	}
+
 	
 	function insertarEmpresa(){
 		$rfc = $_GET['id'];
