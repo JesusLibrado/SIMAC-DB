@@ -8,6 +8,6 @@
 		$_SESSION['usuario'] = $usuario;
 		$_SESSION['estado'] = 'autenticado';
 	}else{
-		echo mysqli_error($con);
+		echo "Error: ".mysqli_error($con);
 	}
 ?>

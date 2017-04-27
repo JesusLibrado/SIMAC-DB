@@ -16,6 +16,11 @@
 		return "delete from empleado where rfc = '".$id."'";
 	}
 
+	function facturaEliminar(){
+		$id = $_GET['id'];
+		return "delete from factura where folio = ".$id;
+	}
+
 	
 	function insertarEmpresa(){
 		$rfc = $_GET['id'];

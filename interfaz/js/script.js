@@ -34,29 +34,61 @@ $(document).ready(function(){
 		$('.mensaje').css('color', '#1c1c1c');
 	}
 
+	/****GetElemento****/
+
+	function getElemento(){
+		var opciones = ['empleado', 'empresa', 'factura', 'cotizacion'];
+		$.each(opciones, function(i, val){
+			if($('#'+opciones[i]).is(':visible')){
+				return elemento;
+			}
+		});
+	}
+
+	/******Tabs******/
+
+	$(function(){
+		$('.tabs-section div').hide();
+		$('.tab-link:first').addClass(' tab-active');
+		link = $('.tab-link:first').attr('href');
+		$(link).fadeIn();
+		elemento = link.substring(1, link.length);
+		displayIn(elemento);
+		//confirmarPopup = $(link+'ConfirmarEliminar');
+		$('.tab-link').on('click', function(event){
+			$('.tabs-section div').hide();
+			$('.tab-link').removeClass(' tab-active');
+			$(this).addClass(' tab-active');
+			link = $(this).attr('href');
+			$(link).fadeIn();
+			elemento = link.substring(1, link.length);
+			displayIn(elemento);
+			//confirmarPopup = $(link+'ConfirmarEliminar');
+		});
+	});
+
 
 	/*****Modal*****/
 
 	
 	$('.modal').hide();
-	$('info-empresa').hide();
-	$('info-empleado').hide();
 	var link;
 	var infoPopup;
 	var elemento;
 	var id;
-	var confirmarPopup;
+	var confirmarPopup = $('#confirmarEliminar');
 
 	$('.navbar-menu a').click(function(event){
 		link = $(this).attr('href');
 		elemento = link.substring(1, link.length);
 		displayIn(elemento);	
-		confirmarPopup = $(link+'ConfirmarEliminar');
+		//confirmarPopup = $(link+'ConfirmarEliminar');
 		$(link).fadeIn(400);
 	});
 
 	$(".close").click(function(event){
         $(link).fadeOut(400);
+        $('.tab-link:first').click();
     });
 
     $('.close-popup').click(function(){
@@ -70,16 +102,6 @@ $(document).ready(function(){
 		$(this).children().toggle();
 	});
 
-
-	/******Tabs******/
-
-	$('.tab-link').click(function(event){
-		event.preventDefault();
-		link = $(this).attr('href');
-		elemento = link.substring(1, link.length);
-		displayIn(elemento);
-		confirmarPopup = $(link+'ConfirmarEliminar');
-	});
 
 	/*****Display*****/
 	
@@ -104,6 +126,9 @@ $(document).ready(function(){
 							renderHorizontal(data, elemento, $(link+' .informacion'), titulos);
 						break;
 					case "factura":
+							renderBox(data, elemento, $(link));
+						break;
+					case "cotizacion":
 							renderBox(data, elemento, $(link));
 						break;
 				}
@@ -142,7 +167,7 @@ $(document).ready(function(){
 							'<button class="more-info info-'+elemento+'" id="'+id+'">'+
 								'<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>'+
 							'</button>'+
-							'<button class="delete-button borrar-'+elemento+'" id="'+id+'">'+
+							'<button class="delete-button borrar" id="'+id+'">'+
 								'<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>'+
 							'</button>'+
 						closeDiv+
@@ -179,7 +204,7 @@ $(document).ready(function(){
 									'</button>'+
 								'</li>'+
 								'<li>'+
-									'<button class="delete-element borrar-'+elemento+'" id="'+id+'">'+
+									'<button class="delete-element borrar" id="'+id+'">'+
 										'<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>'+
 									'</button>'+
 								'</li>'+
@@ -239,16 +264,10 @@ $(document).ready(function(){
 		});
 	}
 
-	$(document).on('click', '.borrar-empresa', function(event){
+	$(document).on('click', '.borrar', function(event){
 		event.preventDefault();
 		id = $(this).attr('id');
-		confirmarPopup.toggle(); 
-	});
-
-	$(document).on('click', '.borrar-empleado', function(event){
-		event.preventDefault();
-		id = $(this).attr('id');
-		confirmarPopup.toggle();
+		confirmarPopup.toggle();		
 	});
 
 	$('.confirmar-continuar').click( function(){

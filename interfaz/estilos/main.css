@@ -264,6 +264,10 @@ a:visited{
 	color: #fff;
 }
 
+.confirmar-buttons{
+	text-align:center;
+}
+
 .confirmar-continuar{
 	background: #D50000;
 }
@@ -311,6 +315,10 @@ a:visited{
 	border-radius: 4px;
 	background: #BDBDBD;
 	font-size: 18px;
+}
+
+a.tab-active{
+	background: #1c1c1c;
 }
 
 .tabs a:hover,
@@ -372,3 +380,4 @@ a:visited{
 	color: #1c1c1c;
 	cursor: pointer;
 }
+		

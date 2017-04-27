@@ -49,4 +49,8 @@
 	function factura(){
 		return "select f.folio, e.nombre, f.monto, f.fecha from factura f inner join empresa e on f.rfc_empresa = e.rfc";
 	}
+
+	function cotizacion(){
+		return "select c.folio, e.nombre, c.monto, c.fecha from cotizacion c inner join empresa e on c.rfc_solicitante = e.rfc";
+	}
 ?>

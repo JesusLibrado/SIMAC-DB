@@ -91,8 +91,6 @@
 	</div>
 
 
-
-
 	<div class="modal" id="empleado">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -135,17 +133,7 @@
 						</div>
 					</div>
 				</div>
-				<div id="empleadoConfirmarEliminar" class="modal">
-					<div class="confirmar-elemento">
-						<div class="modal-header">
-							<h6 class="font-b">¿Eliminar?</h6>
-						</div>
-						<div class="confirmar-buttons">
-							<button class="confirmar-continuar">Borrar</button>
-							<button class="confirmar-cancelar">Cancelar</button>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -157,10 +145,27 @@
 			<a class="tab-link" href="#trabajo">Trabajos</a>
 		</div>
 
-		<div id="factura" class="tab-content">
-			
+		<div class="tabs-section">
+			<div id="factura" class="tab-content">
+
+			</div>
+			<div id="cotizacion" class="tab-content">
+				
+			</div>
 		</div>
 	</section>
+
+	<div id="confirmarEliminar" class="modal">
+		<div class="confirmar-elemento">
+			<div class="modal-header">
+				<h6 class="font-b">¿Eliminar?</h6>
+			</div>
+			<div class="confirmar-buttons">
+				<button class="confirmar-continuar">Borrar</button>
+				<button class="confirmar-cancelar">Cancelar</button>
+			</div>
+		</div>
+	</div>
 		
 
 	<script type="text/javascript" src="extras/jquery/jquery.min.js"></script>
