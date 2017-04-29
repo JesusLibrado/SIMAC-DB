@@ -14,7 +14,7 @@ create database if not exists simac;
 		PRIMARY KEY(rfc),
 		FOREIGN KEY(jefe)
 			REFERENCES simac.empleado(rfc)
-			ON UPDATE CASCADE ON DELETE CASCADE
+			ON UPDATE CASCADE
 	)ENGINE=InnoDB DEFAULT CHARACTER SET=UTF8;
 
 	create table if not exists simac.trabajo(
@@ -57,10 +57,10 @@ create database if not exists simac;
 		PRIMARY KEY (folio),
 		FOREIGN KEY (rfc_solicitante)
 			REFERENCES simac.empresa (rfc)
-			ON UPDATE CASCADE ON DELETE CASCADE,
+			ON UPDATE CASCADE,
 		FOREIGN KEY (folio_trabajo)
 			REFERENCES simac.trabajo (folio)
-			ON UPDATE CASCADE ON DELETE CASCADE
+			ON UPDATE CASCADE
 	)ENGINE=InnoDB DEFAULT CHARACTER SET=UTF8;
 
 	create table if not exists simac.factura(
@@ -78,10 +78,10 @@ create database if not exists simac;
 		PRIMARY KEY(folio),
 		FOREIGN KEY (folio_trabajo)
 			REFERENCES simac.trabajo(folio)
-			ON UPDATE CASCADE ON DELETE CASCADE,
+			ON UPDATE CASCADE,
 		 FOREIGN KEY (rfc_empresa)
 			REFERENCES simac.empresa(rfc)
-			ON UPDATE CASCADE ON DELETE CASCADE
+			ON UPDATE CASCADE
 	)ENGINE=InnoDB DEFAULT CHARACTER SET=UTF8;
 	
 	create table if not exists simac.direccion_empleado(
@@ -132,5 +132,5 @@ create database if not exists simac;
 		PRIMARY KEY (fecha),
 		FOREIGN KEY (registrado_por)
 			REFERENCES simac.empleado (rfc)
-			ON UPDATE CASCADE ON DELETE CASCADE 
+			ON UPDATE CASCADE 
 	)ENGINE=InnoDB DEFAULT CHARACTER SET=UTF8;
