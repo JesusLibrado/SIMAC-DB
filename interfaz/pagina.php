@@ -35,12 +35,6 @@
 		</div>
 	</div>
 
-	<div class="landing">
-		<div class="search-menu">
-			
-		</div>
-	</div>
-
 	<div class="modal" id="empresa">
 		<div class="modal-content">
 			<div class="modal-header">

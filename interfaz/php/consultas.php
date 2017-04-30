@@ -29,7 +29,7 @@
 	}
 
 	function empresa(){
-		return "select rfc, nombre, numero_proveedor from empresa";
+		return "select * from empresa";
 	}
 
 	function selectEmpleadoId(){
@@ -38,7 +38,7 @@
 	}
 
 	function empleado(){
-		return "select rfc, nombre, apellido from empleado";
+		return "select * from empleado";
 	} 
 
 	function selectFacturaId(){
@@ -47,10 +47,10 @@
 	}
 
 	function factura(){
-		return "select f.folio, e.nombre, f.monto, f.fecha from factura f inner join empresa e on f.rfc_empresa = e.rfc";
+		return "select f.folio, e.nombre, f.monto, f.fecha, f.forma_pago, f.folio_trabajo from factura f inner join empresa e on f.rfc_empresa = e.rfc";
 	}
 
 	function cotizacion(){
-		return "select c.folio, e.nombre, c.monto, c.fecha from cotizacion c inner join empresa e on c.rfc_solicitante = e.rfc";
+		return "select c.folio, e.nombre, c.monto, c.fecha, c.numero_orden_compra from cotizacion c inner join empresa e on c.rfc_solicitante = e.rfc";
 	}
 ?>

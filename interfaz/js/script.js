@@ -64,24 +64,30 @@ $(document).ready(function(){
 			data: {metodo: elemento}
 		}).done(function(array){
 			if(array==''){
-				$('.informacion').html('<p class="not-found">Tabla vacía</p>');
+				$(link).html('<p class="not-found">Tabla vacía</p>');
 			}else{
 				var data = $.parseJSON(array);
-				var titulos;
+				var titulos, indices;
 				switch(elemento){
 					case "empresa":
 							titulos = ['Nombre', 'No. de proveedor'];
-							renderHorizontal(data, elemento, $(link+' .informacion'), titulos);
+							indices = [1,4];
+							renderHorizontal(data, elemento, $(link+' .informacion'), titulos, indices);
 						break;
 					case "empleado":
 							titulos = ['Nombre', 'Apellido'];
-							renderHorizontal(data, elemento, $(link+' .informacion'), titulos);
+							indices = [7,8];
+							renderHorizontal(data, elemento, $(link+' .informacion'), titulos, indices);
 						break;
 					case "factura":
-							renderBox(data, elemento, $(link));
+							titulos = ['Empresa', 'Monto', 'Fecha'];
+							indices = [1,2,3];
+							renderHorizontal(data, elemento, $(link), titulos, indices);
 						break;
 					case "cotizacion":
-							renderBox(data, elemento, $(link));
+							titulos = ['Solicitante', 'Monto', 'Fecha', 'Orden'];
+							indices = [1,2,3,4];
+							renderHorizontal(data, elemento, $(link), titulos, indices);
 						break;
 				}
 			}
@@ -90,7 +96,7 @@ $(document).ready(function(){
 
 	/*****Render*****/
 
-	function renderHorizontal(array, elemento, ubicacion, titulos){
+	function renderHorizontal(array, elemento, ubicacion, titulos, indices){
 		var render = '<div class="table">'+
 						'<div class="table-row">';
 		var cellDiv = '<div class="table-cell">';
@@ -108,22 +114,23 @@ $(document).ready(function(){
 
 		$.each(array, function(i, value){
 			var id = array[i][0];
-			render+= rowDiv+
-						cellDiv+
-							array[i][1]+
-						closeDiv+
-						cellDiv+
-							array[i][2]+
-						closeDiv+
-						cellDiv+
-							'<button class="more-info info-'+elemento+'" id="'+id+'">'+
-								'<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>'+
-							'</button>'+
-							'<button class="delete-button borrar" id="'+id+'">'+
-								'<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>'+
-							'</button>'+
-						closeDiv+
-					closeDiv;
+			render+=rowDiv;
+
+			$.each(indices, function(j, val){
+				render+= cellDiv+
+							array[i][val]+
+						closeDiv;
+			});
+			
+			render+=cellDiv+
+						'<button class="more-info info-'+elemento+'" id="'+id+'">'+
+							'<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>'+
+						'</button>'+
+						'<button class="delete-button borrar" id="'+id+'">'+
+							'<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>'+
+						'</button>'+
+					closeDiv+
+				closeDiv;
 		});
 
 		render+=closeDiv;
