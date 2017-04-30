@@ -34,8 +34,8 @@ CREATE TABLE `cotizacion` (
   PRIMARY KEY (`folio`),
   KEY `rfc_solicitante` (`rfc_solicitante`),
   KEY `folio_trabajo` (`folio_trabajo`),
-  CONSTRAINT `cotizacion_ibfk_1` FOREIGN KEY (`rfc_solicitante`) REFERENCES `empresa` (`rfc`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `cotizacion_ibfk_2` FOREIGN KEY (`folio_trabajo`) REFERENCES `trabajo` (`folio`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `cotizacion_ibfk_1` FOREIGN KEY (`rfc_solicitante`) REFERENCES `empresa` (`rfc`) ON UPDATE CASCADE,
+  CONSTRAINT `cotizacion_ibfk_2` FOREIGN KEY (`folio_trabajo`) REFERENCES `trabajo` (`folio`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -97,7 +97,7 @@ CREATE TABLE `empleado` (
   `apellido` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`rfc`),
   KEY `jefe` (`jefe`),
-  CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`jefe`) REFERENCES `empleado` (`rfc`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`jefe`) REFERENCES `empleado` (`rfc`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -155,8 +155,8 @@ CREATE TABLE `factura` (
   PRIMARY KEY (`folio`),
   KEY `folio_trabajo` (`folio_trabajo`),
   KEY `rfc_empresa` (`rfc_empresa`),
-  CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`folio_trabajo`) REFERENCES `trabajo` (`folio`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`rfc_empresa`) REFERENCES `empresa` (`rfc`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`folio_trabajo`) REFERENCES `trabajo` (`folio`) ON UPDATE CASCADE,
+  CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`rfc_empresa`) REFERENCES `empresa` (`rfc`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -187,7 +187,7 @@ CREATE TABLE `gasto` (
   `registrado_por` varchar(13) DEFAULT NULL,
   PRIMARY KEY (`fecha`),
   KEY `registrado_por` (`registrado_por`),
-  CONSTRAINT `gasto_ibfk_1` FOREIGN KEY (`registrado_por`) REFERENCES `empleado` (`rfc`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `gasto_ibfk_1` FOREIGN KEY (`registrado_por`) REFERENCES `empleado` (`rfc`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -288,4 +288,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-24 12:07:18
+-- Dump completed on 2017-04-29 12:36:32
