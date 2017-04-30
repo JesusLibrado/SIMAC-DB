@@ -11,10 +11,10 @@ a:visited{
 	width: 100%;
 	z-index: 100;
 	font-size: 18px;
-	position: absolute;
-	height: 73px;
+	position: fixed;
 	top: 0;
 	left: 0;
+	border-bottom: 1px solid;
 }
 
 #menu img{
@@ -26,20 +26,17 @@ a:visited{
 	padding: 8px;
 }
 
-#menu h2{
-	margin: 30px 0 0 50px;
+#menu p{
+	margin: 25px 0 0 30px;
 	float: left;
-}
+	font-size: 25px;
 
-#menu h3{
-	margin: 30px 0 0 30px;
-	float: left;
 }
 
 #menu .navbar-menu{
 	float: right;
 	margin: 20px 10px;
-	padding: 10px;
+	padding: 5px;
 }
 #menu .navbar-menu a{
 	color: #1c1c1c;
