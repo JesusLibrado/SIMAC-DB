@@ -25,7 +25,6 @@
 		$id = $_GET['id'];
 		return "delete from cotizacion where folio = ".$id;
 	}
-
 	
 	function insertarEmpresa(){
 		$rfc = $_GET['id'];

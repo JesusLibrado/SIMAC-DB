@@ -26,12 +26,18 @@
 </head>
 <body>
 	<div id="menu">
-		<img src="logo/logo-min.jpeg">
-		<h3 class="font-b">Bienvenido, <?php echo $usuario?>!</h3>
+		<p class="font-b">SIMAC</p>
 		<div class="navbar-menu font-b topBotomBordersOut">
 			<a href="#empleado">Empleados</a>
-			<a href="#empresa" target="_self">Empresas</a>
+			<a href="#empresa">Empresas</a>
+			<a href="#gasto">Gastos</a>
 			<a href="php/cerrar-sesion.php"><i class="fa fa-user-times" aria-hidden="true"></i></a>
+		</div>
+	</div>
+
+	<div class="landing">
+		<div class="search-menu">
+			
 		</div>
 	</div>
 
@@ -147,10 +153,10 @@
 
 		<div class="tabs-section">
 			<div id="factura" class="tab-content">
-
+				
 			</div>
 			<div id="cotizacion" class="tab-content">
-				
+
 			</div>
 		</div>
 	</section>

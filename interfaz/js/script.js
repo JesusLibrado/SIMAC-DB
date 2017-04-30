@@ -1,50 +1,5 @@
 $(document).ready(function(){
 
-	/*Log in*/
-
-	$('#loginUsuario').val('admin');
-
-	var btnLogin = $('#btnLogin');
-	var btnNuevoEmpleado = $('#btnNuevoEmpleado');
-
-	btnLogin.click(function(){
-		$.ajax({
-			url: 'php/acceso.php',
-			type: 'post',
-			data: {
-					usuario: $('#loginUsuario').val(),
-					pwd: $('#loginContrasena').val()
-				},
-			beforeSend: function(){
-				mensajeLogin('Validando...');
-			}
-		}).done(function(res){
-			if(res != ''){
-				mensajeLogin('Datos incorrectos');
-				$('.mensaje').css('color', 'red');
-			}else{
-				window.location.replace('../pagina.php');
-			}
-		});
-		mensajeLogin(' ');
-	});
-
-	function mensajeLogin(mensaje){
-		$('.mensaje').html(mensaje);
-		$('.mensaje').css('color', '#1c1c1c');
-	}
-
-	/****GetElemento****/
-
-	function getElemento(){
-		var opciones = ['empleado', 'empresa', 'factura', 'cotizacion'];
-		$.each(opciones, function(i, val){
-			if($('#'+opciones[i]).is(':visible')){
-				return elemento;
-			}
-		});
-	}
-
 	/******Tabs******/
 
 	$(function(){
@@ -54,7 +9,6 @@ $(document).ready(function(){
 		$(link).fadeIn();
 		elemento = link.substring(1, link.length);
 		displayIn(elemento);
-		//confirmarPopup = $(link+'ConfirmarEliminar');
 		$('.tab-link').on('click', function(event){
 			$('.tabs-section div').hide();
 			$('.tab-link').removeClass(' tab-active');
@@ -63,7 +17,6 @@ $(document).ready(function(){
 			$(link).fadeIn();
 			elemento = link.substring(1, link.length);
 			displayIn(elemento);
-			//confirmarPopup = $(link+'ConfirmarEliminar');
 		});
 	});
 
@@ -81,8 +34,7 @@ $(document).ready(function(){
 	$('.navbar-menu a').click(function(event){
 		link = $(this).attr('href');
 		elemento = link.substring(1, link.length);
-		displayIn(elemento);	
-		//confirmarPopup = $(link+'ConfirmarEliminar');
+		displayIn(elemento);
 		$(link).fadeIn(400);
 	});
 
@@ -103,7 +55,7 @@ $(document).ready(function(){
 	});
 
 
-	/*****Display*****/
+	/*****DisplayIn*****/
 	
 	function displayIn(elemento){
 		$.ajax({
@@ -187,7 +139,7 @@ $(document).ready(function(){
 			var id = array[i][0];
 			render+= '<div class="box" id="'+id+'">'+
 						'<div class="box-title">'+
-							'<h1>'+id+'</h1><br>'+
+							'<h3>'+id+'</h3>'+
 							'<p>'+array[i][1]+'</p>'+
 						closeDiv+
 						'<div class="box-content">'+
