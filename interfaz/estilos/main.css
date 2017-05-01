@@ -293,6 +293,11 @@ a:visited{
 	padding: 30px;
 }
 
+.info-elemento .info .table-cell{
+	text-overflow: clip;
+	white-space: normal;
+}
+
 .info-elemento p{
 	padding: 8px;
 }
@@ -300,7 +305,7 @@ a:visited{
 .container{
 	margin: 76px auto;
 	position: absolute;
-	width: 90%;
+	width: 98%;
 }
 
 .tabs{
@@ -336,58 +341,23 @@ a.tab-active{
 	color: #fff;
 }
 
+.nuevo-form{
+	position: fixed;
+	right: 20px;
+}
+
+@media (max-width: 1024px){
+	.nuevo-form{
+		bottom: 0;
+		position: absolute;
+		left: 50px;
+	}
+}
+
 .tab-content{
-	max-width: 800px;
+	max-width: 600px;
 	padding: 30px 20px;
 	margin: 50px 20px;
 }
 
-.box{
-	display: inline-block;
-	margin: 10px 20px;
-	width: 270px;
-	border-radius: 4px;
-}
-
-.box .box-title{
-	text-align: center;
-	padding: 15px;	
-}
-
-.box .box-content ul{
-	list-style:none;
-	padding: 0;
-}
-
-.box .box-content ul li{
-	text-align: center;
-}
-
-.box .box-p{
-	padding: 10px;	
-}
-
-.delete-element{
-	background: #fff;
-	color: #D50000;
-}
-
-.info-element{
-	background: #0091EA;
-	color:#fff;
-}
-
-.box .delete-element,
-.box .info-element{
-	padding: 4px;
-	border-radius: 2px;
-	border: 0;
-	width: 100%;
-}
-
-.box .delete-element:hover,
-.box .info-element:hover{
-	color: #1c1c1c;
-	cursor: pointer;
-}
 		

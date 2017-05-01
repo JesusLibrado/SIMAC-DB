@@ -14,7 +14,7 @@
 
 	if(mysqli_num_rows($resultado)>0){
 
-		while($fila = mysqli_fetch_array($resultado, MYSQLI_NUM)){
+		while($fila = mysqli_fetch_array($resultado, MYSQLI_BOTH)){
 			$array[$i] = $fila;
 			$i++;
 		}
@@ -23,7 +23,7 @@
 	}else
 		die("");
 
-	function selectEmpresaId(){
+	function empresaId(){
 		$id = $_POST['id'];
 		return "select * from empresa where rfc = '".$id."'";
 	}
@@ -32,7 +32,7 @@
 		return "select * from empresa";
 	}
 
-	function selectEmpleadoId(){
+	function empleadoId(){
 		$id = $_POST['id'];
 		return "select * from empleado where rfc = '".$id."'";
 	}
@@ -41,7 +41,7 @@
 		return "select * from empleado";
 	} 
 
-	function selectFacturaId(){
+	function facturaId(){
 		$id = $_POST['id'];
 		return "select * from factura where folio = '".$id."'";
 	}
@@ -50,7 +50,21 @@
 		return "select f.folio, e.nombre, f.monto, f.fecha, f.forma_pago, f.folio_trabajo from factura f inner join empresa e on f.rfc_empresa = e.rfc";
 	}
 
+	function cotizacionId(){
+		$id = $_POST['id'];
+		return "select * from cotizacion where folio = '".$id."'";
+	}
+
 	function cotizacion(){
 		return "select c.folio, e.nombre, c.monto, c.fecha, c.numero_orden_compra from cotizacion c inner join empresa e on c.rfc_solicitante = e.rfc";
+	}
+
+	function trabajoId(){
+		$id = $_POST['id'];
+		return "select * from trabajo where folio = '".$id."'";
+	}
+
+	function trabajo(){
+		return "select * from trabajo";
 	}
 ?>

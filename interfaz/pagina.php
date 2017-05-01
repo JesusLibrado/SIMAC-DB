@@ -42,16 +42,16 @@
 				<p class="font-a">Empresas</p>
 			</div>
 			<div class="modal-body font-b">
-					<div class="extra-buttons">
-						<a href="#">
-							<i class="fa fa-user-plus fa-lg" aria-hidden="true"></i>
-							<i class="fa fa-times fa-lg" aria-hidden="true" style="display: none; color: #D50000"></i>
-						</a>
-						<button>
-							<input type="text" id="inputSearch" class="font-b" placeholder="buscar">
-							<i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
-						</button>
-					</div>
+				<div class="extra-buttons">
+					<a href="#">
+						<i class="fa fa-user-plus fa-lg" aria-hidden="true"></i>
+						<i class="fa fa-times fa-lg" aria-hidden="true" style="display: none; color: #D50000"></i>
+					</a>
+					<button>
+						<input type="text" id="inputSearch" class="font-b" placeholder="buscar">
+						<i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
+					</button>
+				</div>
 				<div class="informacion" style="display: block">
 					
 				</div>
@@ -63,17 +63,6 @@
 					<input type="number" id="nuevaEmpresaNumeroCuenta" placeholder="Numero de cuenta">
 					<input type="number" id="nuevaEmpresaNumeroProveedor" placeholder="Numero de proveedor">
 					<button id="btnNuevaEmpresa">Aceptar</button>
-				</div>
-				<div class="modal" id="infoEmpresa">
-					<div class="info-elemento" id="empresaInfo">
-						<div class="modal-header">
-							<span class="close-popup">&times</span>
-							<p class="font-a"></p>
-						</div>
-						<div class="info">
-
-						</div>
-					</div>
 				</div>
 				<div id="empresaConfirmarEliminar" class="modal">
 					<div class="confirmar-elemento">
@@ -146,14 +135,46 @@
 		</div>
 
 		<div class="tabs-section">
+			<div class="nuevo-form" id="nuevo-factura">
+				<input type="text" id="nuevaFacturaFolio" placeholder="Folio">
+				<input type="number" id="nuevaFacturaMonto" placeholder="Monto">
+				<input type="date" id="nuevaFacturaFecha" placeholder="Fecha">
+				<select name="nuevaFacturaFormaPago">
+					<option value="Deposito">Deposito</option>
+					<option value="Efectivo">Efectivo</option>
+					<option value="Transferencia">Transferencia</option>
+					<option value="Otro">Otro</option>
+				</select>
+				<select name="facturaFolioTrabajo">
+					
+				</select>
+				<select name="facturaRfcEmpresa">
+					
+				</select>
+			</div>
 			<div id="factura" class="tab-content">
 				
 			</div>
 			<div id="cotizacion" class="tab-content">
 
 			</div>
+			<div id="trabajo" class="tab-content">
+
+			</div>
 		</div>
 	</section>
+
+	<div class="modal" id="infoPopUp">
+		<div class="info-elemento">
+			<div class="modal-header">
+				<span class="close-popup">&times</span>
+				<p class="font-a"></p>
+			</div>
+			<div class="info font-b">
+
+			</div>
+		</div>
+	</div>
 
 	<div id="confirmarEliminar" class="modal">
 		<div class="confirmar-elemento">

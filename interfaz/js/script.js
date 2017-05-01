@@ -8,6 +8,7 @@ $(document).ready(function(){
 		link = $('.tab-link:first').attr('href');
 		$(link).fadeIn();
 		elemento = link.substring(1, link.length);
+		$("#nuevo-"+elemento).show();
 		displayIn(elemento);
 		$('.tab-link').on('click', function(event){
 			$('.tabs-section div').hide();
@@ -16,6 +17,7 @@ $(document).ready(function(){
 			link = $(this).attr('href');
 			$(link).fadeIn();
 			elemento = link.substring(1, link.length);
+			$("#nuevo-"+elemento).show();
 			displayIn(elemento);
 		});
 	});
@@ -26,7 +28,7 @@ $(document).ready(function(){
 	
 	$('.modal').hide();
 	var link;
-	var infoPopup;
+	var infoPopup = '#infoPopUp';
 	var elemento;
 	var id;
 	var confirmarPopup = $('#confirmarEliminar');
@@ -68,28 +70,35 @@ $(document).ready(function(){
 			}else{
 				var data = $.parseJSON(array);
 				var titulos, indices;
+				var ubicacion;
 				switch(elemento){
 					case "empresa":
 							titulos = ['Nombre', 'No. de proveedor'];
 							indices = [1,4];
-							renderHorizontal(data, elemento, $(link+' .informacion'), titulos, indices);
+							ubicacion = $(link+' .informacion');
 						break;
 					case "empleado":
 							titulos = ['Nombre', 'Apellido'];
 							indices = [7,8];
-							renderHorizontal(data, elemento, $(link+' .informacion'), titulos, indices);
+							ubicacion = $(link+' .informacion');
 						break;
 					case "factura":
-							titulos = ['Empresa', 'Monto', 'Fecha'];
+							titulos = ['Empresa', '<i class="fa fa-usd" aria-hidden="true"></i>', '<i class="fa fa-calendar" aria-hidden="true"></i>'];
 							indices = [1,2,3];
-							renderHorizontal(data, elemento, $(link), titulos, indices);
+							ubicacion = $(link);
 						break;
 					case "cotizacion":
-							titulos = ['Solicitante', 'Monto', 'Fecha', 'Orden'];
+							titulos = ['Solicitante', '<i class="fa fa-usd" aria-hidden="true"></i>', '<i class="fa fa-calendar" aria-hidden="true"></i>', 'Orden'];
 							indices = [1,2,3,4];
-							renderHorizontal(data, elemento, $(link), titulos, indices);
+							ubicacion = $(link);
+						break;
+					case "trabajo":
+							titulos=['Servicio', 'Descripcion'];
+							indices=[1,2];
+							ubicacion = $(link);
 						break;
 				}
+				renderHorizontal(data, elemento, ubicacion, titulos, indices);
 			}
 		});
 	}
@@ -123,7 +132,7 @@ $(document).ready(function(){
 			});
 			
 			render+=cellDiv+
-						'<button class="more-info info-'+elemento+'" id="'+id+'">'+
+						'<button class="more-info info" id="'+id+'">'+
 							'<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>'+
 						'</button>'+
 						'<button class="delete-button borrar" id="'+id+'">'+
@@ -138,72 +147,30 @@ $(document).ready(function(){
 		ubicacion.html(render);
 	}
 
-	function renderBox(array, elemento, ubicacion){
-		var closeDiv = '</div>';
-		var render = '';
-
-		$.each(array, function(i, value){
-			var id = array[i][0];
-			render+= '<div class="box" id="'+id+'">'+
-						'<div class="box-title">'+
-							'<h3>'+id+'</h3>'+
-							'<p>'+array[i][1]+'</p>'+
-						closeDiv+
-						'<div class="box-content">'+
-							'<ul>'+
-								'<li class="box-p"><i class="fa fa-usd" aria-hidden="true"></i> '+
-									array[i][2]+
-								'</li>'+
-								'<li class="box-p"><i class="fa fa-calendar" aria-hidden="true"></i> '+
-									array[i][3]+
-								'</li>'+
-								'<li>'+
-									'<button class="info-element info-'+elemento+'" id="'+id+'">'+
-										'<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>'+
-									'</button>'+
-								'</li>'+
-								'<li>'+
-									'<button class="delete-element borrar" id="'+id+'">'+
-										'<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>'+
-									'</button>'+
-								'</li>'+
-							'</ul>'+
-						closeDiv+
-					closeDiv;
-		});
-
-		ubicacion.html(render);
-	}
-
-	function renderWithNoButtons(array, elemento, ubicacion, titulos){
-		var render = '<div class="table">'+
-						'<div class="table-row">';
+	function renderInfo(array, elemento, titulos, indices){
+		var render = '<div class="table">';
 		var cellDiv = '<div class="table-cell">';
 		var rowDiv = '<div class="table-row">';
 		var headDiv = '<div class="table-head">';
 		var closeDiv = '</div>';
-
-		$.each(titulos, function(i, value){
-			render+= headDiv+
-						titulos[i]+
-					closeDiv;
-		});
-
-		render+= closeDiv;
-
+			
 		$.each(array, function(i, value){
-			render+= rowDiv;
-			$.each(array[i], function(j, val){
-				render+=cellDiv+
-							array[i][j]+
+			$.each(titulos, function(j, val){
+				render+=rowDiv+
+							headDiv+
+								titulos[j]+
+							closeDiv+
+							cellDiv+
+								array[i][indices[j]]+
+							closeDiv+
 						closeDiv;
 			});
-			render+=closeDiv;
 		});
 
 		render+=closeDiv;
 
-		ubicacion.html(render);
+		$(infoPopup+' .info').html(render);
+
 	}
 
 
@@ -238,6 +205,60 @@ $(document).ready(function(){
 		confirmarPopup.toggle();
 	});
 
+	/*Info*/
+
+		$(document).on('click', '.info', function(event){
+			event.preventDefault();
+			id = $(this).attr('id');
+
+			$.ajax({
+				url: 'php/consultas.php',
+				type: 'POST',
+				data: {
+						id: id,
+						metodo: elemento+'Id'
+				}
+			}).done(function(res){
+				if(res==' '){
+					alert("Error: "+res);
+				}else{
+					var data = $.parseJSON(res);
+					var titulos;
+					var indices;
+					switch(elemento){
+						case "empresa":
+								$(infoPopup+' .modal-header p').html(data[0].nombre);
+								titulos=['RFC', 'Banco', 'No. de cuenta', 'No. de proveedor'];
+								indices=[0,2,3,4];
+							break;
+						case "empleado":
+								$(infoPopup+' .modal-header p').html(data[0].nombre+' '+data[0].apellido);
+								titulos=['RFC', 'Curp', 'No. Servicio Social', 'Activo', 'Salario', 'Fecha de contrato', 'Jefe'];
+								indices=[0,1,2,3,4,5,6];
+							break;
+						case "factura":
+								$(infoPopup+' .modal-header p').html('Folio: '+data[0].folio);
+								titulos=['<i class="fa fa-usd" aria-hidden="true"></i>', '<i class="fa fa-calendar" aria-hidden="true"></i>', 'Forma de pago', 'Folio de trabajo', 'Folio de empresa'];
+								indices=[1,2,3,4,5];
+							break;
+						case "cotizacion":
+								$(infoPopup+' .modal-header p').html('Folio: '+data[0].folio);
+								titulos=['<i class="fa fa-calendar" aria-hidden="true"></i>', 'Condiciones de pago', '<i class="fa fa-usd" aria-hidden="true"></i>', 'RFC de solicitante', 'Folio de trabajo', 'Fecha de entrega deseada', 'No. de orden'];
+								indices=[1,2,3,4,5,6,7];
+							break;
+						case "trabajo":
+								$(infoPopup+' .modal-header p').html('Folio: '+data[0].folio);
+								titulos=['Servicio', 'Descripcion'];
+								indices=[1,2];
+							break;
+					}
+					renderInfo(data, elemento, titulos, indices);
+					$(infoPopup).toggle(400);
+				}
+			});
+		});
+
+
 
 	/******EMPRESA******/
 		
@@ -269,66 +290,7 @@ $(document).ready(function(){
 			});
 		});
 
-	/*Info*/
-
-		$(document).on('click', '.info-empresa', function(event){
-			event.preventDefault();
-			infoPopup = '#infoEmpresa';
-			id = $(this).attr('id');
-
-			$.ajax({
-				url: 'php/consultas.php',
-				type: 'POST',
-				data: {
-						id: id,
-						metodo: 'selectEmpresaId'
-				}
-			}).done(function(res){
-				if(res==' '){
-					alert("Error: "+res);
-				}else{
-					var data = $.parseJSON(res);
-					$(infoPopup+' .modal-header p').html(data[0][1]);
-					$(infoPopup+' .info').html(
-						'<div class="table">'+
-							'<div class="table-row">'+
-								'<div class="table-head">RFC</div>'+
-								'<div class="table-cell">'+data[0][0]+'</div>'+
-							'</div>'+
-							'<div class="table-row">'+
-								'<div class="table-head">Banco</div>'+
-								'<div class="table-cell">'+data[0][2]+'</div>'+
-								'<div class="table-cell">'+
-									'<button class="edit-button editar-'+elemento+'" id="'+data[0][0]+'">'+
-										'<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>'+
-									'</button>'+
-								'</div>'+
-							'</div>'+
-							'<div class="table-row">'+
-								'<div class="table-head">No. de cuenta</div>'+
-								'<div class="table-cell">'+data[0][3]+'</div>'+
-								'<div class="table-cell">'+
-									'<button class="edit-button editar-'+elemento+'" id="'+data[0][0]+'">'+
-										'<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>'+
-									'</button>'+
-								'</div>'+
-							'</div>'+
-							'<div class="table-row">'+
-								'<div class="table-head">No. de proveedor</div>'+
-								'<div class="table-cell">'+data[0][4]+'</div>'+
-								'<div class="table-cell">'+
-									'<button class="edit-button editar-'+elemento+'" id="'+data[0][0]+'">'+
-										'<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>'+
-									'</button>'+
-								'</div>'+
-							'</div>'+
-						'</div>'
-					);
-					$(infoPopup).toggle(400);
-				}
-			});
-		});
-
+	
 
 	/*******Empleado*******/
 
