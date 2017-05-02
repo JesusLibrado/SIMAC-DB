@@ -173,8 +173,8 @@
 				<p class="font-a">Agregar Factura</p>
 			</div>
 			<div class="form font-b">
-				<input type="number" id="nuevaFacturaFolio" placeholder="Folio">
-				<input type="text" id="nuevaFacturaMonto" placeholder="Monto">
+				<input type="text" id="nuevaFacturaFolio" placeholder="Folio">
+				<input type="number" id="nuevaFacturaMonto" placeholder="Monto">
 				<input type="date" id="nuevaFacturaFecha" placeholder="Fecha">
 				<select name="nuevaFacturaFormaPago">
 					<option value="Deposito">Deposito</option>
@@ -186,6 +186,7 @@
 					
 				</select>
 				<select class="rfcsEmpresa" name="facturaRfcEmpresa">
+
 					
 				</select>
 			</div>
@@ -240,6 +241,7 @@
 		</div>
 	</div>
 <!--Termina parte de rafiki-->
+
 	<div class="modal" id="infoPopUp">
 		<div class="info-elemento">
 			<div class="modal-header">
