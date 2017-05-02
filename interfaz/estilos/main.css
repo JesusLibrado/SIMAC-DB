@@ -62,12 +62,15 @@ a:visited{
 	font-size: 35px;
 }
 
-.modal-body{
+.modal-body,
+.form{
 	margin: 25px auto;
 	text-align: center;
 }
 
-.modal-body input{
+.modal-body input,
+.form input,
+.form select{
 	padding: 12px;
 	width: 60%;
 	margin: 10px 20px;
@@ -78,7 +81,9 @@ a:visited{
 }
 
 .modal-body input:active,
-.modal-body input:focus{
+.modal-body input:focus,
+.form input:active,
+.form input:focus{
 	border: 1px solid #0091EA;
 	border-left: 0px;
 }
@@ -222,6 +227,10 @@ a:visited{
 	margin: 50px 0 20px 0;
 }
 
+.nuevo-elemento label{
+	margin: 0 0 0 80px;
+}
+
 .nuevo-elemento button{
 	border: 2px solid #0091EA;
 	padding: 10px 30px;
@@ -239,7 +248,8 @@ a:visited{
 }
 
 .info-elemento,
-.confirmar-elemento{
+.confirmar-elemento,
+.nuevo-form{
 	margin: 20% auto;
 	border-radius: 4px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -302,10 +312,35 @@ a:visited{
 	padding: 8px;
 }
 
+.float-right{
+	top: 84px;
+	right: 5px;
+	position: fixed;
+}
+
+.float-right .agregar{
+	padding: 6px 50px;
+	background: #0091EA;
+	border: 2px solid #0091EA;
+	border-radius: 2px;
+	color: #fff;	
+}
+
+.float-right .agregar:hover{
+	color: #0091EA;
+	background: #fff;
+	cursor: pointer;
+}
+
+.nuevo-form{
+	width: 60%;
+	padding: 30px;
+}
+
 .container{
-	margin: 76px auto;
+	top: 76px;
 	position: absolute;
-	width: 98%;
+	width: 60%;
 }
 
 .tabs{
@@ -341,23 +376,8 @@ a.tab-active{
 	color: #fff;
 }
 
-.nuevo-form{
-	position: fixed;
-	right: 20px;
-}
-
-@media (max-width: 1024px){
-	.nuevo-form{
-		bottom: 0;
-		position: absolute;
-		left: 50px;
-	}
-}
-
 .tab-content{
 	max-width: 600px;
 	padding: 30px 20px;
 	margin: 50px 20px;
 }
-
-		

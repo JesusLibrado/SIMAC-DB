@@ -46,7 +46,8 @@ $(document).ready(function(){
     });
 
     $('.close-popup').click(function(){
-    	$(infoPopup).toggle(400);
+    	$(infoPopup).hide(400);
+    	$(link+"Agregar").hide(400);
     });
 
 	$('.extra-buttons a').click(function(event){
@@ -259,6 +260,12 @@ $(document).ready(function(){
 		});
 
 
+	/****Agregar****/
+
+	$('a.agregar').click(function(event){
+		event.preventDefault();
+		$(link+'Agregar').fadeIn();
+	});
 
 	/******EMPRESA******/
 		
@@ -294,13 +301,41 @@ $(document).ready(function(){
 
 	/*******Empleado*******/
 
-	
-	/*
+	/*Insertar*/
 
-	function renderWithEdit(data, elemento, ubicacion, titulos){
-		
-	}		
-
-	*/
+		$('#btnNuevoEmpleado').click(function(event){
+			event.preventDefault();
+			var opcion;
+			if($("#nuevoEmpleadoActivo").is(':checked')){
+				opcion=1;
+			}else{
+				opcion=0;
+			}
+			$.ajax({
+				url: 'php/ediciones.php',
+				type: 'GET',
+				data:{
+						id: $('#nuevoEmpleadoRFC').val(),
+						curp: $('#nuevoEmpleadoCurp').val(),
+						nss: $('#nuevoEmpleadoNss').val(),
+						activo: opcion,
+						salario: $('#nuevoEmpleadoSalario').val(),
+						fecha_contratacion: $('#nuevoEmpleadoFechaContratacion').val(),
+						jefe: $('#nuevoEmpleadoJefe').val(),
+						nombre: $('#nuevoEmpleadoNombre').val(),
+						apellido: $('#nuevoEmpleadoApellido').val(),
+						metodo: 'insertarEmpleado'
+				}
+			}).done(function(res){
+				if(res != ''){
+					alert("Error: "+res);
+				}else{
+					displayIn("empleado");
+					$('.nuevo-elemento').toggle();
+					$('.informacion').toggle();
+					$('.extra-buttons a').children().toggle();
+				}
+			});
+		});
 
 })

@@ -109,6 +109,10 @@
 					<input type="text" id="nuevoEmpleadoApellido" placeholder="Apellido">
 					<input type="number" id="nuevoEmpleadoSalario" placeholder="Salario">
 					<input type="date" id="nuevoEmpleadoFechaContratacion" placeholder="Fecha de contratacion">
+					<input type="text" id="nuevoEmpleadoJefe" value="CAEF6805309K4" readonly>
+					<br>
+					<label for="nuevoEmpleadoActivo">¿Activo?</label>	
+					<input type="checkbox" id="nuevoEmpleadoActivo">
 					<button id="btnNuevoEmpleado">Aceptar</button>
 				</div>
 				<div class="modal" id="infoEmpleado">
@@ -135,7 +139,40 @@
 		</div>
 
 		<div class="tabs-section">
-			<div class="nuevo-form" id="nuevo-factura">
+			<div id="factura" class="tab-content">
+				
+			</div>
+			<div id="cotizacion" class="tab-content">
+
+			</div>
+			<div id="trabajo" class="tab-content">
+
+			</div>
+		</div>
+	</section>
+
+	<div class="float-right">
+		<a class="agregar font-a" id="agregarNuevo">Agregar</a>
+		<div class="filtros">
+			<div id="facturaFiltro">
+			
+			</div>
+			<div id="cotizacionFiltro">
+						
+			</div>
+			<div id="trabajoFiltro">
+						
+			</div>
+		</div>
+	</div>
+
+	<div class="modal" id="facturaAgregar">
+		<div class="nuevo-form">
+			<div class="modal-header">
+				<span class="close-popup">&times</span>
+				<p class="font-a">Agregar Factura</p>
+			</div>
+			<div class="form font-b">
 				<input type="text" id="nuevaFacturaFolio" placeholder="Folio">
 				<input type="number" id="nuevaFacturaMonto" placeholder="Monto">
 				<input type="date" id="nuevaFacturaFecha" placeholder="Fecha">
@@ -152,17 +189,8 @@
 					
 				</select>
 			</div>
-			<div id="factura" class="tab-content">
-				
-			</div>
-			<div id="cotizacion" class="tab-content">
-
-			</div>
-			<div id="trabajo" class="tab-content">
-
-			</div>
 		</div>
-	</section>
+	</div>
 
 	<div class="modal" id="infoPopUp">
 		<div class="info-elemento">
