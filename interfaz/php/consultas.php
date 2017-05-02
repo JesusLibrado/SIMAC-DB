@@ -66,5 +66,16 @@
 
 	function trabajo(){
 		return "select * from trabajo";
+
+	}
+
+	function folioTrabajo()
+	{
+		return "select folio,servicio from trabajo t";
+	}
+
+	function rfcEmpresa()
+	{
+		return "select em.rfc,em.nombre from empresa em";
 	}
 ?>

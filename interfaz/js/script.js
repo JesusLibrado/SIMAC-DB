@@ -265,6 +265,41 @@ $(document).ready(function(){
 	$('a.agregar').click(function(event){
 		event.preventDefault();
 		$(link+'Agregar').fadeIn();
+		$.ajax({
+			url: "php/consultas.php",
+			type: "POST",
+			data: {metodo: "folioTrabajo"}
+		}).done(function(res){
+			if(res==""){
+				alert("Error: "+res);
+			}else{
+				var data = $.parseJSON(res);
+				var render;
+				$.each(data, function(i, value){
+					render+='<option value="'+data[i].folio+'">['+data[i].folio+']'+data[i].servicio+'</option>';
+				});
+				$('.foliosTrabajo').html(render);
+			}
+		});
+		$.ajax({
+			url: "php/consultas.php",
+			type: "POST",
+			data: {metodo: "rfcEmpresa"}
+		}).done(function(res){
+			if (res=="")
+			{
+				alert("Error: "+res);
+			}
+			else
+			{
+				var data = $.parseJSON(res);
+				var render;
+				$.each(data, function(i, value){
+					render+='<option value="'+data[i].rfc+'">'+data[i].nombre+'</option>';
+				});
+				$('.rfcsEmpresa').html(render);
+			}
+		});
 	});
 
 	/******EMPRESA******/
