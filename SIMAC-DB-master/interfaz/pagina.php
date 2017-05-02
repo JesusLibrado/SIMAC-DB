@@ -173,8 +173,8 @@
 				<p class="font-a">Agregar Factura</p>
 			</div>
 			<div class="form font-b">
-				<input type="text" id="nuevaFacturaFolio" placeholder="Folio">
-				<input type="number" id="nuevaFacturaMonto" placeholder="Monto">
+				<input type="number" id="nuevaFacturaFolio" placeholder="Folio">
+				<input type="text" id="nuevaFacturaMonto" placeholder="Monto">
 				<input type="date" id="nuevaFacturaFecha" placeholder="Fecha">
 				<select name="nuevaFacturaFormaPago">
 					<option value="Deposito">Deposito</option>
@@ -182,16 +182,64 @@
 					<option value="Transferencia">Transferencia</option>
 					<option value="Otro">Otro</option>
 				</select>
-				<select name="facturaFolioTrabajo">
+				<select class="foliosTrabajo" name="facturaFolioTrabajo">
 					
 				</select>
-				<select name="facturaRfcEmpresa">
+				<select class="rfcsEmpresa" name="facturaRfcEmpresa">
 					
 				</select>
 			</div>
 		</div>
 	</div>
+<!--Parte de rafiki, agregar nueva cotizacion-->
+	<div class="modal" id="cotizacionAgregar">
+		<div class="nuevo-form">
+			<div class="modal-header">
+				<span class="close-popup">&times</span>
+				<p class="font-a">Agregar Cotizacion</p>
+			</div>
+			<div class="form font-b">
+				<input type="number" id="nuevaCotizacionFolio" placeholder="Folio">
+				<input type="date" id="nuevaCotizacionMonto" placeholder="Fecha">
+				<input type="text" id="nuevaCotizacionCondicionPago" placeholder="Condicion de pago">
+				<input type="text" id="nuevaCotizacionMonto" placeholder="Monto">
 
+				<select class="rfcsEmpresa" name="cotizacionRFCSolicitante">
+
+				</select>
+				<select class="foliosTrabajo"  name="cotizacionFolioTrabajo">
+					
+				</select>
+				<input type="date" id="nuevaCotizacionFechaEntregaDeseada" placeholder="Fecha de entrega deseada">
+				<input type"number" id="nuevaCotizacionNumeroOrdenCompra" placeholder="Numero de orden de compra">
+			</div>
+		</div>
+	</div>
+<!--Parte de rafiki, agregar nuevo trabajo-->
+	<div class="modal" id="trabajoAgregar">
+		<div class="nuevo-form">
+			<div class="modal-header">
+				<span class="close-popup">&times</span>
+				<p class="font-a">Agregar Trabajo</p>
+			</div>
+			<div class="form font-b">
+				<input type="number" id="nuevoTrabajoFolio" placeholder="Folio">
+				<select name="trabajoServicio">
+					<option value="Reparacion">Reparacion</option>
+					<option value="Fabricacion">Fabricacion</option>
+					<option value="Limpieza">Limpieza</option>
+					<option value="Mantenimiento">Mantenimiento</option>
+					<option value="Maquinado">Maquinado</option>
+					<option value="Suministro">Suministro</option>
+					<option value="Cambios">Cambios</option>
+					<option value="Instalacion">Instalacion</option>
+					<option value="Otros">Otros</option>
+				</select>
+				<input type="text" id="nuevoTrabajoDescripcion" placeholder="Descripcion">
+			</div>
+		</div>
+	</div>
+<!--Termina parte de rafiki-->
 	<div class="modal" id="infoPopUp">
 		<div class="info-elemento">
 			<div class="modal-header">
