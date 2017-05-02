@@ -11,7 +11,7 @@
 		return "select t.descripcion, t.folio, c.fecha 
     	from trabajo t INNER JOIN cotizacion c 
 		ON c.folio_trabajo = t.folio 
-    	where t.servicio = '".$x."' and c.fecha between '".$d1."' and '".$d2."';";
+    	where t.servicio = '".$x."' and c.fecha between '".$d1."' and '".$d2."'";
 	}
 
 	//Folio, monto y fecha de facturas generadas entre d1 y d2 con monto menor o igual a f2 y mayor o igual a f1
@@ -27,7 +27,7 @@
 
 		return "select f.folio, f.monto, f.fecha 
     	from factura f 
-    	where f.monto <= ".$f2." and f.monto >= ".$f1." and f.fecha between '".$d1."' and '".$d2."';";
+    	where f.monto <= ".$f2." and f.monto >= ".$f1." and f.fecha between '".$d1."' and '".$d2."'";
 	}
 
 	//Monto total de los gastos acumulado entre d1 y d2
@@ -39,7 +39,7 @@
 
 		return "select sum(g.total) as 'Gasto acumulado' 
     	from gasto g 
-   		where g.fecha between '".$d1."' and '".$d2."';";
+   		where g.fecha between '".$d1."' and '".$d2."'";
 	}
 
 	//Antiguedad de cierto empleado
@@ -51,7 +51,7 @@
 
 		return "select e.fecha_contratacion, datediff(e.fecha_contratacion, curdate()) as 'Antiguedad (días)'
 		from empleado e 
-		where e.nombre = '".$nombre."' and e.apellido = '".$apellido."';";
+		where e.nombre = '".$nombre."' and e.apellido = '".$apellido."'";
 	}
 
 	//Nombre y apellidos de empleados que han participado en algun trabajo cuya cotizacion fue solicitada por una empresa x
@@ -64,7 +64,7 @@
 		from empleado e 
 		INNER JOIN (realiza r INNER JOIN (empresa em INNER JOIN cotizacion c ON em.rfc = c.rfc_solicitante) 
 		ON r.folio_trabajo = c.folio_trabajo) ON e.rfc = r.rfc_empleado 
-		where em.nombre = '".$x."';";
+		where em.nombre = '".$x."'";
 	}
 
 	//Nombre y appellido de los empleados bajo supervision de x
@@ -76,7 +76,7 @@
 
 		return "select e.nombre, e.apellido 
 		from empleado e INNER JOIN empleado e1 ON e.jefe = e1.rfc 
-		where e1.nombre = '".$nombre."' and e1.apellido = '".$apellido."';";
+		where e1.nombre = '".$nombre."' and e1.apellido = '".$apellido."'";
 	}
 
 	//Folio, fecha y nombre de la empresa solicitante de las Cotizaciones realizadas entre d1 y d2
@@ -88,7 +88,7 @@
 
 		return "select c.folio, c.fecha, em.nombre 
 		from cotizacion c INNER JOIN empresa em ON c.rfc_solicitante = em.rfc 
-		where c.fecha between '".$d1."' and '".$d2."';";
+		where c.fecha between '".$d1."' and '".$d2."'";
 	}
 
 	//Empleados que participaron en trabajo con folio X
@@ -99,7 +99,7 @@
 
 		return "select e.nombre, e.apellido 
 		from empleado e INNER JOIN realiza r ON r.rfc_empleado = e.rfc 
-		where r.folio_trabajo = ".$x.";";
+		where r.folio_trabajo = ".$x."";
 	}
 
 	//Info de trabajo y cotizacion donde trabajo un empleado x
@@ -112,7 +112,7 @@
 		return "select t.folio as 'folio trabajo', t.servicio, c.folio as 'folio cotizacion', c.fecha as 'fecha cotizacion'
 		from cotizacion c INNER JOIN(trabajo t INNER JOIN (empleado e INNER JOIN realiza r ON e.rfc = r.rfc_empleado) 
 		ON t.folio = r.folio_trabajo) ON c.folio_trabajo = t.folio 
-		where e.nombre = '".$nombre."' and e.apellido = '".$apellido."';";
+		where e.nombre = '".$nombre."' and e.apellido = '".$apellido."'";
 	}
 
 	//nombre, apellido, fecha de contratacion y rfc de todos los empleados activos
@@ -120,7 +120,7 @@
 	{
 		return "select e.nombre, e.apellido, e.fecha_contratacion, e.rfc
 		from empleado e  
-		where e.activo = 1; ";
+		where e.activo = 1";
 	}
 
 	//nombre, apellido, fecha de contratacion y rfc de todos los empleados no activos
@@ -128,7 +128,7 @@
 	{
 		return "select e.nombre, e.apellido, e.fecha_contratacion, e.rfc
 		from empleado e 
-		where e.activo = 0;";
+		where e.activo = 0";
 	}
 
 	//la direccion de un empleado x
@@ -141,7 +141,7 @@
 		return "select dir.municipio, dir.colonia, dir.calle, dir.numero, dir.telefono 
 		from direccion_empleado dir INNER JOIN empleado e 
 		ON e.rfc = dir.rfc_empleado 
-		where e.nombre = '".$nombre."' and e.apellido = '".$apellido."';";
+		where e.nombre = '".$nombre."' and e.apellido = '".$apellido."'";
 	}
 
 	//la informacion de contacto de un empleado x
@@ -154,7 +154,7 @@
 		return "select con.num_celular, con.correo_electronico 
 		from info_contacto_empleado con INNER JOIN empleado e 
 		ON e.rfc = con.rfc_empleado 
-		where e.nombre = '".$nombre."' and e.apellido = '".$apellido."';";
+		where e.nombre = '".$nombre."' and e.apellido = '".$apellido."'";
 	}
 
 	//todos los gastos diarios que ha registrado el empleado x 
@@ -167,7 +167,7 @@
 		return "select g.fecha, g.mano_obra, g.luz, g.gasolina, g.material, g.total 
 		from gasto g INNER JOIN empleado e 
 		ON g.registrado_por = e.rfc 
-		where e.nombre = '".$nombre."' and e.apellido = '".$apellido."';";
+		where e.nombre = '".$nombre."' and e.apellido = '".$apellido."'";
 	}
 
 	//el folio, monto y fecha de todas las facturas pagadas por la empresa x
@@ -179,7 +179,7 @@
 		return "select f.folio, f.fecha, f.monto 
 		from factura f INNER JOIN empresa em 
 		ON f.rfc_empresa = em.rfc
-		where em.nombre = '".$x."';";
+		where em.nombre = '".$x."'";
 	}
 
 	//el folio, monto, fecha de cada factura correspondiente a un trabajo x
@@ -190,7 +190,7 @@
 
 		return "select distinct (f.folio), f.fecha, f.monto 
 		from factura f INNER JOIN trabajo t 
-		ON f.folio_trabajo = ".$x.";";
+		ON f.folio_trabajo = ".$x."";
 	}
 
 	//todas las facturas con fecha x
@@ -200,7 +200,7 @@
 
 		return "select f.folio, f.monto 
 		from factura f 
-		where f.fecha = '".$x."';";
+		where f.fecha = '".$x."'";
 	}
 
 	//la cotizacion con un folio x
@@ -211,7 +211,7 @@
 
 		return "select * 
 		from cotizacion c 
-		where c.folio = ".$x.";";
+		where c.folio = ".$x."";
 	}
 
 	//el trabajo con un folio x
@@ -222,7 +222,7 @@
 
 		return "select * 
 		from trabajo t 
-		where t.folio = ".$x.";";
+		where t.folio = ".$x."";
 	}
 
 	//la factura con folio x
@@ -233,7 +233,7 @@
 
 		return "select * 
 		from factura f 
-		where f.folio = ".$x.";";
+		where f.folio = ".$x."";
 	}
 
 	//el maximo gasto en el periodo [d1,d2]
@@ -245,7 +245,7 @@
 
 		return "select max(g.total), g.fecha 
 		from gasto g 
-		where g.fecha between '".$d1."' and '".$d2."';";
+		where g.fecha between '".$d1."' and '".$d2."'";
 	}
 
 	//El acumulado del monto de todas las facturas de un trabajo con folio x, así como el monto de la cotizacion de dicho trabajo
@@ -257,7 +257,7 @@
 
 		return "select sum(f.monto) as 'cantidad facturada', c.monto as 'costo del trabajo'
 		from cotizacion c INNER JOIN factura f ON f.folio_trabajo = c.folio_trabajo 
-		where c.folio_trabajo = ".$x.";";
+		where c.folio_trabajo = ".$x."";
 	}
 
 	//Desglose del gasto de cierto dia x
@@ -268,6 +268,6 @@
 
 		return "select g.material, g.mano_obra, g.luz, g.gasolina, g.total 
 		from gasto g 
-		where g.fecha = '".$x."';";
+		where g.fecha = '".$x."'";
 	}
 ?>
