@@ -1,0 +1,140 @@
+//EMPLEADOS
+
+INSERT INTO empleado VALUES ('CAEF6805309K4', 'CAEF680530HPLSSR03', '62876833112', True, 0.00, 20081001, null, 'Fernando', 'Castillo Espindola'); 
+INSERT INTO empleado VALUES ('EELC890319KC2', 'EELC890913HMCSRR08', '92038900087', True, 2200.00, 20151220, 'CAEF6805309K4', 'Carlos', 'Espejel Lara');
+INSERT INTO empleado VALUES ('CACF960820CM0', 'CACF960820HPLSSR06', '57159689470', True, 1100.00, 20081112, 'CAEF6805309K4', 'Fernando', 'Castillo Cosme');
+INSERT INTO empleado VALUES ('PEJC9606211V8', 'PEJC960621HPLRRR08', '23302132364', False, 900.00, 20160110, 'CAEF6805309K4', 'Carlos Alfonso', 'Perez Jaramillo');
+INSERT INTO empleado VALUES ('RARA010123HPLMLNA0', 'RARA010123HPLMLNA0', '57882301997', True, 900.00, 20170215, 'CAEF6805309K4', 'Angel Gustavo', 'Ramirez Roldan');
+INSERT INTO empleado VALUES ('RULL6620128T2', 'RULL662012HPLSAI06', '62850325146', False, 2000.00, 20160929, 'CAEF6805309K4', 'Luis Jacinto', 'Ruiz de L�zaro');
+INSERT INTO empleado VALUES ('MACM940612H20', 'MACM940613HPLRRSO8', '6915968261', True, 1100.00, 20150811, 'CAEF6805309K4', 'Yordi Misael', 'Mart�nez Cruz');
+INSERT INTO empleado VALUES ('MACL960823T91', 'MACL960823HPLRRS05', '48159672269', False, 900.00, 20160205, 'CAEF6805309K4', 'Luis Enrique', 'Mart�nez Cruz');
+INSERT INTO empleado VALUES ('ZOPA720613PJ6', 'ZOPA720613MPLTRN09', '62897275871', True, 1200.00, 20110308, 'CAEF6805309K4', 'Antonia', 'Zoto Perez');
+INSERT INTO empleado VALUES ('PECF6404052C9', 'PECF640205MPLRLL03', '02176401962', True, 800.00, 20160713, 'CAEF6805309K4', 'Maria Felipa', 'Perez Cielo');
+INSERT INTO empleado VALUES ('CUAA7104251W3', 'CUAA710425MPLTZR05', '03147192425', True, 900.00, 20161115, 'CAEF6805309K4', 'Araceli', 'Cuatzo Azcatl');
+
+//EMPRESAS
+INSERT INTO empresa VALUES ('BCA001206674', 'BODEGA CRUZ AZUL DEL CENTRO S.A. DE C.V.','Bancomer', 6891, 112);
+INSERT INTO empresa VALUES ('CCO7409189M1', 'CEMEX CONCRETOS S.A. DE C.V.', 'Scotiabank', 6400, 23);
+INSERT INTO empresa VALUES ('CEM880726UZA', 'CEMEX S.A.B DE C.V.', 'Scotiabank', 6800, 432);
+INSERT INTO empresa VALUES ('CAT021004JA4', 'CONCRETOS DE ALTA TECNOLOGIA S.A. DE C.V.', 'Bancomer', 0706, 353);
+INSERT INTO empresa VALUES ('DUL100819SR1', 'DULCET S.A. DE C.V.', 'Bancomer', 1812, 235);
+INSERT INTO empresa VALUES ('FRO0303066G2', 'FRODEEMI S.A. DE C.V.', 'Banamex', 7514, 532);
+INSERT INTO empresa VALUES ('LES860203JM8', 'LESTER S.A. DE C.V.', 'HSBC', 5547, 33);
+INSERT INTO empresa VALUES ('RIT030612PE2', 'REFACCIONES INDUSTRIALES Y DEL TRANSPORTE S.A. DE C.V.', 'Bancomer', 7074, 145);
+
+//DIRECCION EMPLEADO
+
+INSERT INTO direccion_empleado VALUES ('CAEF6805309K4', 'Puebla', 'San Baltazar Lindavista', 'Libertad', 5947, '2221397086');
+INSERT INTO direccion_empleado VALUES ('EELC890319KC2z', 'Puebla', 'Tepeyac', 'Libertad', 67, '2221280993');
+INSERT INTO direccion_empleado VALUES ('CACF960820CM0', 'Puebla', 'San Baltazar Lindavista', 'Libertad', 5947, '2228526256');
+INSERT INTO direccion_empleado VALUES ('PEJC9606211V8', 'Puebla', 'San Baltazar Campeche', 'Libertad', 5702, '2223339363');
+INSERT INTO direccion_empleado VALUES ('RARA010123HPLMLNA0', 'Puebla', 'San Francisco Totimehuacan', 'Margaritas', 6102, '2225981244');
+INSERT INTO direccion_empleado VALUES ('RULL6620128T2', 'Puebla', 'Azcarate', '20 Oriente', 1308, '2223580257');
+INSERT INTO direccion_empleado VALUES ('MACM940612H20', 'Puebla', 'Anzures', '8 Sur', 3312, '2226335731');
+INSERT INTO direccion_empleado VALUES ('MACL960823T91', 'Puebla', 'San Baltazar Campeche', 'Libertad', 5707, '7971012253');
+INSERT INTO direccion_empleado VALUES ('ZOPA720613PJ6', 'Puebla', 'San Francisco Acatepec', 'Huejotzingo', 4, '2225592473');
+INSERT INTO direccion_empleado VALUES ('PECF6404052C9', 'Puebla', 'San Rafael Comac', 'Panteon', 6, '2221947398');
+INSERT INTO direccion_empleado VALUES ('CUAA7104251W3', 'Puebla', 'San Francisco Acatepec', 'Zacatlan', 73, '2228537947');
+
+//info contacto empleado
+INSERT INTO info_contacto_empleado VALUES ('CAEF6805309K4', '2221397086', 'fercastillo30@hotmail.com');
+INSERT INTO info_contacto_empleado VALUES ('EELC890319KC2z', '2228526256', 'carlos.espejel@hotmail.com');
+INSERT INTO info_contacto_empleado VALUES ('PEJC9606211V8', '2223339363', 'carlos.jaramillo@hotmail.com');
+INSERT INTO info_contacto_empleado VALUES ('CACF960820CM0', '2228526256', 'fcastillocosme@gmail.com');
+INSERT INTO info_contacto_empleado VALUES ('RARA010123HPLMLNA0', '2225981244', 'gustavorr898@gmail.com');
+INSERT INTO info_contacto_empleado VALUES ('RULL6620128T2', '2223580257', 'jacinto.ruiz@hotmail.com');
+INSERT INTO info_contacto_empleado VALUES ('MACM940612H20', '2226335731', 'yordi.misael@hotmail.com');
+INSERT INTO info_contacto_empleado VALUES ('MACL960823T91', '7971012253', 'enrique.martinez@hotmail.com');
+INSERT INTO info_contacto_empleado VALUES ('ZOPA720613PJ6', '2311060', 'antonia.zoto@hotmail.com');
+INSERT INTO info_contacto_empleado VALUES ('PECF6404052C9', '2403714', 'felipa.prz@gmail.com');
+INSERT INTO info_contacto_empleado VALUES ('CUAA7104251W3', '2458729', 'araceli.cuatzo@hotmail.com');
+
+
+//trabajo
+INSERT INTO trabajo VALUES (242, 'Reparacion', 'Reparacion de bomba pluma de CR6392');
+INSERT INTO trabajo VALUES (243, 'Fabricacion', 'Fabricacion de asador de acero inoxidable');
+INSERT INTO trabajo VALUES (244, 'Mantenimiento', 'Mantenimiento a planta');
+INSERT INTO trabajo VALUES (245, 'Maquinado', 'Maquinado de poleas con material 1018 tratado');
+INSERT INTO trabajo VALUES (246, 'Suministro', 'Suministro de orrings de 21 y 22');
+INSERT INTO trabajo VALUES (247, 'Instalacion', 'Instalacion de guardas para banda en planta 2');
+INSERT INTO trabajo VALUES (248, 'Suministro', 'Suministro de piston para CR 3233');
+INSERT INTO trabajo VALUES (249, 'Maquinado', 'Maquinado de abrazaderas de bronce');
+INSERT INTO trabajo VALUES (250, 'Instalacion', 'Instalacion de ba�o en oficinas de planta 3');
+INSERT INTO trabajo VALUES (251, 'Limpieza', 'Limpieza de edificio de oficinas');
+INSERT INTO trabajo VALUES (252, 'Maquinado', 'Maquinado de brazo para bomba en 1018 tratado');
+INSERT INTO trabajo VALUES (253, 'Otros', 'Renta de mesas, sillas, horno de microondas y minifrigorico');
+INSERT INTO trabajo VALUES (254, 'Fabricacion', 'Fabricacion de cadenas');
+INSERT INTO trabajo VALUES (255, 'Mantenimiento', 'Mantenimiento a aspersor de CR 2388');
+INSERT INTO trabajo VALUES (256, 'Mantenimiento', 'Mantenimiento a aspersor de CR 6623');
+INSERT INTO trabajo VALUES (257, 'Reparacion', 'Reparacion de bomba pluma de CR6522');
+INSERT INTO trabajo VALUES (258, 'Reparacion', 'Reparacion de piston de CR6222');
+INSERT INTO trabajo VALUES (259, 'Reparacion', 'Reparacion de guarda de CR6190');
+INSERT INTO trabajo VALUES (260, 'Instalacion', 'Instalacion de aire acondicionado en oficinas de planta 1');
+INSERT INTO trabajo VALUES (261, 'Suministro', 'Suministro de orrings 19, 20 y 21');
+INSERT INTO trabajo VALUES (262, 'Limpieza', 'Limpieza del edificio de oficinas en planta 1');
+
+//facturas
+INSERT INTO factura VALUES (232, 2000.00, 20170330, 'Deposito', 242, 'BCA001206674');
+INSERT INTO factura VALUES (233, 800.00, 20170331, 'Efectivo', 243, 'BCA001206674');
+INSERT INTO factura VALUES (234, 5000.00, 20170401, 'Deposito', 244, 'BCA001206674');
+INSERT INTO factura VALUES (235, 2500.00, 20170401, 'Transferencia', 245, 'CCO7409189M1');
+INSERT INTO factura VALUES (236, 400.00, 20170402, 'Deposito', 246, 'CCO7409189M1');
+INSERT INTO factura VALUES (237, 1200.00, 20170402, 'Transferencia', 247, 'CCO7409189M1');
+INSERT INTO factura VALUES (238, 3000.00, 20170403, 'Transferencia', 248, 'CEM880726UZA');
+INSERT INTO factura VALUES (239, 1500.00, 20170403, 'Efectivo', 249, 'CEM880726UZA');
+INSERT INTO factura VALUES (240, 1800.00, 20170404, 'Transferencia', 250, 'CEM880726UZA');
+INSERT INTO factura VALUES (241, 200.00, 20170404, 'Deposito', 251, 'CAT021004JA4');
+INSERT INTO factura VALUES (242, 6200.00, 20170404, 'Deposito', 252, 'CAT021004JA4');
+INSERT INTO factura VALUES (243, 600.00, 20170405, 'Deposito', 253, 'CAT021004JA4');
+INSERT INTO factura VALUES (244, 3000.00, 20170406, 'Deposito', 254, 'DUL100819SR1');
+INSERT INTO factura VALUES (245, 400.00, 20170406, 'Efectivo', 255, 'DUL100819SR1');
+INSERT INTO factura VALUES (246, 600.00, 20170406, 'Deposito', 256, 'DUL100819SR1');
+INSERT INTO factura VALUES (247, 200.00, 20170406, 'Transferencia', 257, 'FRO0303066G2');
+INSERT INTO factura VALUES (248, 500.00, 20170406, 'Deposito', 258, 'FRO0303066G2');
+INSERT INTO factura VALUES (249, 150.00, 20170406, 'Efectivo', 259, 'FRO0303066G2');
+INSERT INTO factura VALUES (250, 1000.00, 20170407, 'Efectivo', 260, 'LES860203JM8');
+INSERT INTO factura VALUES (251, 1500.00, 20170407, 'Efectivo', 261, 'LES860203JM8');
+INSERT INTO factura VALUES (252, 550.00, 20170407, 'Efectivo', 262, 'LES860203JM8');
+
+//cotizacion
+INSERT INTO cotizacion VALUES (267, 20170330, 'El trabajo debe ser realizado en un plazo maximo de 2 dias', 2000.00, 'BCA001206674', 242, 20170401, 345);
+INSERT INTO cotizacion VALUES (268, 20170331, 'El trabajo debe ser realizado en un plazo maximo de 20 dias', 800.00, 'BCA001206674', 243, 20170419, 445);
+INSERT INTO cotizacion VALUES (269, 20170401, 'El trabajo debe ser realizado en un plazo maximo de 5 dias', 5000.00, 'BCA001206674', 244, 20170406, 565);
+INSERT INTO cotizacion VALUES (270, 20170401, 'El trabajo debe ser realizado en un plazo maximo de 3 dias', 2500.00, 'CCO7409189M1', 245, 20170404, 36);
+INSERT INTO cotizacion VALUES (271, 20170402, 'El trabajo debe ser realizado en un plazo maximo de 3 dias', 400.00, 'CCO7409189M1', 246, 20170405, 3235);
+INSERT INTO cotizacion VALUES (272, 20170402, 'El trabajo debe ser realizado en un plazo maximo de 6 dias', 1200.00, 'CCO7409189M1', 247, 20170408, 335);
+INSERT INTO cotizacion VALUES (273, 20170403, 'El trabajo debe ser realizado en un plazo maximo de 7 dias', 3000.00, 'CEM880726UZA', 248, 20170410, 235);
+INSERT INTO cotizacion VALUES (274, 20170403, 'El trabajo debe ser realizado en un plazo maximo de 10 dias', 1500.00, 'CEM880726UZA', 249, 20170413, 2365);
+INSERT INTO cotizacion VALUES (275, 20170404, 'El trabajo debe ser realizado en un plazo maximo de 1 dia', 1800.00, 'CEM880726UZA', 250, 20170405, 22);
+INSERT INTO cotizacion VALUES (276, 20170404, 'El trabajo debe ser realizado en un plazo maximo de 5 dias', 200.00, 'CAT021004JA4', 251, 20170409, 124);
+INSERT INTO cotizacion VALUES (277, 20170404, 'El trabajo debe ser realizado en un plazo maximo de 3 dias', 6200.00, 'CAT021004JA4', 252, 20170407, 11);
+INSERT INTO cotizacion VALUES (278, 20170405, 'El trabajo debe ser realizado en un plazo maximo de 2 dias', 600.00, 'CAT021004JA4', 253, 20170407, 153);
+INSERT INTO cotizacion VALUES (279, 20170406, 'El trabajo debe ser realizado en un plazo maximo de 2 dias', 3000.00, 'DUL100819SR1', 254, 20170408, 1653);
+INSERT INTO cotizacion VALUES (280, 20170406, 'El trabajo debe ser realizado en un plazo maximo de 11 dias', 400.00, 'DUL100819SR1', 255, 20170417, 3566);
+INSERT INTO cotizacion VALUES (281, 20170406, 'El trabajo debe ser realizado en un plazo maximo de 20 dias', 600.00, 'DUL100819SR1', 256, 20170426, 764);
+INSERT INTO cotizacion VALUES (282, 20170406, 'El trabajo debe ser realizado en un plazo maximo de 2 dias', 200.00, 'FRO0303066G2', 257, 20170408, 874);
+INSERT INTO cotizacion VALUES (283, 20170406, 'El trabajo debe ser realizado en un plazo maximo de 5 dias', 500.00, 'FRO0303066G2', 258, 20170411, 876);
+INSERT INTO cotizacion VALUES (284, 20170406, 'El trabajo debe ser realizado en un plazo maximo de 7 dias', 150.00, 'FRO0303066G2', 259, 20170413, 975);
+INSERT INTO cotizacion VALUES (285, 20170407, 'El trabajo debe ser realizado en un plazo maximo de 1 dia', 1000.00, 'LES860203JM8', 260, 20170408, 335);
+INSERT INTO cotizacion VALUES (286, 20170407, 'El trabajo debe ser realizado en un plazo maximo de 2 dias', 1500.00, 'LES860203JM8', 261, 20170409, 873);
+INSERT INTO cotizacion VALUES (287, 20170407, 'El trabajo debe ser realizado en un plazo maximo de 10 dias', 550.00, 'LES860203JM8', 262, 20170417, 196);			
+
+
+//gastos
+INSERT INTO gasto VALUES (20170420, 4500.54, 500.54, 500, 0, 3500, 'CAEF6805309K4');
+INSERT INTO gasto VALUES (20070420, 10000, 2500, 2500, 2500, 2500, 'CAEF6805309K4');
+INSERT INTO gasto VALUES (20170301, 4400.54, 400.54, 500, 0, 3500, 'CACF960820CM0');
+INSERT INTO gasto VALUES (20160401, 415, 50, 50, 15, 300, 'CACF960820CM0');
+INSERT INTO gasto VALUES (20151231, 415, 50, 50, 15, 300, 'CUAA7104251W3');
+
+//realiza
+INSERT INTO realiza VALUES(242, 'CAEF6805309K4');
+INSERT INTO realiza VALUES(243, 'CAEF6805309K4');
+INSERT INTO realiza VALUES(245, 'CAEF6805309K4');
+INSERT INTO realiza VALUES(250, 'CAEF6805309K4');
+INSERT INTO realiza VALUES(242, 'CACF960820CM0');
+INSERT INTO realiza VALUES(244, 'CACF960820CM0');
+INSERT INTO realiza VALUES(251, 'CACF960820CM0');
+INSERT INTO realiza VALUES(250, 'CACF960820CM0');
+INSERT INTO realiza VALUES(260, 'CUAA7104251W3');
+INSERT INTO realiza VALUES(261, 'CUAA7104251W3');
