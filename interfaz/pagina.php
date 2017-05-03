@@ -175,24 +175,23 @@
 			<div class="form font-b">
 				<input type="text" id="nuevaFacturaFolio" placeholder="Folio">
 				<input type="number" id="nuevaFacturaMonto" placeholder="Monto">
-				<input type="date" id="nuevaFacturaFecha" placeholder="Fecha">
+				<input type="date" id="nuevaFacturaFecha" value="" placeholder="Fecha">
 				<select name="nuevaFacturaFormaPago">
 					<option value="Deposito">Deposito</option>
 					<option value="Efectivo">Efectivo</option>
 					<option value="Transferencia">Transferencia</option>
 					<option value="Otro">Otro</option>
 				</select>
-				<select class="foliosTrabajo" name="facturaFolioTrabajo">
+				<select class="foliosTrabajo" name="nuevaFacturaFolioTrabajo">
 					
 				</select>
-				<select class="rfcsEmpresa" name="facturaRfcEmpresa">
+				<select class="rfcsEmpresa" name="nuevaFacturaRfcEmpresa">
 
-					
 				</select>
 			</div>
 		</div>
 	</div>
-<!--Parte de rafiki, agregar nueva cotizacion-->
+
 	<div class="modal" id="cotizacionAgregar">
 		<div class="nuevo-form">
 			<div class="modal-header">
@@ -201,14 +200,14 @@
 			</div>
 			<div class="form font-b">
 				<input type="number" id="nuevaCotizacionFolio" placeholder="Folio">
-				<input type="date" id="nuevaCotizacionMonto" placeholder="Fecha">
+				<input type="date" id="nuevaCotizacionFecha" placeholder="Fecha">
 				<input type="text" id="nuevaCotizacionCondicionPago" placeholder="Condicion de pago">
 				<input type="text" id="nuevaCotizacionMonto" placeholder="Monto">
 
-				<select class="rfcsEmpresa" name="cotizacionRFCSolicitante">
+				<select class="rfcsEmpresa" name="nuevaCotizacionRFCSolicitante">
 
 				</select>
-				<select class="foliosTrabajo"  name="cotizacionFolioTrabajo">
+				<select class="foliosTrabajo"  name="nuevaCotizacionFolioTrabajo">
 					
 				</select>
 				<input type="date" id="nuevaCotizacionFechaEntregaDeseada" placeholder="Fecha de entrega deseada">
@@ -216,7 +215,7 @@
 			</div>
 		</div>
 	</div>
-<!--Parte de rafiki, agregar nuevo trabajo-->
+
 	<div class="modal" id="trabajoAgregar">
 		<div class="nuevo-form">
 			<div class="modal-header">
@@ -240,7 +239,6 @@
 			</div>
 		</div>
 	</div>
-<!--Termina parte de rafiki-->
 
 	<div class="modal" id="infoPopUp">
 		<div class="info-elemento">

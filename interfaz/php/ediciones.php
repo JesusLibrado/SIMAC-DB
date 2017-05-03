@@ -24,7 +24,7 @@
 					'".$banco."',
 					".$numero_cuenta.",
 					".$numero_proveedor."
-					)";
+				)";
 	}
 
 	function empleadoEliminar(){
@@ -53,7 +53,7 @@
 					'".$jefe."',
 					'".$nombre."',
 					'".$apellido."'
-					)";
+				)";
 
 	}
 
@@ -72,10 +72,6 @@
 		return "delete from trabajo where folio = ".$id;
 	}
 	
-	/*
-	function insertarEmpleado(){
-
-	}
-	*/
+	
 		
 ?>
