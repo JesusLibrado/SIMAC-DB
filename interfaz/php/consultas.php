@@ -66,7 +66,6 @@
 
 	function trabajo(){
 		return "select * from trabajo";
-
 	}
 
 	function folioTrabajo()

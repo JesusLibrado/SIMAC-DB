@@ -32,7 +32,7 @@
 		$rfc_solicitante = $_GET['rfcSolicitante'];
 		$folio_trabajo = $_GET['folioTrabajo'];
 		$fecha_entrega_deseada = $_GET['fechaEntregaDeseada'];
-		$numero_orden_compra = $_GET['NumeroOrdenCompra'];
+		$numero_orden_compra = $_GET['numeroOrdenCompra'];
 
 		return "insert into cotizacion values(
 			".$folio.",

@@ -370,4 +370,83 @@ $(document).ready(function(){
 			});
 		});
 
+	/*******Cotizacion*******/
+		$('#btnNuevaCotizacion').click(function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/ediciones.php',
+				type: 'GET',
+				data:{
+						folio: $('#nuevaCotizacionFolio').val(),
+						fecha: $('#nuevaCotizacionFecha').val(),
+						condicionesPago: $('#nuevaCotizacionCondicionPago').val(),
+						monto: $('#nuevaCotizacionMonto').val(),
+						rfcSolicitante: $('#cotizacionRFCSolicitante').val(),
+						folioTrabajo: $('#cotizacionFolioTrabajo').val(),
+						fechaEntregaDeseada: $('#nuevaCotizacionFechaEntregaDeseada').val(),
+						numeroOrdenCompra: $('#nuevaCotizacionNumeroOrdenCompra').val(),
+						metodo: 'insertarCotizacion'
+				}
+			}).done(function(res){
+				if(res != ''){
+					alert("Error: "+res);
+				}else{
+					displayIn("cotizacion");
+					$('.nuevo-elemento').toggle();
+					$('.informacion').toggle();
+					$('.extra-buttons a').children().toggle();
+				}
+			});
+		});
+
+	/*******Trabajo*******/
+		$('#btnNuevoTrabajo').click(function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/ediciones.php',
+				type: 'GET',
+				data:{
+						folio: $('#nuevoTrabajoFolio').val(),
+						servicio: $('#trabajoServicio').val(),
+						descripcion: $('#nuevoTrabajoDescripcion').val(),
+						metodo: 'insertarTrabajo'
+				}
+			}).done(function(res){
+				if(res != ''){
+					alert("Error: "+res);
+				}else{
+					displayIn("trabajo");
+					$('.nuevo-elemento').toggle();
+					$('.informacion').toggle();
+					$('.extra-buttons a').children().toggle();
+				} 
+			});
+		});
+	
+	/*******Factura*******/
+		$('#btnNuevaFactura').click(function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/ediciones.php',
+				type: 'GET',
+				data:{
+						folio: $('#nuevaFacturaFolio').val(),
+						monto: $('#nuevaFacturaMonto').val(),
+						fecha: $('#nuevaFacturaFecha').val(),
+						formaPago: $('#nuevaFacturaFormaPago').val(),
+						folioTrabajo: $('#facturaFolioTrabajo').val(),
+						rfcEmpresa: $('#facturaRfcEmpresa').val(),
+						metodo: 'insertarFactura'
+				}
+			}).done(function(res){
+				if(res != ''){
+					alert("Error: "+res);
+				}else{
+					displayIn("factura");
+					$('.nuevo-elemento').toggle();
+					$('.informacion').toggle();
+					$('.extra-buttons a').children().toggle();
+				}
+			});
+		});
 })

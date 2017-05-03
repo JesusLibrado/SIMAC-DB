@@ -55,6 +55,7 @@
 				<div class="informacion" style="display: block">
 					
 				</div>
+				<!--Agregar nueva empresa-->
 				<div class="nuevo-elemento nuevaEmpresa" style="display: none">
 					<p>Agregar Nuevo</p>
 					<input type="text" id="nuevaEmpresaRFC" placeholder="RFC">
@@ -100,6 +101,7 @@
 				<div class="informacion" style="display: block">
 					
 				</div>
+				<!--Agregar nuevo empleado-->
 				<div class="nuevo-elemento" id="nuevoEmpleado" style="display: none">
 					<p>Agregar Nuevo</p>
 					<input type="text" id="nuevoEmpleadoRFC" placeholder="RFC">
@@ -165,7 +167,7 @@
 			</div>
 		</div>
 	</div>
-
+<!--Agregar nueva factura-->
 	<div class="modal" id="facturaAgregar">
 		<div class="nuevo-form">
 			<div class="modal-header">
@@ -173,8 +175,8 @@
 				<p class="font-a">Agregar Factura</p>
 			</div>
 			<div class="form font-b">
-				<input type="text" id="nuevaFacturaFolio" placeholder="Folio">
-				<input type="number" id="nuevaFacturaMonto" placeholder="Monto">
+				<input type="number" id="nuevaFacturaFolio" placeholder="Folio">
+				<input type="text" id="nuevaFacturaMonto" placeholder="Monto">
 				<input type="date" id="nuevaFacturaFecha" placeholder="Fecha">
 				<select name="nuevaFacturaFormaPago">
 					<option value="Deposito">Deposito</option>
@@ -186,13 +188,12 @@
 					
 				</select>
 				<select class="rfcsEmpresa" name="facturaRfcEmpresa">
-
 					
 				</select>
 			</div>
 		</div>
 	</div>
-<!--Parte de rafiki, agregar nueva cotizacion-->
+<!--Agregar nueva cotizacion-->
 	<div class="modal" id="cotizacionAgregar">
 		<div class="nuevo-form">
 			<div class="modal-header">
@@ -201,7 +202,7 @@
 			</div>
 			<div class="form font-b">
 				<input type="number" id="nuevaCotizacionFolio" placeholder="Folio">
-				<input type="date" id="nuevaCotizacionMonto" placeholder="Fecha">
+				<input type="date" id="nuevaCotizacionFecha" placeholder="Fecha">
 				<input type="text" id="nuevaCotizacionCondicionPago" placeholder="Condicion de pago">
 				<input type="text" id="nuevaCotizacionMonto" placeholder="Monto">
 
@@ -216,7 +217,7 @@
 			</div>
 		</div>
 	</div>
-<!--Parte de rafiki, agregar nuevo trabajo-->
+<!--Agregar nuevo trabajo-->
 	<div class="modal" id="trabajoAgregar">
 		<div class="nuevo-form">
 			<div class="modal-header">
@@ -240,7 +241,7 @@
 			</div>
 		</div>
 	</div>
-<!--Termina parte de rafiki-->
+
 
 	<div class="modal" id="infoPopUp">
 		<div class="info-elemento">
@@ -254,6 +255,7 @@
 		</div>
 	</div>
 
+<!--Confirmación de eliminación-->
 	<div id="confirmarEliminar" class="modal">
 		<div class="confirmar-elemento">
 			<div class="modal-header">
