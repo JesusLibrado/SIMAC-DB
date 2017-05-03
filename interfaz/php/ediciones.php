@@ -61,7 +61,7 @@
 
 	function insertarFactura()
 	{
-		$folio = $_GET['folio'];
+		$folio = $_GET['id'];
 		$monto = $_GET['monto'];
 		$fecha = $_GET['fecha'];
 		$forma_pago = $_GET['formaPago'];

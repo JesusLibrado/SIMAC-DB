@@ -245,7 +245,8 @@ a:visited{
 }
 
 .nuevo-elemento button,
-.nuevo-form button{
+.nuevo-form button,
+.info button{
 	border: 2px solid #0091EA;
 	padding: 10px 30px;
 	background: #fff;
@@ -256,7 +257,8 @@ a:visited{
 }
 
 .nuevo-elemento button:hover,
-.nuevo-form button:hover{
+.nuevo-form button:hover,
+.info button:hover{
 	background: #0091EA;
 	color: #fff;
 	cursor: pointer;

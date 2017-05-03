@@ -60,6 +60,7 @@ $(document).ready(function(){
     	$(infoPopup).hide(400);
     	$(link+"Agregar").hide(400);
     	$('#infoContacto').fadeOut();
+    	$(link+'QueryPopUp').fadeOut();
     });
 
 	$('.extra-buttons a').click(function(event){
@@ -106,8 +107,8 @@ $(document).ready(function(){
 							ubicacion = $(link);
 						break;
 					case "trabajo":
-							titulos=['Servicio', 'Descripcion'];
-							indices=[1,2];
+							titulos=['Folio', 'Servicio'];
+							indices=[0,1];
 							ubicacion = $(link);
 						break;
 				}
@@ -119,6 +120,7 @@ $(document).ready(function(){
 	/*****Render*****/
 
 	function renderHorizontal(array, elemento, ubicacion, titulos, indices){
+		array.reverse();
 		var render = '<div class="table">'+
 						'<div class="table-row">';
 		var cellDiv = '<div class="table-cell">';
@@ -152,7 +154,7 @@ $(document).ready(function(){
 								'<i class="fa fa-address-card fa-2x" aria-hidden="true"></i>'+
 							'</button>'+
 							'<button class="contacto-button realiza" id="'+id+'">'+
-								'<i class="fa fa-cogs fa-2x" aria-hidden="true"></i>'+
+								'<i class="fa fa-briefcase fa-2x" aria-hidden="true"></i>'+
 							'</button>';
 			}
 
@@ -554,4 +556,54 @@ $(document).ready(function(){
 			});
 		});
 
+	/*************BUSQUEDAS*************/
+
+	/*facturasConMontroEntre*/
+
+	$('#facturaEntreConMonto').click(function(){
+		var render = '<div class="table">';
+		var cellDiv = '<div class="table-cell">';
+		var rowDiv = '<div class="table-row">';
+		var headDiv = '<div class="table-head">';
+		var closeDiv = '</div>';
+
+		render+=rowDiv+
+					headDiv+
+						'Fecha mínima'+
+					closeDiv+
+					headDiv+
+						'Fecha máxima'+
+					closeDiv+
+				closeDiv;
+		render+=rowDiv+
+					cellDiv+
+						'<input type="date" id="facturaFechaMin">'+
+					closeDiv+
+					cellDiv+
+						'<input type="date" id="facturaFechaMax">'+
+					closeDiv+
+				closeDiv;
+		render+=rowDiv+
+					headDiv+
+						'Monto mínimo'+
+					closeDiv+
+					headDiv+
+						'Monto máximo'+
+					closeDiv+
+				closeDiv;
+		render+=rowDiv+
+					cellDiv+
+						'<input type="text" id="facturaMontoMin" placeholder="Monto mínimo">'+
+					closeDiv+
+					cellDiv+
+						'<input type="text" id="facturaMontoMax" placeholder="Monto máximo">'+
+					closeDiv+
+				closeDiv;
+		render+=closeDiv;
+
+		render+='<button id="">Aceptar</button>';
+
+		$(link+'QueryPopUp .info').html(render);
+		$(link+'QueryPopUp').show();
+	});	
 })

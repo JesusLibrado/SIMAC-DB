@@ -155,15 +155,14 @@
 		<a class="agregar font-a" id="agregarNuevo">Agregar</a>
 		<div class="filtros">
 			<div id="facturaFiltro">
-				<select id="rfcsEmpresa" class="font-b">
-					<option value="" class="not-found">Empresas</option>
-					
-				</select>
+				<button class="search-btn" id="facturaEntreConMonto">Buscar entre fechas y montos</button>
+				<!--LO que quieras que se muestre en cada pestaña-->
 			</div>
 			<div id="cotizacionFiltro">
-						
+				<!--LO que quieras que se muestre en cada pestaña-->
 			</div>
 			<div id="trabajoFiltro">
+				<!--LO que quieras que se muestre en cada pestaña-->
 				<select id="selectTrabajo" class="font-b">
 					<option value="" class="not-found">Elija una opcion</option>
 					<option value="Reparacion">Reparacion</option>
@@ -295,6 +294,19 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="modal" id="facturaQueryPopUp">
+		<div class="info-elemento">
+			<div class="modal-header">
+				<span class="close-popup">&times</span>
+				<p class="font-a">Consulta de factura</p>
+			</div>
+			<div class="info font-b">
+
+			</div>
+		</div>
+	</div>
+
 	<script type="text/javascript" src="extras/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 </body>
