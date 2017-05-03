@@ -210,7 +210,8 @@ a:visited{
 	background: transparent;
 }
 
-.edit-button{
+.edit-button,
+.contacto-button{
 	color: #9E9E9E;
 	border: 0;
 	background: transparent;
@@ -220,7 +221,8 @@ a:visited{
 .delete-button:hover,
 .extra-buttons a:hover,
 .extra-buttons button:hover,
-.edit-button:hover{
+.edit-button:hover,
+.contacto-button:hover{
 	cursor: pointer;
 	color: #1c1c1c;
 }

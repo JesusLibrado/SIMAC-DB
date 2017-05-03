@@ -255,6 +255,21 @@
 		</div>
 	</div>
 
+	<div class="modal" id="infoContacto">
+		<div class="info-elemento">
+			<div class="modal-header">
+				<span class="close-popup">&times</span>
+				<p class="font-a">Contacto</p>
+			</div>
+			<div class="info font-b">
+
+			</div>
+			<div class="map font-b">
+				
+			</div>
+		</div>
+	</div>
+
 	<div id="confirmarEliminar" class="modal">
 		<div class="confirmar-elemento">
 			<div class="modal-header">
@@ -266,8 +281,6 @@
 			</div>
 		</div>
 	</div>
-		
-
 	<script type="text/javascript" src="extras/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 </body>

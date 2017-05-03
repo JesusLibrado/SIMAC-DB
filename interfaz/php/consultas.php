@@ -39,7 +39,17 @@
 
 	function empleado(){
 		return "select * from empleado";
-	} 
+	}
+
+	function empleadoInfoId(){
+		$id = $_POST['id'];
+		return "select num_celular, correo_electronico from info_contacto_empleado where rfc_empleado='".$id."'";
+	}
+
+	function empleadoDireccionId(){
+		$id = $_POST['id'];
+		return "select numero, calle, colonia, municipio from direccion_empleado where rfc_empleado='".$id."'";
+	}
 
 	function facturaId(){
 		$id = $_POST['id'];
@@ -66,16 +76,13 @@
 
 	function trabajo(){
 		return "select * from trabajo";
-
 	}
 
-	function folioTrabajo()
-	{
+	function folioTrabajo(){
 		return "select folio,servicio from trabajo t";
 	}
 
-	function rfcEmpresa()
-	{
+	function rfcEmpresa(){
 		return "select em.rfc,em.nombre from empresa em";
 	}
 ?>

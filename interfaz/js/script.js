@@ -48,6 +48,7 @@ $(document).ready(function(){
     $('.close-popup').click(function(){
     	$(infoPopup).hide(400);
     	$(link+"Agregar").hide(400);
+    	$('#infoContacto').fadeOut();
     });
 
 	$('.extra-buttons a').click(function(event){
@@ -114,6 +115,9 @@ $(document).ready(function(){
 		var headDiv = '<div class="table-head">';
 		var closeDiv = '</div>';
 
+		var buttons;
+
+
 		$.each(titulos, function(i, value){
 			render+= headDiv+
 						titulos[i]+
@@ -125,6 +129,18 @@ $(document).ready(function(){
 		$.each(array, function(i, value){
 			var id = array[i][0];
 			render+=rowDiv;
+			buttons = '<button class="more-info info" id="'+id+'">'+
+							'<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>'+
+						'</button>'+
+						'<button class="delete-button borrar" id="'+id+'">'+
+							'<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>'+
+						'</button>';
+
+			if(elemento=="empleado"){
+				buttons += '<button class="contacto-button contacto" id="'+id+'">'+
+								'<i class="fa fa-address-card fa-2x" aria-hidden="true"></i>'+
+							'</button>';
+			}
 
 			$.each(indices, function(j, val){
 				render+= cellDiv+
@@ -133,12 +149,7 @@ $(document).ready(function(){
 			});
 			
 			render+=cellDiv+
-						'<button class="more-info info" id="'+id+'">'+
-							'<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>'+
-						'</button>'+
-						'<button class="delete-button borrar" id="'+id+'">'+
-							'<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>'+
-						'</button>'+
+						buttons+
 					closeDiv+
 				closeDiv;
 		});
@@ -171,7 +182,27 @@ $(document).ready(function(){
 		render+=closeDiv;
 
 		$(infoPopup+' .info').html(render);
+	}
 
+	function renderContacto(array, ubicacion){
+		var render = '<div class="table">';
+		var cellDiv = '<div class="table-cell">';
+		var rowDiv = '<div class="table-row">';
+		var headDiv = '<div class="table-head">';
+		var closeDiv = '</div>';
+
+		$.each(array, function(i, value){
+			render+=rowDiv;
+			$.each(array[i], function(j, val){
+				render+=cellDiv+
+							val+
+						closeDiv;
+				return(j<1);
+			});
+			render+=closeDiv;
+		});
+		render+=closeDiv;
+		ubicacion.html(render);
 	}
 
 
@@ -259,6 +290,57 @@ $(document).ready(function(){
 			});
 		});
 
+
+	/****CONTACTO****/
+
+	$(document).on('click', '.contacto', function(event){
+		event.preventDefault();
+		id = $(this).attr('id');
+
+		$.ajax({
+			url: 'php/consultas.php',
+			type: 'POST',
+			data: {id: id,
+					metodo: elemento+'InfoId'}
+		}).done(function(res){
+			if(res==''){
+				$('#infoContacto .info').html('<p class="not-found">No existen datos de contacto</p>');
+			}else{
+				var data = $.parseJSON(res);
+				renderContacto(data, $('#infoContacto .info'));
+			}
+		});
+		$.ajax({
+			url: 'php/consultas.php',
+			type: 'POST',
+			data: {id: id,
+					metodo: elemento+'DireccionId'}
+		}).done(function(res){
+			if(res==''){
+				$('#infoContacto .map').html('<p class="not-found">No existe direccion de contacto</p>');
+			}else{
+				var data = $.parseJSON(res);
+				var direccion='';
+				$.each(data, function(i, value){
+					$.each(data[i], function(j, val){
+						direccion+=val+='+';
+						return(j<3);
+					});
+				});
+				var api = '<iframe '+
+  							'width="500" '+
+  							'height="450" '+
+  							'frameborder="0" style="border:0" '+
+  							'src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDkmv3wk27k5YvTkOF0UQyE-EPLhB1Jzhk'+
+							'&q='+direccion+'" allowfullscreen>'+
+						'</iframe>';
+				$('#infoContacto .map').html(api);
+			}
+		});
+
+		$('#infoContacto').fadeIn();
+
+	});
 
 	/****AGREGAR****/
 
