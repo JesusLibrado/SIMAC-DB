@@ -260,8 +260,9 @@ $(document).ready(function(){
 		});
 
 
-	/****Agregar****/
+	/****AGREGAR****/
 
+	//muestra los folios y el servicio de los trabajos existentes al llenar una referencia foranea en la creacion de nuevas tuplas
 	$('a.agregar').click(function(event){
 		event.preventDefault();
 		$(link+'Agregar').fadeIn();
@@ -281,6 +282,7 @@ $(document).ready(function(){
 				$('.foliosTrabajo').html(render);
 			}
 		});
+		//muestra los nombres de las empresas existentes al llenar una referencia foranea en la creacion de nuevas tuplas
 		$.ajax({
 			url: "php/consultas.php",
 			type: "POST",
@@ -302,11 +304,10 @@ $(document).ready(function(){
 		});
 	});
 
+
+	/*INSERTS*/
+
 	/******EMPRESA******/
-		
-
-	/*Insertar*/
-
 		$('#btnNuevaEmpresa').click(function(event){
 			event.preventDefault();
 			$.ajax({
@@ -324,20 +325,16 @@ $(document).ready(function(){
 				if(res != ''){
 					alert("Error: "+res);
 				}else{
-					displayIn("empresa");
+					displayIn(elemento);
 					$('.nuevo-elemento').toggle();
 					$('.informacion').toggle();
 					$('.extra-buttons a').children().toggle();
 				}
 			});
 		});
-
 	
 
 	/*******Empleado*******/
-
-	/*Insertar*/
-
 		$('#btnNuevoEmpleado').click(function(event){
 			event.preventDefault();
 			var opcion;
@@ -365,10 +362,84 @@ $(document).ready(function(){
 				if(res != ''){
 					alert("Error: "+res);
 				}else{
-					displayIn("empleado");
+					displayIn(elemento);
 					$('.nuevo-elemento').toggle();
 					$('.informacion').toggle();
 					$('.extra-buttons a').children().toggle();
+				}
+			});
+		});
+
+	/******FACTURA******/
+		$('#btnNuevaFactura').click(function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/ediciones.php',
+				type: 'GET',
+				data:{
+						id: $('#nuevaFacturaFolio').val(),
+						monto: $('#nuevaFacturaMonto').val(),
+						fecha: $('#nuevaFacturaFecha').val(),
+						formaPago: $('#nuevaFacturaFormaPago').val(),
+						folioTrabajo: $('#nuevaFacturaFolioTrabajo').val(),
+						rfcEmpresa: $('#nuevaFacturaRfcEmpresa').val(),
+						metodo: 'insertarFactura'
+				}
+			}).done(function(res){
+				if(res != ''){
+					alert("Error: "+res);
+				}else{
+					displayIn(elemento);
+					$(link+"Agregar").hide(400);
+				}
+			});
+		});
+
+	/******COTIZACION******/
+		$('#btnNuevaCotizacion').click(function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/ediciones.php',
+				type: 'GET',
+				data:{
+						id: $('#nuevaCotizacionFolio').val(),
+						monto: $('#nuevaCotizacionMonto').val(),
+						fecha: $('#nuevaCotizacionFecha').val(),
+						condicionesPago: $('#nuevaCotizacionCondicionPago').val(),
+						folioTrabajo: $('#nuevaCotizacionFolioTrabajo').val(),
+						rfcSolicitante: $('#nuevaCotizacionRfcSolicitante').val(),
+						fechaEntregaDeseada: $('#nuevaCotizacionFechaEntregaDeseada').val(),
+						numeroOrdenCompra: $('#nuevaCotizacionNumeroOrdenCompra').val(),
+						metodo: 'insertarCotizacion'
+				}
+			}).done(function(res){
+				if(res != ''){
+					alert("Error: "+res);
+				}else{
+					displayIn(elemento);
+					$(link+"Agregar").hide(400);
+				}
+			});
+		});
+
+	/******TRABAJO******/
+		$('#btnNuevoTrabajo').click(function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/ediciones.php',
+				type: 'GET',
+				data:{
+						id: $('#nuevoTrabajoFolio').val(),
+						servicio: $('#trabajoServicio').val(),
+						decripcion: $('#nuevoTrabajoDescripcion').val(),
+						metodo: 'insertarCotizacion'
+				}
+			}).done(function(res){
+				if(res != ''){
+					alert("Error: "+res);
+				}else{
+					displayIn(elemento);
+					$(link+"Agregar").hide(400);
 				}
 			});
 		});

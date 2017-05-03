@@ -80,10 +80,21 @@ a:visited{
 	outline: none;
 }
 
+
+.form textarea{
+	width: 60%;
+	margin: 20px auto;
+	height: 70px;
+	border-radius: 6px;
+	padding: 6px;
+}
+
 .modal-body input:active,
 .modal-body input:focus,
 .form input:active,
-.form input:focus{
+.form input:focus,
+.form textarea:active,
+.form textarea:focus{
 	border: 1px solid #0091EA;
 	border-left: 0px;
 }
@@ -231,7 +242,8 @@ a:visited{
 	margin: 0 0 0 80px;
 }
 
-.nuevo-elemento button{
+.nuevo-elemento button,
+.nuevo-form button{
 	border: 2px solid #0091EA;
 	padding: 10px 30px;
 	background: #fff;
@@ -241,7 +253,8 @@ a:visited{
 	display: block;
 }
 
-.nuevo-elemento button:hover{
+.nuevo-elemento button:hover,
+.nuevo-form button:hover{
 	background: #0091EA;
 	color: #fff;
 	cursor: pointer;

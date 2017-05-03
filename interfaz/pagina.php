@@ -173,21 +173,22 @@
 				<p class="font-a">Agregar Factura</p>
 			</div>
 			<div class="form font-b">
-				<input type="text" id="nuevaFacturaFolio" placeholder="Folio">
-				<input type="number" id="nuevaFacturaMonto" placeholder="Monto">
+				<input type="number" id="nuevaFacturaFolio" placeholder="Folio">
+				<input type="text" id="nuevaFacturaMonto" placeholder="Monto">
 				<input type="date" id="nuevaFacturaFecha" value="" placeholder="Fecha">
-				<select name="nuevaFacturaFormaPago">
+				<select id="nuevaFacturaFormaPago" class="font-b">
 					<option value="Deposito">Deposito</option>
 					<option value="Efectivo">Efectivo</option>
 					<option value="Transferencia">Transferencia</option>
 					<option value="Otro">Otro</option>
 				</select>
-				<select class="foliosTrabajo" name="nuevaFacturaFolioTrabajo">
+				<select class="foliosTrabajo font-b" id="nuevaFacturaFolioTrabajo">
 					
 				</select>
-				<select class="rfcsEmpresa" name="nuevaFacturaRfcEmpresa">
+				<select class="rfcsEmpresa font-b" id="nuevaFacturaRfcEmpresa">
 
 				</select>
+				<button id="btnNuevaFactura">Aceptar</button>
 			</div>
 		</div>
 	</div>
@@ -204,14 +205,15 @@
 				<input type="text" id="nuevaCotizacionCondicionPago" placeholder="Condicion de pago">
 				<input type="text" id="nuevaCotizacionMonto" placeholder="Monto">
 
-				<select class="rfcsEmpresa" name="nuevaCotizacionRFCSolicitante">
+				<select class="rfcsEmpresa font-b" id="nuevaCotizacionRFCSolicitante">
 
 				</select>
-				<select class="foliosTrabajo"  name="nuevaCotizacionFolioTrabajo">
+				<select class="foliosTrabajo font-b"  id="nuevaCotizacionFolioTrabajo">
 					
 				</select>
 				<input type="date" id="nuevaCotizacionFechaEntregaDeseada" placeholder="Fecha de entrega deseada">
 				<input type"number" id="nuevaCotizacionNumeroOrdenCompra" placeholder="Numero de orden de compra">
+				<button id="btnNuevaCotizacion">Aceptar</button>
 			</div>
 		</div>
 	</div>
@@ -224,7 +226,7 @@
 			</div>
 			<div class="form font-b">
 				<input type="number" id="nuevoTrabajoFolio" placeholder="Folio">
-				<select name="trabajoServicio">
+				<select id="trabajoServicio" class="font-b">
 					<option value="Reparacion">Reparacion</option>
 					<option value="Fabricacion">Fabricacion</option>
 					<option value="Limpieza">Limpieza</option>
@@ -235,7 +237,8 @@
 					<option value="Instalacion">Instalacion</option>
 					<option value="Otros">Otros</option>
 				</select>
-				<input type="text" id="nuevoTrabajoDescripcion" placeholder="Descripcion">
+				<textarea id="nuevoTrabajoDescripcion" class="font-b" placeholder="Descripcion"></textarea>
+				<button id="btnNuevoTrabajo">Aceptar</button>
 			</div>
 		</div>
 	</div>
