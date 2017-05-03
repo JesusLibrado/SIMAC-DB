@@ -4,14 +4,17 @@ $(document).ready(function(){
 
 	$(function(){
 		$('.tabs-section div').hide();
+		$('.filtros div').hide();
 		$('.tab-link:first').addClass(' tab-active');
 		link = $('.tab-link:first').attr('href');
 		$(link).fadeIn();
 		elemento = link.substring(1, link.length);
 		$("#nuevo-"+elemento).show();
 		displayIn(elemento);
+		$('.filtros:first').show();
 		$('.tab-link').on('click', function(event){
 			$('.tabs-section div').hide();
+			$(link+'Filtro').hide();
 			$('.tab-link').removeClass(' tab-active');
 			$(this).addClass(' tab-active');
 			link = $(this).attr('href');
@@ -19,7 +22,15 @@ $(document).ready(function(){
 			elemento = link.substring(1, link.length);
 			$("#nuevo-"+elemento).show();
 			displayIn(elemento);
+			$(link+'Filtro').show();
 		});
+	});
+
+	/*****FILTROS*****/
+
+	$('#selectTrabajo').change(function(event){
+		event.preventDefault();
+		alert($(this).val());
 	});
 
 
@@ -139,6 +150,9 @@ $(document).ready(function(){
 			if(elemento=="empleado"){
 				buttons += '<button class="contacto-button contacto" id="'+id+'">'+
 								'<i class="fa fa-address-card fa-2x" aria-hidden="true"></i>'+
+							'</button>'+
+							'<button class="contacto-button realiza" id="'+id+'">'+
+								'<i class="fa fa-cogs fa-2x" aria-hidden="true"></i>'+
 							'</button>';
 			}
 
@@ -342,37 +356,16 @@ $(document).ready(function(){
 
 	});
 
-	/****AGREGAR****/
+	/******LLENAR SELECTS******/
 
-	//muestra los folios y el servicio de los trabajos existentes al llenar una referencia foranea en la creacion de nuevas tuplas
-	$('a.agregar').click(function(event){
-		event.preventDefault();
-		$(link+'Agregar').fadeIn();
-		$.ajax({
-			url: "php/consultas.php",
-			type: "POST",
-			data: {metodo: "folioTrabajo"}
-		}).done(function(res){
-			if(res==""){
-				alert("Error: "+res);
-			}else{
-				var data = $.parseJSON(res);
-				var render;
-				$.each(data, function(i, value){
-					render+='<option value="'+data[i].folio+'">['+data[i].folio+']'+data[i].servicio+'</option>';
-				});
-				$('.foliosTrabajo').html(render);
-			}
-		});
-		//muestra los nombres de las empresas existentes al llenar una referencia foranea en la creacion de nuevas tuplas
+	function llenarConEmpresas(ubicacion){
 		$.ajax({
 			url: "php/consultas.php",
 			type: "POST",
 			data: {metodo: "rfcEmpresa"}
 		}).done(function(res){
-			if (res=="")
-			{
-				alert("Error: "+res);
+			if (res==""){
+				ubicacion.html('<option class="font-b not-found>No hay empresas disponibles</option>');
 			}
 			else
 			{
@@ -381,9 +374,44 @@ $(document).ready(function(){
 				$.each(data, function(i, value){
 					render+='<option value="'+data[i].rfc+'">'+data[i].nombre+'</option>';
 				});
-				$('.rfcsEmpresa').html(render);
+				ubicacion.html(render);
 			}
 		});
+	}
+
+	function llenarConFoliosTrabajo(ubicacion){
+		$.ajax({
+			url: "php/consultas.php",
+			type: "POST",
+			data: {metodo: "folioTrabajo"}
+		}).done(function(res){
+			if(res==""){
+				ubicacion.html('<option class="font-b not-found>No hay folio disponibles</option>');
+			}else{
+				var data = $.parseJSON(res);
+				var render;
+				$.each(data, function(i, value){
+					render+='<option value="'+data[i].folio+'">['+data[i].folio+']'+data[i].servicio+'</option>';
+				});
+				ubicacion.html(render);
+			}
+		});
+	}
+
+
+	/****AGREGAR****/
+
+	//muestra los folios y el servicio de los trabajos existentes al llenar una referencia foranea en la creacion de nuevas tuplas
+	$('a.agregar').click(function(event){
+		event.preventDefault();
+
+		llenarConFoliosTrabajo($('.foliosTrabajo'));
+		
+		//muestra los nombres de las empresas existentes al llenar una referencia foranea en la creacion de nuevas tuplas
+
+		llenarConEmpresas($('.rfcsEmpresa'));
+
+		$(link+'Agregar').fadeIn();
 	});
 
 

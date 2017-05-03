@@ -155,13 +155,27 @@
 		<a class="agregar font-a" id="agregarNuevo">Agregar</a>
 		<div class="filtros">
 			<div id="facturaFiltro">
-			
+				<select id="rfcsEmpresa" class="font-b">
+					<option value="" class="not-found">Empresas</option>
+					
+				</select>
 			</div>
 			<div id="cotizacionFiltro">
 						
 			</div>
 			<div id="trabajoFiltro">
-						
+				<select id="selectTrabajo" class="font-b">
+					<option value="" class="not-found">Elija una opcion</option>
+					<option value="Reparacion">Reparacion</option>
+					<option value="Fabricacion">Fabricacion</option>
+					<option value="Limpieza">Limpieza</option>
+					<option value="Mantenimiento">Mantenimiento</option>
+					<option value="Maquinado">Maquinado</option>
+					<option value="Suministro">Suministro</option>
+					<option value="Cambios">Cambios</option>
+					<option value="Instalacion">Instalacion</option>
+					<option value="Otros">Otros</option>
+				</select>
 			</div>
 		</div>
 	</div>
