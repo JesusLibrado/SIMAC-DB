@@ -260,8 +260,9 @@ $(document).ready(function(){
 		});
 
 
-	/****Agregar****/
+	/****AGREGAR****/
 
+	//muestra los folios y el servicio de los trabajos existentes al llenar una referencia foranea en la creacion de nuevas tuplas
 	$('a.agregar').click(function(event){
 		event.preventDefault();
 		$(link+'Agregar').fadeIn();
@@ -281,6 +282,7 @@ $(document).ready(function(){
 				$('.foliosTrabajo').html(render);
 			}
 		});
+		//muestra los nombres de las empresas existentes al llenar una referencia foranea en la creacion de nuevas tuplas
 		$.ajax({
 			url: "php/consultas.php",
 			type: "POST",
@@ -302,11 +304,10 @@ $(document).ready(function(){
 		});
 	});
 
+
+	/*INSERTS*/
+
 	/******EMPRESA******/
-		
-
-	/*Insertar*/
-
 		$('#btnNuevaEmpresa').click(function(event){
 			event.preventDefault();
 			$.ajax({
@@ -331,13 +332,9 @@ $(document).ready(function(){
 				}
 			});
 		});
-
 	
 
 	/*******Empleado*******/
-
-	/*Insertar*/
-
 		$('#btnNuevoEmpleado').click(function(event){
 			event.preventDefault();
 			var opcion;
