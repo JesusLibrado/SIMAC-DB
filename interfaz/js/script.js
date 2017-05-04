@@ -373,9 +373,72 @@ $(document).ready(function(){
 			else
 			{
 				var data = $.parseJSON(res);
-				var render;
+				var render='';
 				$.each(data, function(i, value){
-					render+='<option value="'+data[i].rfc+'">'+data[i].nombre+'</option>';
+					render+='<option class="font-a" value="'+data[i].rfc+'">'+data[i].nombre+'</option>';
+				});
+				ubicacion.html(render);
+			}
+		});
+	}
+
+	function llenarConEmpleados(ubicacion){
+		$.ajax({
+			url: "php/consultas.php",
+			type: "POST",
+			data: {metodo: "rfcEmpleado"}
+		}).done(function(res){
+			if (res==""){
+				ubicacion.html('<option class="font-b not-found>No hay empleados disponibles</option>');
+			}
+			else
+			{
+				var data = $.parseJSON(res);
+				var render='';
+				$.each(data, function(i, value){
+					render+='<option class="font-a" value="'+data[i].rfc+'">'+data[i].nombre+' '+data[i].apellido+'</option>';
+				});
+				ubicacion.html(render);
+			}
+		});
+	}
+
+	function llenarConFoliosFactura(ubicacion){
+		$.ajax({
+			url: "php/consultas.php",
+			type: "POST",
+			data: {metodo: "folioFactura"}
+		}).done(function(res){
+			if (res==""){
+				ubicacion.html('<option class="font-b not-found>No hay facturas disponibles</option>');
+			}
+			else
+			{
+				var data = $.parseJSON(res);
+				var render='';
+				$.each(data, function(i, value){
+					render+='<option class="font-a" value="'+data[i].folio+'">['+data[i].folio+'] '+data[i].nombre+'</option>';
+				});
+				ubicacion.html(render);
+			}
+		});
+	}
+
+	function llenarConFoliosCotizacion(ubicacion){
+		$.ajax({
+			url: "php/consultas.php",
+			type: "POST",
+			data: {metodo: "folioCotizacion"}
+		}).done(function(res){
+			if (res==""){
+				ubicacion.html('<option class="font-b not-found>No hay cotizaciones disponibles</option>');
+			}
+			else
+			{
+				var data = $.parseJSON(res);
+				var render='';
+				$.each(data, function(i, value){
+					render+='<option class="font-a" value="'+data[i].folio+'">['+data[i].folio+'] '+data[i].nombre+'</option>';
 				});
 				ubicacion.html(render);
 			}
@@ -394,7 +457,7 @@ $(document).ready(function(){
 				var data = $.parseJSON(res);
 				var render;
 				$.each(data, function(i, value){
-					render+='<option value="'+data[i].folio+'">['+data[i].folio+']'+data[i].servicio+'</option>';
+					render+='<option class="font-a" value="'+data[i].folio+'">['+data[i].folio+']'+data[i].servicio+'</option>';
 				});
 				ubicacion.html(render);
 			}
@@ -563,7 +626,7 @@ $(document).ready(function(){
 		/**** FACTURAS *****/
 
 		/*facturasConMontroEntre*/ //<-- nombre de la funcion en php
-		$('#facturaEntreConMonto').click(function(){
+		$('#facturaEntreConMontoBtn').click(function(){
 			var render = '<div class="table">';
 			var cellDiv = '<div class="table-cell">';
 			var rowDiv = '<div class="table-row">';
@@ -604,14 +667,14 @@ $(document).ready(function(){
 					closeDiv;
 			render+=closeDiv;
 
-			render+='<button id="">Aceptar</button>';
+			render+='<button id="facturaEntreConMonto">Aceptar</button>';
 
-			$('#queryPopUp .info').html(render);
+			$('#queryPopUp .query').html(render);
 			$('#queryPopUp').show();
-		});	
+		});
 
 		/*facturaPagadasPorEmpresaX*/
-		$('#facturasPagadasPorEmpresa').click(function(){
+		$('#facturasPagadasPorEmpresaBtn').click(function(){
 			var render = '<div class="table">';
 			var cellDiv = '<div class="table-cell">';
 			var rowDiv = '<div class="table-row">';
@@ -623,19 +686,20 @@ $(document).ready(function(){
 							'Nombre de la Empresa'+
 						closeDiv+
 						cellDiv+
-							'<input type="text" id="campoQuery5">'+
+							'<select id="campoQuery5"></select>'+
 						closeDiv+
 					closeDiv;
 			render+=closeDiv;
 
-			render+='<button id="">Aceptar</button>';
+			render+='<button id="facturasPagadasPorEmpresa">Aceptar</button>';
 
-			$('#queryPopUp .info').html(render);
+			$('#queryPopUp .query').html(render);
+			llenarConEmpresas($('#campoQuery5'));
 			$('#queryPopUp').show();
 		});	
 
 		/*facturaDeTrabajoX*/
-		$('#facturasDeTrabajo').click(function(){
+		$('#facturasDeTrabajoBtn').click(function(){
 			var render = '<div class="table">';
 			var cellDiv = '<div class="table-cell">';
 			var rowDiv = '<div class="table-row">';
@@ -647,19 +711,20 @@ $(document).ready(function(){
 							'Folio de trabajo'+
 						closeDiv+
 						cellDiv+
-							'<input type="number" id="campoQuery6">'+
+							'<select id="campoQuery6"></select>'+
 						closeDiv+
 					closeDiv;
 			render+=closeDiv;
 
-			render+='<button id="">Aceptar</button>';
+			render+='<button id="facturasDeTrabajo">Aceptar</button>';
 
-			$('#queryPopUp .info').html(render);
+			$('#queryPopUp .query').html(render);
+			llenarConFoliosTrabajo($('#campoQuery6'));
 			$('#queryPopUp').show();
 		});
 
 		/*facturaFechaX*/
-		$('#facturasDeFecha').click(function(){
+		$('#facturasDeFechaBtn').click(function(){
 			var render = '<div class="table">';
 			var cellDiv = '<div class="table-cell">';
 			var rowDiv = '<div class="table-row">';
@@ -676,14 +741,14 @@ $(document).ready(function(){
 					closeDiv;
 			render+=closeDiv;
 
-			render+='<button id="">Aceptar</button>';
+			render+='<button id="facturasDeFecha">Aceptar</button>';
 
-			$('#queryPopUp .info').html(render);
+			$('#queryPopUp .query').html(render);
 			$('#queryPopUp').show();
 		});
 
 		/*facturaFolioX*/
-		$('#facturaConFolio').click(function(){
+		$('#facturaConFolioBtn').click(function(){
 			var render = '<div class="table">';
 			var cellDiv = '<div class="table-cell">';
 			var rowDiv = '<div class="table-row">';
@@ -695,14 +760,15 @@ $(document).ready(function(){
 							'Folio de factura'+
 						closeDiv+
 						cellDiv+
-							'<input type="number" id="campoQuery8">'+
+							'<select id="campoQuery8"></select>'+
 						closeDiv+
 					closeDiv;
 			render+=closeDiv;
 			
-			render+='<button id="">Aceptar</button>';
+			render+='<button id="facturaConFolio">Aceptar</button>';
 
-			$('#queryPopUp .info').html(render);
+			$('#queryPopUp .query').html(render);
+			llenarConFoliosFactura($('#campoQuery8'));
 			$('#queryPopUp').show();
 		});		
 
@@ -710,7 +776,7 @@ $(document).ready(function(){
 		/**** COTIZACIONES *****/
 
 		/*cotizacionFolioX*/
-		$('#cotizacionConFolio').click(function(){
+		$('#cotizacionConFolioBtn').click(function(){
 			var render = '<div class="table">';
 			var cellDiv = '<div class="table-cell">';
 			var rowDiv = '<div class="table-row">';
@@ -722,14 +788,15 @@ $(document).ready(function(){
 							'Folio de cotización'+
 						closeDiv+
 						cellDiv+
-							'<input type="number" id="campoQuery9">'+
+							'<select id="campoQuery9"></select>'+
 						closeDiv+
 					closeDiv;
 			render+=closeDiv;
 			
-			render+='<button id="">Aceptar</button>';
+			render+='<button id="cotizacionConFolio">Aceptar</button>';
 
-			$('#queryPopUp .info').html(render);
+			$('#queryPopUp .query').html(render);
+			llenarConFoliosCotizacion($('#campoQuery9'));
 			$('#queryPopUp').show();
 		});
 
@@ -737,7 +804,7 @@ $(document).ready(function(){
 		/**** TRABAJOS *****/
 
 		/*trabajoDeEmpleadoX*/
-		$('#trabajosDeEmpleado').click(function(){
+		$('#trabajosDeEmpleadoBtn').click(function(){
 			var render = '<div class="table">';
 			var cellDiv = '<div class="table-cell">';
 			var rowDiv = '<div class="table-row">';
@@ -748,28 +815,21 @@ $(document).ready(function(){
 						headDiv+
 							'Nombre del empleado'+
 						closeDiv+
-						headDiv+
-							'Apellido del empleado'+
-						closeDiv+
-					closeDiv;
-			render+=rowDiv+
 						cellDiv+
-							'<input type="text" id="campoQuery10">'+
-						closeDiv+
-						cellDiv+
-							'<input type="text" id="campoQuery11">'+
+							'<select id="campoQuery10"></select>'+
 						closeDiv+
 					closeDiv;
 			render+=closeDiv;
 			
-			render+='<button id="">Aceptar</button>';
+			render+='<button id="trabajosDeEmpleado">Aceptar</button>';
 
-			$('#queryPopUp .info').html(render);
+			$('#queryPopUp .query').html(render);
+			llenarConEmpleados($('#campoQuery10'));
 			$('#queryPopUp').show();
 		});
 
 		/*trabajoFolioX*/
-		$('#trabajoConFolio').click(function(){
+		$('#trabajoConFolioBtn').click(function(){
 			var render = '<div class="table">';
 			var cellDiv = '<div class="table-cell">';
 			var rowDiv = '<div class="table-row">';
@@ -780,23 +840,21 @@ $(document).ready(function(){
 						headDiv+
 							'Folio del trabajo'+
 						closeDiv+
-
-					closeDiv;
-			render+=rowDiv+
 						cellDiv+
-							'<input type="number" id="campoQuery12">'+
+							'<select id="campoQuery12"></select>'+
 						closeDiv+
 					closeDiv;
 			render+=closeDiv;
 			
-			render+='<button id="">Aceptar</button>';
+			render+='<button id="trabajoConFolio">Aceptar</button>';
 
-			$('#queryPopUp .info').html(render);
+			$('#queryPopUp .query').html(render);
+			llenarConFoliosTrabajo($('#campoQuery12'));
 			$('#queryPopUp').show();
 		});
 
 		/*acumuladoFacturasDeTrabajoX*/
-		$('#acumuladoEnFacturasDeTrabajo').click(function(){
+		$('#acumuladoEnFacturasDeTrabajoBtn').click(function(){
 			var render = '<div class="table">';
 			var cellDiv = '<div class="table-cell">';
 			var rowDiv = '<div class="table-row">';
@@ -807,19 +865,113 @@ $(document).ready(function(){
 						headDiv+
 							'Folio del trabajo'+
 						closeDiv+
-
-					closeDiv;
-			render+=rowDiv+
 						cellDiv+
-							'<input type="number" id="campoQuery13">'+
+							'<select id="campoQuery13"></select>'+
 						closeDiv+
 					closeDiv;
 			render+=closeDiv;
 			
-			render+='<button id="">Aceptar</button>';
+			render+='<button id="acumuladoEnFacturasDeTrabajo">Aceptar</button>';
 
-			$('#queryPopUp .info').html(render);
+			$('#queryPopUp .query').html(render);
+			llenarConFoliosTrabajo($('#campoQuery13'));
 			$('#queryPopUp').show();
 		});
 		
+
+
+
+
+
+		$(document).on('click','#facturaEntreConMonto',function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/funcionesPHP_queries.php',
+				type: 'POST',
+				data: {
+						fecha1: $('#campoQuery1').val(),
+						fecha2: $('#campoQuery2').val(),
+						monto1: $('#campoQuery3').val(),
+						monto2: $('#campoQuery4').val(),
+						metodo: 'facturaGeneradasEntreConMontoEntre'
+					}
+			}).done(function(res){
+				if(res==''){
+					$(link).html('<p class="not-found">No hubo resultados</p>')
+				}else{
+					var data = $.parseJSON(res);
+					var titulos = ['Monto', 'Fecha'];
+					var indices = [1,2];
+					renderHorizontal(data, elemento, $(link), titulos, indices);
+				}
+				$('#queryPopUp').fadeOut();
+			});
+		});
+
+		$(document).on('click', '#facturasPagadasPorEmpresa',function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/funcionesPHP_queries.php',
+				type: 'POST',
+				data: {
+						id: $('#campoQuery5').val(),	
+						metodo: 'facturaPagadasPorEmpresaX'
+					}
+			}).done(function(res){
+				if(res==''){
+					$(link).html('<p class="not-found">No hubo resultados</p>')
+				}else{
+					var data = $.parseJSON(res);
+					var titulos = ['Nombre', 'Monto'];
+					var indices = [1,2];
+					renderHorizontal(data, elemento, $(link), titulos, indices);
+				}
+				$('#queryPopUp').fadeOut();
+			});
+		});
+
+		$(document).on('click', '#facturasDeTrabajo',function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/funcionesPHP_queries.php',
+				type: 'POST',
+				data: {
+						folio: $('#campoQuery6').val(),	
+						metodo: 'facturaDeTrabajoX'
+					}
+			}).done(function(res){
+				if(res==''){
+					$(link).html('<p class="not-found">No hubo resultados</p>')
+				}else{
+					var data = $.parseJSON(res);
+					var titulos = ['Fecha', 'Monto'];
+					var indices = [1,2];
+					renderHorizontal(data, elemento, $(link), titulos, indices);
+				}
+				$('#queryPopUp').fadeOut();
+			});
+		});
+
+
+		$(document).on('click', '#facturasDeFecha',function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/funcionesPHP_queries.php',
+				type: 'POST',
+				data: {
+						fecha: $('#campoQuery7').val(),	
+						metodo: 'facturaFechaX'
+					}
+			}).done(function(res){
+				if(res==''){
+					$(link).html('<p class="not-found">No hubo resultados</p>')
+				}else{
+					var data = $.parseJSON(res);
+					var titulos = ['Fecha', 'Monto'];
+					var indices = [1,2];
+					renderHorizontal(data, elemento, $(link), titulos, indices);
+				}
+				$('#queryPopUp').fadeOut();
+			});
+		});
 })

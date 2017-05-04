@@ -1,6 +1,28 @@
-<? 
+<?php
 
-//QUERIES EN PESTAÑA TRABAJOS
+	include_once('config.php');
+
+	$sql = $_POST['metodo']();
+
+	$resultado=mysqli_query($con,$sql);
+
+	if(!$resultado)
+		die("");
+
+	$array = array(mysqli_num_rows($resultado));
+
+	$i = 0;
+
+	if(mysqli_num_rows($resultado)>0){
+
+		while($fila = mysqli_fetch_array($resultado, MYSQLI_BOTH)){
+			$array[$i] = $fila;
+			$i++;
+		}
+		echo json_encode($array);
+		mysqli_free_result($resultado);
+	}else
+		die("");
 
 	//Descripcion y folio de trabajos y fecha de cotizacion de trabajos tipo x realizados entre d1 y d2
 	function trabajoTipoXRealizadosEntre()
@@ -185,12 +207,12 @@
 	function facturaPagadasPorEmpresaX()
 	{
 		//string del nombre de la empresa
-		$x = $_POST['nombre'];
+		$x = $_POST['id'];
 
-		return "select f.folio, f.fecha, f.monto 
+		return "select f.folio, em.nombre, f.monto 
 		from factura f INNER JOIN empresa em 
 		ON f.rfc_empresa = em.rfc
-		where em.nombre = '".$x."'";
+		where f.rfc_empresa = '".$x."'";
 	}
 
 	//el folio, monto, fecha de cada factura correspondiente a un trabajo x
@@ -199,7 +221,7 @@
 		//int del folio del trabajo
 		$x = $_POST['folio'];
 
-		return "select distinct (f.folio), f.fecha, f.monto 
+		return "select distinct(f.folio), f.fecha, f.monto 
 		from factura f INNER JOIN trabajo t 
 		ON f.folio_trabajo = ".$x;
 	}
@@ -208,7 +230,7 @@
 	{
 		$x = $_POST['fecha']; //string en formato sql date 'yyyymmdd' e.g. '20170426'
 
-		return "select f.folio, f.monto 
+		return "select f.folio, f.fecha, f.monto 
 		from factura f 
 		where f.fecha = '".$x."'";
 	}
@@ -248,7 +270,7 @@
 		where t.folio = ".$x;
 	}
 	//El acumulado del monto de todas las facturas de un trabajo con folio x, así como el monto de la cotizacion de dicho trabajo
-	function acumuladoFacturasDeTrabajoX()
+	function acumuladoFacturasDeTrabajoX()	
 	{
 		//int del folio del trabajo
 		$x = $_POST['folio'];

@@ -79,10 +79,22 @@
 	}
 
 	function folioTrabajo(){
-		return "select folio,servicio from trabajo t";
+		return "select folio, servicio from trabajo t";
 	}
 
 	function rfcEmpresa(){
-		return "select em.rfc,em.nombre from empresa em";
+		return "select em.rfc, em.nombre from empresa em";
+	}
+
+	function folioFactura(){
+		return "select f.folio, e.nombre from factura f inner join empresa e where f.rfc_empresa=e.rfc";
+	}
+
+	function folioCotizacion(){
+		return "select c.folio, e.nombre from cotizacion c inner join empresa e where c.rfc_solicitante=e.rfc";
+	}
+
+	function rfcEmpleado(){
+		return "select em.rfc, em.nombre, em.apellido from empleado em";
 	}
 ?>

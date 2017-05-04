@@ -148,19 +148,19 @@
 		<a class="agregar font-a" id="agregarNuevo">Agregar</a>
 		<div class="filtros">
 			<div id="facturaFiltro">
-				<button class="search-btn font-a" id="facturaEntreConMonto">Buscar entre fechas y montos</button>
-				<button class="search-btn font-a" id="facturasPagadasPorEmpresa">Por empresa</button>
-				<button class="search-btn font-a" id="facturasDeTrabajo">Por folio de trabajo</button>
-				<button class="search-btn font-a" id="facturasDeFecha">Buscar por fecha</button>
-				<button class="search-btn font-a" id="facturaConFolio">Buscar folio</button>
+				<button class="search-btn font-a" id="facturaEntreConMontoBtn">Buscar entre fechas y montos</button>
+				<button class="search-btn font-a" id="facturasPagadasPorEmpresaBtn">Por empresa</button>
+				<button class="search-btn font-a" id="facturasDeTrabajoBtn">Por folio de trabajo</button>
+				<button class="search-btn font-a" id="facturasDeFechaBtn">Buscar por fecha</button>
+				<button class="search-btn font-a" id="facturaConFolioBtn">Buscar folio</button>
 			</div>
 			<div id="cotizacionFiltro">
-				<button class="search-btn font-a" id="cotizacionConFolio">Buscar folio</button>
+				<button class="search-btn font-a" id="cotizacionConFolioBtn">Buscar folio</button>
 			</div>
 			<div id="trabajoFiltro">
-				<button class="search-btn font-a" id="trabajosDeEmpleado">Trabajos de empleado</button>
-				<button class="search-btn font-a" id="trabajoConFolio">Buscar trabajos por folio</button>
-				<button class="search-btn font-a" id="acumuladoEnFacturasDeTrabajo">Acumulado facturado de un trabajo</button>
+				<button class="search-btn font-a" id="trabajosDeEmpleadoBtn">Trabajos de empleado</button>
+				<button class="search-btn font-a" id="trabajoConFolioBtn">Buscar trabajos por folio</button>
+				<button class="search-btn font-a" id="acumuladoEnFacturasDeTrabajoBtn">Acumulado facturado de un trabajo</button>
 			</div>
 		</div>
 	</div>
@@ -288,9 +288,9 @@
 		<div class="info-elemento">
 			<div class="modal-header">
 				<span class="close-popup">&times</span>
-				<p class="font-a">Consulta de factura</p>
+				<p class="font-a">Consulta</p>
 			</div>
-			<div class="info font-b">
+			<div class="query font-b">
 
 			</div>
 		</div>
