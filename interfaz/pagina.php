@@ -175,19 +175,6 @@
 				<button class="search-btn" id="trabajosDeEmpleado">Todos los trabajos donde participó cierto empleado</button>
 				<button class="search-btn" id="trabajoConFolio">Buscar trabajos con folio específico</button>
 				<button class="search-btn" id="acumuladoEnFacturasDeTrabajo">Muestra el acumulado facturado de un trabajo con folio específico</button>
-				
-				<select id="selectTrabajo" class="font-b">
-					<option value="" class="not-found">Elija una opcion</option>
-					<option value="Reparacion">Reparacion</option>
-					<option value="Fabricacion">Fabricacion</option>
-					<option value="Limpieza">Limpieza</option>
-					<option value="Mantenimiento">Mantenimiento</option>
-					<option value="Maquinado">Maquinado</option>
-					<option value="Suministro">Suministro</option>
-					<option value="Cambios">Cambios</option>
-					<option value="Instalacion">Instalacion</option>
-					<option value="Otros">Otros</option>
-				</select>
 			</div>
 		</div>
 	</div>

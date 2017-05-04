@@ -25,14 +25,14 @@
 
 	function insertarCotizacion()
 	{
-		$folio = $_GET['folio'];
+		$folio = $_GET['id'];
 		$fecha = $_GET['fecha'];
 		$condiciones_pago = $_GET['condicionesPago'];
 		$monto = $_GET['monto'];
 		$rfc_solicitante = $_GET['rfcSolicitante'];
 		$folio_trabajo = $_GET['folioTrabajo'];
 		$fecha_entrega_deseada = $_GET['fechaEntregaDeseada'];
-		$numero_orden_compra = $_GET['NumeroOrdenCompra'];
+		$numero_orden_compra = $_GET['numeroOrdenCompra'];
 
 		return "insert into cotizacion values(
 			".$folio.",
@@ -48,7 +48,7 @@
 
 	function insertarTrabajo()
 	{
-		$folio = $_GET['folio'];
+		$folio = $_GET['id'];
 		$servicio = $_GET['servicio'];
 		$descripcion = $_GET['descripcion'];
 

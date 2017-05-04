@@ -520,7 +520,7 @@ $(document).ready(function(){
 						fecha: $('#nuevaCotizacionFecha').val(),
 						condicionesPago: $('#nuevaCotizacionCondicionPago').val(),
 						folioTrabajo: $('#nuevaCotizacionFolioTrabajo').val(),
-						rfcSolicitante: $('#nuevaCotizacionRfcSolicitante').val(),
+						rfcSolicitante: $('#nuevaCotizacionRFCSolicitante').val(),
 						fechaEntregaDeseada: $('#nuevaCotizacionFechaEntregaDeseada').val(),
 						numeroOrdenCompra: $('#nuevaCotizacionNumeroOrdenCompra').val(),
 						metodo: 'insertarCotizacion'
@@ -544,8 +544,8 @@ $(document).ready(function(){
 				data:{
 						id: $('#nuevoTrabajoFolio').val(),
 						servicio: $('#trabajoServicio').val(),
-						decripcion: $('#nuevoTrabajoDescripcion').val(),
-						metodo: 'insertarCotizacion'
+						descripcion: $('#nuevoTrabajoDescripcion').val(),
+						metodo: 'insertarTrabajo'
 				}
 			}).done(function(res){
 				if(res != ''){
