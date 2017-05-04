@@ -30,7 +30,6 @@
 		<div class="navbar-menu font-b topBotomBordersOut">
 			<a href="#empleado">Empleados</a>
 			<a href="#empresa">Empresas</a>
-			<a href="#gasto">Gastos</a>
 			<a href="php/cerrar-sesion.php"><i class="fa fa-user-times" aria-hidden="true"></i></a>
 		</div>
 	</div>
@@ -47,10 +46,6 @@
 						<i class="fa fa-user-plus fa-lg" aria-hidden="true"></i>
 						<i class="fa fa-times fa-lg" aria-hidden="true" style="display: none; color: #D50000"></i>
 					</a>
-					<button>
-						<input type="text" id="inputSearch" class="font-b" placeholder="buscar">
-						<i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
-					</button>
 				</div>
 				<div class="informacion" style="display: block">
 					
@@ -92,10 +87,6 @@
 							<i class="fa fa-user-plus fa-lg" aria-hidden="true"></i>
 							<i class="fa fa-times fa-lg" aria-hidden="true" style="display: none; color: #D50000"></i>
 						</a>
-						<button>
-							<input type="text" id="inputSearch" class="font-b" placeholder="buscar">
-							<i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
-						</button>
 					</div>
 				<div class="informacion" style="display: block">
 					
@@ -157,24 +148,19 @@
 		<a class="agregar font-a" id="agregarNuevo">Agregar</a>
 		<div class="filtros">
 			<div id="facturaFiltro">
-
-				<button class="search-btn" id="facturaEntreConMonto">Buscar entre fechas y montos</button>
-				<button class="search-btn" id="facturasPagadasPorEmpresa">Buscar facturas pagadas por RFC de empresa</button>
-				<button class="search-btn" id="facturasDeTrabajo">Buscar facturas correspondientes a folio de trabajo</button>
-				<button class="search-btn" id="facturasDeFecha">Buscar facturas con fecha</button>
-				<button class="search-btn" id="facturaConFolio">Buscar factura con folio específico</button>
-
+				<button class="search-btn font-a" id="facturaEntreConMonto">Buscar entre fechas y montos</button>
+				<button class="search-btn font-a" id="facturasPagadasPorEmpresa">Por empresa</button>
+				<button class="search-btn font-a" id="facturasDeTrabajo">Por folio de trabajo</button>
+				<button class="search-btn font-a" id="facturasDeFecha">Buscar por fecha</button>
+				<button class="search-btn font-a" id="facturaConFolio">Buscar folio</button>
 			</div>
 			<div id="cotizacionFiltro">
-
-				<button class="search-btn" id="cotizacionConFolio">Buscar cotizacion con folio específico</button>
-
+				<button class="search-btn font-a" id="cotizacionConFolio">Buscar folio</button>
 			</div>
 			<div id="trabajoFiltro">
-				
-				<button class="search-btn" id="trabajosDeEmpleado">Todos los trabajos donde participó cierto empleado</button>
-				<button class="search-btn" id="trabajoConFolio">Buscar trabajos con folio específico</button>
-				<button class="search-btn" id="acumuladoEnFacturasDeTrabajo">Muestra el acumulado facturado de un trabajo con folio específico</button>
+				<button class="search-btn font-a" id="trabajosDeEmpleado">Trabajos de empleado</button>
+				<button class="search-btn font-a" id="trabajoConFolio">Buscar trabajos por folio</button>
+				<button class="search-btn font-a" id="acumuladoEnFacturasDeTrabajo">Acumulado facturado de un trabajo</button>
 			</div>
 		</div>
 	</div>

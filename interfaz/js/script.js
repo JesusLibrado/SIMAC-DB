@@ -622,8 +622,6 @@ $(document).ready(function(){
 						headDiv+
 							'Nombre de la Empresa'+
 						closeDiv+
-					closeDiv;
-			render+=rowDiv+
 						cellDiv+
 							'<input type="text" id="campoQuery5">'+
 						closeDiv+
@@ -648,8 +646,6 @@ $(document).ready(function(){
 						headDiv+
 							'Folio de trabajo'+
 						closeDiv+
-					closeDiv;
-			render+=rowDiv+
 						cellDiv+
 							'<input type="number" id="campoQuery6">'+
 						closeDiv+
@@ -674,8 +670,6 @@ $(document).ready(function(){
 						headDiv+
 							'Fecha'+
 						closeDiv+
-					closeDiv;
-			render+=rowDiv+
 						cellDiv+
 							'<input type="date" id="campoQuery7">'+
 						closeDiv+
@@ -700,8 +694,6 @@ $(document).ready(function(){
 						headDiv+
 							'Folio de factura'+
 						closeDiv+
-					closeDiv;
-			render+=rowDiv+
 						cellDiv+
 							'<input type="number" id="campoQuery8">'+
 						closeDiv+
@@ -729,8 +721,6 @@ $(document).ready(function(){
 						headDiv+
 							'Folio de cotización'+
 						closeDiv+
-					closeDiv;
-			render+=rowDiv+
 						cellDiv+
 							'<input type="number" id="campoQuery9">'+
 						closeDiv+
