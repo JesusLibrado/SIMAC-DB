@@ -900,7 +900,7 @@ $(document).ready(function(){
 					$(link).html('<p class="not-found">No hubo resultados</p>')
 				}else{
 					var data = $.parseJSON(res);
-					var titulos = ['Monto', 'Fecha'];
+					var titulos = ['<i class="fa fa-usd" aria-hidden="true"></i>', '<i class="fa fa-calendar" aria-hidden="true"></i>'];
 					var indices = [1,2];
 					renderHorizontal(data, elemento, $(link), titulos, indices);
 				}
@@ -922,7 +922,7 @@ $(document).ready(function(){
 					$(link).html('<p class="not-found">No hubo resultados</p>')
 				}else{
 					var data = $.parseJSON(res);
-					var titulos = ['Nombre', 'Monto'];
+					var titulos = ['Nombre', '<i class="fa fa-usd" aria-hidden="true"></i>'];
 					var indices = [1,2];
 					renderHorizontal(data, elemento, $(link), titulos, indices);
 				}
@@ -944,7 +944,7 @@ $(document).ready(function(){
 					$(link).html('<p class="not-found">No hubo resultados</p>')
 				}else{
 					var data = $.parseJSON(res);
-					var titulos = ['Fecha', 'Monto'];
+					var titulos = ['<i class="fa fa-calendar" aria-hidden="true"></i>', '<i class="fa fa-usd" aria-hidden="true"></i>'];
 					var indices = [1,2];
 					renderHorizontal(data, elemento, $(link), titulos, indices);
 				}
@@ -967,11 +967,57 @@ $(document).ready(function(){
 					$(link).html('<p class="not-found">No hubo resultados</p>')
 				}else{
 					var data = $.parseJSON(res);
-					var titulos = ['Fecha', 'Monto'];
+					var titulos = ['<i class="fa fa-calendar" aria-hidden="true"></i>', '<i class="fa fa-usd" aria-hidden="true"></i>'];
 					var indices = [1,2];
 					renderHorizontal(data, elemento, $(link), titulos, indices);
 				}
 				$('#queryPopUp').fadeOut();
 			});
 		});
+
+		$(document).on('click', '#cotizacionConFolio',function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/funcionesPHP_queries.php',
+				type: 'POST',
+				data: {
+						folio: $('#campoQuery9').val(),	
+						metodo: 'cotizacionFolioX'
+					}
+			}).done(function(res){
+				if(res==''){
+					$(link).html('<p class="not-found">No hubo resultados</p>')
+				}else{
+					var data = $.parseJSON(res);
+					var titulos = ['Solicitante', '<i class="fa fa-usd" aria-hidden="true"></i>', '<i class="fa fa-calendar" aria-hidden="true"></i>'];
+					var indices = [1,2,3];
+					renderHorizontal(data, elemento, $(link), titulos, indices);
+				}
+				$('#queryPopUp').fadeOut();
+			});
+		});
+
+		$(document).on('click', '#trabajosDeEmpleado',function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/funcionesPHP_queries.php',
+				type: 'POST',
+				data: {
+						rfc: $('#campoQuery10').val(),	
+						metodo: 'trabajoDeEmpleadoX'
+					}
+			}).done(function(res){
+				if(res==''){
+					$(link).html('<p class="not-found">No hubo resultados</p>')
+				}else{
+					var data = $.parseJSON(res);
+					var titulos = ['Servicio', 'Folio cotizacion', '<i class="fa fa-calendar" aria-hidden="true"></i>cotizacion'];
+					var indices = [1,2,3];
+					renderHorizontal(data, elemento, $(link), titulos, indices);
+				}
+				$('#queryPopUp').fadeOut();
+			});
+		});
+		
+		
 })

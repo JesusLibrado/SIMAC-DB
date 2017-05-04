@@ -251,13 +251,12 @@
 	function trabajoDeEmpleadoX()
 	{
 		//string del nombre y apellido del empleado
-		$nombre = $_POST['nombre'];
-		$apellido = $_POST['apellido']; 
+		$rfc = $_POST['rfc'];
 
-		return "select t.folio as 'folio trabajo', t.servicio, c.folio as 'folio cotizacion', c.fecha as 'fecha cotizacion'
+		return "select t.folio, t.servicio, c.folio, c.fecha
 		from cotizacion c INNER JOIN(trabajo t INNER JOIN (empleado e INNER JOIN realiza r ON e.rfc = r.rfc_empleado) 
 		ON t.folio = r.folio_trabajo) ON c.folio_trabajo = t.folio 
-		where e.nombre = '".$nombre."' and e.apellido = '".$apellido."'";
+		where e.rfc = '".$rfc."'";
 	}
 	//el trabajo con un folio x
 	function trabajoFolioX()
@@ -288,8 +287,6 @@
 		//int del folio de la cotizacion
 		$x = $_POST['folio'];
 
-		return "select * 
-		from cotizacion c 
-		where c.folio = ".$x;
+		return "select c.folio, e.nombre, c.monto, c.fecha from cotizacion c inner join empresa e where c.rfc_solicitante=e.rfc and c.folio=".$x;
 	}
 ?>
