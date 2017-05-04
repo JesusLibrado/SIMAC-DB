@@ -151,18 +151,31 @@
 		</div>
 	</section>
 
+
+<!--Botones de queries-->
 	<div class="float-right">
 		<a class="agregar font-a" id="agregarNuevo">Agregar</a>
 		<div class="filtros">
 			<div id="facturaFiltro">
+
 				<button class="search-btn" id="facturaEntreConMonto">Buscar entre fechas y montos</button>
-				<!--LO que quieras que se muestre en cada pestaña-->
+				<button class="search-btn" id="facturasPagadasPorEmpresa">Buscar facturas pagadas por RFC de empresa</button>
+				<button class="search-btn" id="facturasDeTrabajo">Buscar facturas correspondientes a folio de trabajo</button>
+				<button class="search-btn" id="facturasDeFecha">Buscar facturas con fecha</button>
+				<button class="search-btn" id="facturaConFolio">Buscar factura con folio específico</button>
+
 			</div>
 			<div id="cotizacionFiltro">
-				<!--LO que quieras que se muestre en cada pestaña-->
+
+				<button class="search-btn" id="cotizacionConFolio">Buscar cotizacion con folio específico</button>
+
 			</div>
 			<div id="trabajoFiltro">
-				<!--LO que quieras que se muestre en cada pestaña-->
+				
+				<button class="search-btn" id="trabajosDeEmpleado">Todos los trabajos donde participó cierto empleado</button>
+				<button class="search-btn" id="trabajoConFolio">Buscar trabajos con folio específico</button>
+				<button class="search-btn" id="acumuladoEnFacturasDeTrabajo">Muestra el acumulado facturado de un trabajo con folio específico</button>
+				
 				<select id="selectTrabajo" class="font-b">
 					<option value="" class="not-found">Elija una opcion</option>
 					<option value="Reparacion">Reparacion</option>
@@ -179,6 +192,7 @@
 		</div>
 	</div>
 
+<!--AGREGA FACTURAS-->
 	<div class="modal" id="facturaAgregar">
 		<div class="nuevo-form">
 			<div class="modal-header">
@@ -206,6 +220,7 @@
 		</div>
 	</div>
 
+<!--AGREGA COTIZACION-->
 	<div class="modal" id="cotizacionAgregar">
 		<div class="nuevo-form">
 			<div class="modal-header">
@@ -231,6 +246,7 @@
 		</div>
 	</div>
 
+<!--AGREGA TRABAJO-->
 	<div class="modal" id="trabajoAgregar">
 		<div class="nuevo-form">
 			<div class="modal-header">
@@ -295,7 +311,7 @@
 		</div>
 	</div>
 
-	<div class="modal" id="facturaQueryPopUp">
+	<div class="modal" id="queryPopUp">
 		<div class="info-elemento">
 			<div class="modal-header">
 				<span class="close-popup">&times</span>

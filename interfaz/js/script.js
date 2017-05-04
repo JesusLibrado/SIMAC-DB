@@ -12,6 +12,7 @@ $(document).ready(function(){
 		$("#nuevo-"+elemento).show();
 		displayIn(elemento);
 		$('.filtros:first').show();
+		$('.filtros div:first').show();
 		$('.tab-link').on('click', function(event){
 			$('.tabs-section div').hide();
 			$(link+'Filtro').hide();
@@ -60,7 +61,7 @@ $(document).ready(function(){
     	$(infoPopup).hide(400);
     	$(link+"Agregar").hide(400);
     	$('#infoContacto').fadeOut();
-    	$(link+'QueryPopUp').fadeOut();
+    	$('#queryPopUp').fadeOut();
     });
 
 	$('.extra-buttons a').click(function(event){
@@ -557,53 +558,278 @@ $(document).ready(function(){
 		});
 
 	/*************BUSQUEDAS*************/
+//En muchas consultas haría falta lo que hicimos de sugerencias del campo para evitar errores y agilizar el proceso, pero es un pedote 
 
-	/*facturasConMontroEntre*/
+		/**** FACTURAS *****/
 
-	$('#facturaEntreConMonto').click(function(){
-		var render = '<div class="table">';
-		var cellDiv = '<div class="table-cell">';
-		var rowDiv = '<div class="table-row">';
-		var headDiv = '<div class="table-head">';
-		var closeDiv = '</div>';
+		/*facturasConMontroEntre*/ //<-- nombre de la funcion en php
+		$('#facturaEntreConMonto').click(function(){
+			var render = '<div class="table">';
+			var cellDiv = '<div class="table-cell">';
+			var rowDiv = '<div class="table-row">';
+			var headDiv = '<div class="table-head">';
+			var closeDiv = '</div>';
 
-		render+=rowDiv+
-					headDiv+
-						'Fecha mínima'+
-					closeDiv+
-					headDiv+
-						'Fecha máxima'+
-					closeDiv+
-				closeDiv;
-		render+=rowDiv+
-					cellDiv+
-						'<input type="date" id="facturaFechaMin">'+
-					closeDiv+
-					cellDiv+
-						'<input type="date" id="facturaFechaMax">'+
-					closeDiv+
-				closeDiv;
-		render+=rowDiv+
-					headDiv+
-						'Monto mínimo'+
-					closeDiv+
-					headDiv+
-						'Monto máximo'+
-					closeDiv+
-				closeDiv;
-		render+=rowDiv+
-					cellDiv+
-						'<input type="text" id="facturaMontoMin" placeholder="Monto mínimo">'+
-					closeDiv+
-					cellDiv+
-						'<input type="text" id="facturaMontoMax" placeholder="Monto máximo">'+
-					closeDiv+
-				closeDiv;
-		render+=closeDiv;
+			render+=rowDiv+
+						headDiv+
+							'Fecha mínima'+
+						closeDiv+
+						headDiv+
+							'Fecha máxima'+
+						closeDiv+
+					closeDiv;
+			render+=rowDiv+
+						cellDiv+
+							'<input type="date" id="campoQuery1">'+ 
+						closeDiv+
+						cellDiv+
+							'<input type="date" id="campoQuery2">'+
+						closeDiv+
+					closeDiv;
+			render+=rowDiv+
+						headDiv+
+							'Monto mínimo'+
+						closeDiv+
+						headDiv+
+							'Monto máximo'+
+						closeDiv+
+					closeDiv;
+			render+=rowDiv+
+						cellDiv+
+							'<input type="text" id="campoQuery3" placeholder="Monto mínimo">'+
+						closeDiv+
+						cellDiv+
+							'<input type="text" id="campoQuery4" placeholder="Monto máximo">'+
+						closeDiv+
+					closeDiv;
+			render+=closeDiv;
 
-		render+='<button id="">Aceptar</button>';
+			render+='<button id="">Aceptar</button>';
 
-		$(link+'QueryPopUp .info').html(render);
-		$(link+'QueryPopUp').show();
-	});	
+			$('#queryPopUp .info').html(render);
+			$('#queryPopUp').show();
+		});	
+
+		/*facturaPagadasPorEmpresaX*/
+		$('#facturasPagadasPorEmpresa').click(function(){
+			var render = '<div class="table">';
+			var cellDiv = '<div class="table-cell">';
+			var rowDiv = '<div class="table-row">';
+			var headDiv = '<div class="table-head">';
+			var closeDiv = '</div>';
+
+			render+=rowDiv+
+						headDiv+
+							'Nombre de la Empresa'+
+						closeDiv+
+					closeDiv;
+			render+=rowDiv+
+						cellDiv+
+							'<input type="text" id="campoQuery5">'+
+						closeDiv+
+					closeDiv;
+			render+=closeDiv;
+
+			render+='<button id="">Aceptar</button>';
+
+			$('#queryPopUp .info').html(render);
+			$('#queryPopUp').show();
+		});	
+
+		/*facturaDeTrabajoX*/
+		$('#facturasDeTrabajo').click(function(){
+			var render = '<div class="table">';
+			var cellDiv = '<div class="table-cell">';
+			var rowDiv = '<div class="table-row">';
+			var headDiv = '<div class="table-head">';
+			var closeDiv = '</div>';
+
+			render+=rowDiv+
+						headDiv+
+							'Folio de trabajo'+
+						closeDiv+
+					closeDiv;
+			render+=rowDiv+
+						cellDiv+
+							'<input type="number" id="campoQuery6">'+
+						closeDiv+
+					closeDiv;
+			render+=closeDiv;
+
+			render+='<button id="">Aceptar</button>';
+
+			$('#queryPopUp .info').html(render);
+			$('#queryPopUp').show();
+		});
+
+		/*facturaFechaX*/
+		$('#facturasDeFecha').click(function(){
+			var render = '<div class="table">';
+			var cellDiv = '<div class="table-cell">';
+			var rowDiv = '<div class="table-row">';
+			var headDiv = '<div class="table-head">';
+			var closeDiv = '</div>';
+
+			render+=rowDiv+
+						headDiv+
+							'Fecha'+
+						closeDiv+
+					closeDiv;
+			render+=rowDiv+
+						cellDiv+
+							'<input type="date" id="campoQuery7">'+
+						closeDiv+
+					closeDiv;
+			render+=closeDiv;
+
+			render+='<button id="">Aceptar</button>';
+
+			$('#queryPopUp .info').html(render);
+			$('#queryPopUp').show();
+		});
+
+		/*facturaFolioX*/
+		$('#facturaConFolio').click(function(){
+			var render = '<div class="table">';
+			var cellDiv = '<div class="table-cell">';
+			var rowDiv = '<div class="table-row">';
+			var headDiv = '<div class="table-head">';
+			var closeDiv = '</div>';
+
+			render+=rowDiv+
+						headDiv+
+							'Folio de factura'+
+						closeDiv+
+					closeDiv;
+			render+=rowDiv+
+						cellDiv+
+							'<input type="number" id="campoQuery8">'+
+						closeDiv+
+					closeDiv;
+			render+=closeDiv;
+			
+			render+='<button id="">Aceptar</button>';
+
+			$('#queryPopUp .info').html(render);
+			$('#queryPopUp').show();
+		});		
+
+
+		/**** COTIZACIONES *****/
+
+		/*cotizacionFolioX*/
+		$('#cotizacionConFolio').click(function(){
+			var render = '<div class="table">';
+			var cellDiv = '<div class="table-cell">';
+			var rowDiv = '<div class="table-row">';
+			var headDiv = '<div class="table-head">';
+			var closeDiv = '</div>';
+
+			render+=rowDiv+
+						headDiv+
+							'Folio de cotización'+
+						closeDiv+
+					closeDiv;
+			render+=rowDiv+
+						cellDiv+
+							'<input type="number" id="campoQuery9">'+
+						closeDiv+
+					closeDiv;
+			render+=closeDiv;
+			
+			render+='<button id="">Aceptar</button>';
+
+			$('#queryPopUp .info').html(render);
+			$('#queryPopUp').show();
+		});
+
+
+		/**** TRABAJOS *****/
+
+		/*trabajoDeEmpleadoX*/
+		$('#trabajosDeEmpleado').click(function(){
+			var render = '<div class="table">';
+			var cellDiv = '<div class="table-cell">';
+			var rowDiv = '<div class="table-row">';
+			var headDiv = '<div class="table-head">';
+			var closeDiv = '</div>';
+
+			render+=rowDiv+
+						headDiv+
+							'Nombre del empleado'+
+						closeDiv+
+						headDiv+
+							'Apellido del empleado'+
+						closeDiv+
+					closeDiv;
+			render+=rowDiv+
+						cellDiv+
+							'<input type="text" id="campoQuery10">'+
+						closeDiv+
+						cellDiv+
+							'<input type="text" id="campoQuery11">'+
+						closeDiv+
+					closeDiv;
+			render+=closeDiv;
+			
+			render+='<button id="">Aceptar</button>';
+
+			$('#queryPopUp .info').html(render);
+			$('#queryPopUp').show();
+		});
+
+		/*trabajoFolioX*/
+		$('#trabajoConFolio').click(function(){
+			var render = '<div class="table">';
+			var cellDiv = '<div class="table-cell">';
+			var rowDiv = '<div class="table-row">';
+			var headDiv = '<div class="table-head">';
+			var closeDiv = '</div>';
+
+			render+=rowDiv+
+						headDiv+
+							'Folio del trabajo'+
+						closeDiv+
+
+					closeDiv;
+			render+=rowDiv+
+						cellDiv+
+							'<input type="number" id="campoQuery12">'+
+						closeDiv+
+					closeDiv;
+			render+=closeDiv;
+			
+			render+='<button id="">Aceptar</button>';
+
+			$('#queryPopUp .info').html(render);
+			$('#queryPopUp').show();
+		});
+
+		/*acumuladoFacturasDeTrabajoX*/
+		$('#acumuladoEnFacturasDeTrabajo').click(function(){
+			var render = '<div class="table">';
+			var cellDiv = '<div class="table-cell">';
+			var rowDiv = '<div class="table-row">';
+			var headDiv = '<div class="table-head">';
+			var closeDiv = '</div>';
+
+			render+=rowDiv+
+						headDiv+
+							'Folio del trabajo'+
+						closeDiv+
+
+					closeDiv;
+			render+=rowDiv+
+						cellDiv+
+							'<input type="number" id="campoQuery13">'+
+						closeDiv+
+					closeDiv;
+			render+=closeDiv;
+			
+			render+='<button id="">Aceptar</button>';
+
+			$('#queryPopUp .info').html(render);
+			$('#queryPopUp').show();
+		});
+		
 })
