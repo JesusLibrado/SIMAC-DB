@@ -158,9 +158,9 @@
 				<button class="search-btn font-a" id="cotizacionConFolioBtn">Buscar folio</button>
 			</div>
 			<div id="trabajoFiltro">
-				<button class="search-btn font-a" id="trabajosDeEmpleadoBtn">Trabajos de empleado</button>
-				<button class="search-btn font-a" id="trabajoConFolioBtn">Buscar trabajos por folio</button>
-				<button class="search-btn font-a" id="acumuladoEnFacturasDeTrabajoBtn">Acumulado facturado de un trabajo</button>
+				<button class="search-btn font-a" id="trabajosDeEmpleadoBtn">Por empleado</button>
+				<button class="search-btn font-a" id="trabajoConFolioBtn">Por folio</button>
+				<button class="search-btn font-a" id="acumuladoEnFacturasDeTrabajoBtn">Acumulado facturado</button>
 			</div>
 		</div>
 	</div>

@@ -897,7 +897,7 @@ $(document).ready(function(){
 					}
 			}).done(function(res){
 				if(res==''){
-					$(link).html('<p class="not-found">No hubo resultados</p>')
+					$(link).html('<p class="not-found">No hubo resultados</p>');
 				}else{
 					var data = $.parseJSON(res);
 					var titulos = ['<i class="fa fa-usd" aria-hidden="true"></i>', '<i class="fa fa-calendar" aria-hidden="true"></i>'];
@@ -919,7 +919,7 @@ $(document).ready(function(){
 					}
 			}).done(function(res){
 				if(res==''){
-					$(link).html('<p class="not-found">No hubo resultados</p>')
+					$(link).html('<p class="not-found">No hubo resultados</p>');
 				}else{
 					var data = $.parseJSON(res);
 					var titulos = ['Nombre', '<i class="fa fa-usd" aria-hidden="true"></i>'];
@@ -941,7 +941,7 @@ $(document).ready(function(){
 					}
 			}).done(function(res){
 				if(res==''){
-					$(link).html('<p class="not-found">No hubo resultados</p>')
+					$(link).html('<p class="not-found">No hubo resultados</p>');
 				}else{
 					var data = $.parseJSON(res);
 					var titulos = ['<i class="fa fa-calendar" aria-hidden="true"></i>', '<i class="fa fa-usd" aria-hidden="true"></i>'];
@@ -964,7 +964,7 @@ $(document).ready(function(){
 					}
 			}).done(function(res){
 				if(res==''){
-					$(link).html('<p class="not-found">No hubo resultados</p>')
+					$(link).html('<p class="not-found">No hubo resultados</p>');
 				}else{
 					var data = $.parseJSON(res);
 					var titulos = ['<i class="fa fa-calendar" aria-hidden="true"></i>', '<i class="fa fa-usd" aria-hidden="true"></i>'];
@@ -986,7 +986,7 @@ $(document).ready(function(){
 					}
 			}).done(function(res){
 				if(res==''){
-					$(link).html('<p class="not-found">No hubo resultados</p>')
+					$(link).html('<p class="not-found">No hubo resultados</p>');
 				}else{
 					var data = $.parseJSON(res);
 					var titulos = ['Solicitante', '<i class="fa fa-usd" aria-hidden="true"></i>', '<i class="fa fa-calendar" aria-hidden="true"></i>'];
@@ -1008,7 +1008,7 @@ $(document).ready(function(){
 					}
 			}).done(function(res){
 				if(res==''){
-					$(link).html('<p class="not-found">No hubo resultados</p>')
+					$(link).html('<p class="not-found">No hubo resultados</p>');
 				}else{
 					var data = $.parseJSON(res);
 					var titulos = ['Servicio', 'Folio cotizacion', '<i class="fa fa-calendar" aria-hidden="true"></i>cotizacion'];
@@ -1018,6 +1018,71 @@ $(document).ready(function(){
 				$('#queryPopUp').fadeOut();
 			});
 		});
-		
+
+		$(document).on('click', '#facturaConFolio',function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/funcionesPHP_queries.php',
+				type: 'POST',
+				data: {
+						folio: $('#campoQuery8').val(),
+						metodo: 'facturaFolioX'	
+					}
+			}).done(function(res){
+				if(res==''){
+					$(link).html('<p class="not-found">No hubo resultados</p>');
+				}else{
+					var data = $.parseJSON(res);
+					var titulos = ['Folio', '<i class="fa fa-usd" aria-hidden="true"></i>', '<i class="fa fa-calendar" aria-hidden="true"></i>', 'Forma de pago'];
+					var indices = [0,1,2,3];
+					renderHorizontal(data, elemento, $(link), titulos, indices);
+				}
+				$('#queryPopUp').fadeOut();
+			});
+		});
+
+		$(document).on('click', '#trabajoConFolio',function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/funcionesPHP_queries.php',
+				type: 'POST',
+				data: {
+						folio: $('#campoQuery12').val(),
+						metodo: 'trabajoFolioX'	
+					}
+			}).done(function(res){
+				if(res==''){
+					$(link).html('<p class="not-found">No hubo resultados</p>');
+				}else{
+					var data = $.parseJSON(res);
+					var titulos = ['Folio', 'Servicio'];
+					var indices = [0,1];
+					renderHorizontal(data, elemento, $(link), titulos, indices);
+				}
+				$('#queryPopUp').fadeOut();
+			});
+		});
+
+		$(document).on('click', '#acumuladoEnFacturasDeTrabajo',function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'php/funcionesPHP_queries.php',
+				type: 'POST',
+				data: {
+						folio: $('#campoQuery13').val(),
+						metodo: 'acumuladoFacturasDeTrabajoX'	
+					}
+			}).done(function(res){
+				if(res==''){
+					$(link).html('<p class="not-found">No hubo resultados</p>');
+				}else{
+					var data = $.parseJSON(res);
+					var titulos = ['Cantidad facturada', '<i class="fa fa-usd" aria-hidden="true"></i> por trabajo'];
+					var indices = [0,1];
+					renderHorizontal(data, elemento, $(link), titulos, indices);
+				}
+				$('#queryPopUp').fadeOut();
+			});
+		});
 		
 })

@@ -1,5 +1,4 @@
 <?php
-
 	include_once('config.php');
 
 	$sql = $_POST['metodo']();
@@ -125,6 +124,18 @@
 		where e.activo = 0";
 	}
 
+	//todos los trabajos en lso que participa un empleado X, donde x es el rfc del empleado
+	function trabajosDeEmpleadoX()
+	{
+		$rfc = $_POST['rfc']; 
+
+		return "select t.folio, t.servicio, e.nombre, e.apellido
+				from (realiza r INNER JOIN trabajo t ON r.folio_trabajo = t.folio)
+				INNER JOIN empleado e ON e.rfc = r.rfc_empleado
+				where r.rfc_empleado = '".$rfc."'";	
+	}
+
+
 //QUERIES EN PESTAÑA EMPRESA
 
 	//Folio, fecha y nombre de la empresa solicitante de las Cotizaciones realizadas entre d1 y d2
@@ -240,8 +251,8 @@
 		//int del folio de la factura
 		$x = $_POST['folio'];
 
-		return "select * 
-		from factura f 
+		return "select *
+		from factura f
 		where f.folio = ".$x;
 	}
 
@@ -274,7 +285,7 @@
 		//int del folio del trabajo
 		$x = $_POST['folio'];
 
-		return "select sum(f.monto) as 'cantidad facturada', c.monto as 'costo del trabajo'
+		return "select sum(f.monto), c.monto
 		from cotizacion c INNER JOIN factura f ON f.folio_trabajo = c.folio_trabajo 
 		where c.folio_trabajo = ".$x;
 	}

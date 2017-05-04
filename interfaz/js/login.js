@@ -23,7 +23,7 @@ $(document).ready(function() {
 				mensajeLogin('Datos incorrectos');
 				$('.mensaje').css('color', 'red');
 			}else{
-				window.location.replace('../pagina.php');
+				window.location.replace('pagina.php');
 			}
 		});
 		mensajeLogin(' ');
